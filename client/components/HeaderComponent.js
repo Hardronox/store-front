@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuComponent from './MenuComponent';
+import moment from 'moment';
 import {
   NavLink
 } from 'react-router-dom';
@@ -124,13 +125,13 @@ class HeaderComponent extends React.Component {
           <div className="date-info">
             <div className="date">
               <div className="">
-                07 November, 2017
+                {moment().local().format('DD MMMM, YYYY')}
               </div>
               <div className="">
-                Local:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;08:23:18
+                Local:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{moment().local().format('HH:mm:ss')}
               </div>
               <div className="">
-                Zulu:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14:23:18
+                Zulu:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {moment().utc().format('HH:mm:ss')}
               </div>
             </div>
             <div className="header-line">
@@ -149,7 +150,7 @@ class HeaderComponent extends React.Component {
               <input type="text" className="search-input" placeholder={translations['enter values']} name="search" />
             </div>
             <div className="langs-dropdown" style={{position: "fixed",
-              top: "45px", right: "240px"}}>
+              top: "45px", right: "260px"}}>
               <button type="button" className="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Change Lang
               </button>
