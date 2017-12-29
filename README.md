@@ -3,6 +3,7 @@
 In terminal go to project root and run:
 ```
 npm install
+npm run build-sass
 npm run start
 ```
 
