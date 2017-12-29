@@ -1,0 +1,15 @@
+{
+  "dashboard": "dedashboard",
+  "liveview": "deliveview",
+  "status": "destatus",
+  "intel request": "deintel request",
+  "mission mgt": "demission mgt",
+  "schedules": "deschedules",
+  "orders/assets": "deorders/assets",
+  "intel library": "deintel library",
+  "messages": "demessages",
+  "admin": "deadmin",
+  "logout": "delogout",
+  "search": "desearch",
+  "enter values": "deenter values"
+}

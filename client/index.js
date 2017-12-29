@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './components/Routes';
-import {Provider} from 'react-redux';
-import store from './redux/store';
+import Root from './components/Root';
+import configureStore, { history } from './store/configureStore';
+
+const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Routes />
-  </Provider>,
-  document.getElementById('root')
+    <Root store={store} history={history} />,
+    document.getElementById('root')
 );

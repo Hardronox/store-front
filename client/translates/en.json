@@ -1,0 +1,15 @@
+{
+  "dashboard": "dashboard",
+  "liveview": "liveview",
+  "status": "status",
+  "intel request": "intel request",
+  "mission mgt": "mission mgt",
+  "schedules": "schedules",
+  "orders/assets": "orders/assets",
+  "intel library": "intel library",
+  "messages": "messages",
+  "admin": "admin",
+  "logout": "logout",
+  "search": "search",
+  "enter values": "Enter values"
+}
