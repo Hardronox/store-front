@@ -21,12 +21,11 @@ class IntelRequestComponent extends React.Component {
     const {translations: {translations}, match} = this.props;
 
     const menuItems = [
-      {title: 'intel request', url: `${match.url}/intel-request`},
+      {title: 'request', url: `${match.url}/request`},
+      {title: 'review', url: `${match.url}/review`},
       {title: 'operating picture', url: `${match.url}/operating-picture`},
       {title: 'current intel', url: `${match.url}/current-intel`},
       {title: 'nat\'l imagery', url: `${match.url}/natl-imagery`},
-      {title: 'resources', url: `${match.url}/resources`},
-      {title: 'tasking order', url: `${match.url}/tasking-order`},
     ];
 
     return menuItems.map((item, i) => {
@@ -61,12 +60,11 @@ class IntelRequestComponent extends React.Component {
           </div>
         </div>
         <Switch>
-          <Route path={`${match.url}/intel-request`} component={IntelRequestContainer} />
+          <Route path={`${match.url}/request`} component={IntelRequestContainer} />
+          <Route path={`${match.url}/review`} component={ResourcesContainer} />
           <Route path={`${match.url}/operating-picture`} component={OperatingPictureContainer} />
           <Route path={`${match.url}/current-intel`} component={CurrentIntelContainer} />
           <Route path={`${match.url}/natl-imagery`} component={NatlImageryContainer} />
-          <Route path={`${match.url}/resources`} component={ResourcesContainer} />
-          <Route path={`${match.url}/tasking-order`} component={TaskingOrderContainer} />
         </Switch>
       </div>
     );
