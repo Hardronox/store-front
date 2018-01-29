@@ -11,14 +11,25 @@ app.use(bodyParser.json());
 //serve up static files
 app.use(express.static(path.resolve(__dirname, '..', 'client')));
 app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
-// app.use(express.static(path.resolve(__dirname, '..', 'client', 'styles', 'mainSheet', 'main.css')));
 
-// app.get('/client/styles/mainSheet', function (request, response){
-//   console.log("I HIT DA STYLES");
-//   response.sendFile(path.resolve(__dirname, '..', 'styles', 'mainSheet', 'main.css'))
-// });
-// app.use(express.static(path.resolve(__dirname, 'client', 'styles', 'mainSheet', 'main.css')));
 
+app.post('/get-products', function (request, response){
+
+  let amazon = require('amazon-product-api');
+  let client = amazon.createClient({
+    awsId: "AKIAJ4HL7C5FSZSHJZ4A",
+    awsSecret: "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",
+    awsTag: "upworktest-20"
+  });
+
+  client.itemSearch({
+    keywords: request.body.searchValue,
+  }).then(function(results){
+    response.json(results);
+  }).catch(function(err){
+    response.json(err);
+  });
+});
 
 app.use(function (err, req, res, next) {
   console.error(err);
@@ -34,5 +45,7 @@ app.get('*', function (request, response) {
 });
 
 app.listen(PORT, function () {
-  console.log("Rockin out on port " + PORT + " homie");
+  console.log("Using " + PORT + " port now!");
 });
+
+

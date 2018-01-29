@@ -1,19 +1,19 @@
 import {connect} from 'react-redux';
 
 import DashboardComponent from '../components/DashboardComponent';
-import {getTranslations} from '../actions/actions';
+import {getProducts} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
-    translations: state.translationsReducer
+    searchResult: state.productsReducer.searchResult
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTranslations: (lang) => {
-      dispatch(getTranslations(lang));
-    }
+    getProducts: (searchValue) => {
+      dispatch(getProducts(searchValue));
+    },
   };
 };
 

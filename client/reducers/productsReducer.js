@@ -1,7 +1,9 @@
-import {GET_TRANSLATIONS_FULFILLED} from '../constants/actionTypes';
+import {
+  GET_PRODUCTS_FULFILLED
+} from '../constants/actionTypes';
 
 const initialState = {
-  translations: {}
+  searchResult: [],
 };
 
 /**
@@ -9,14 +11,15 @@ const initialState = {
  * @param {Object} state - application state
  * @param {Object<type>} action
  */
-const translationsReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   let { type } = action;
 
   switch(type) {
-    case GET_TRANSLATIONS_FULFILLED: {
+
+    case GET_PRODUCTS_FULFILLED: {
       return {
         ...state,
-        translations: action.payload
+        searchResult: action.payload,
       };
     }
 
@@ -25,4 +28,4 @@ const translationsReducer = (state = initialState, action) => {
   }
 };
 
-export default translationsReducer;
+export default productsReducer;
