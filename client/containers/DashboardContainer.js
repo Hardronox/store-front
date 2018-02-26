@@ -1,18 +1,24 @@
 import {connect} from 'react-redux';
 
 import DashboardComponent from '../components/DashboardComponent';
-import {getProducts} from '../actions/actions';
+import {incr, storeKek, getKeks} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
-    searchResult: state.productsReducer.searchResult
+    keks: state.keksReducer
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProducts: (searchValue) => {
-      dispatch(getProducts(searchValue));
+    incr: () => {
+      dispatch(incr());
+    },
+    storeKek: (kek) => {
+      dispatch(storeKek(kek));
+    },
+    getKeks: () => {
+      dispatch(getKeks());
     },
   };
 };
