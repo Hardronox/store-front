@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import DashboardComponent from '../components/DashboardComponent';
+import ProductInfoComponent from '../components/ProductInfoComponent';
 import {incr, storeKek, getKeks} from '../actions/actions';
 
 const mapStateToProps = state => {
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductInfoComponent);

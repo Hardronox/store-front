@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Product from './reusable/Product';
 import Slider from 'react-id-swiper'
 
-class DashboardComponent extends Component {
+class MainPageComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class DashboardComponent extends Component {
     const products = Array.from(Array(10).keys());
 
     return products.map((item, i) => {
-      return <Product key={i} />;
+      return <Product key={i} product={item}/>;
     });
   };
 
@@ -78,9 +78,9 @@ class DashboardComponent extends Component {
   }
 }
 
-DashboardComponent.propTypes = {
+MainPageComponent.propTypes = {
   children: PropTypes.element,
 
 };
 
-export default DashboardComponent;
+export default MainPageComponent;
