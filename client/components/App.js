@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route path="/" render={(route) =>{
+        <Route path="/" render={(route) => {
           return route.location.pathname==='/main' ? null : <HeaderContainer/>;
         }} />
         <Switch>

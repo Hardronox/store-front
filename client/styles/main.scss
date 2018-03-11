@@ -69,6 +69,23 @@ body {
   }
 }
 
+.content {
+  margin: 5vh 5vw;
+}
 
+.info-image {
 
+  img {
+    width: 40vw;
+    height: 45vh;
+  }
+}
 
+.general-info {
+  background-color: #f7f7f7;
+  padding: 10px;
+
+  .general-info-container {
+    background-color: #fff;
+  }
+}
