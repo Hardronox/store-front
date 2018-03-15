@@ -2,7 +2,7 @@ import {call, put, takeEvery } from 'redux-saga/effects'
 import {delay } from 'redux-saga'
 import {GET_KEKS_PENDING, GET_KEKS_FULFILLED, GET_KEKS_REJECTED,
         STORE_KEK_PENDING, STORE_KEK_FULFILLED, STORE_KEK_REJECTED} from '../constants/actionTypes'
-import {getKeksApi, createKek} from '../api/KekApi'
+import {getKeksApi, createKek} from '../api/ProductsApi'
 
 /**
  * Generator for sending action (Tweet, Retweet ...)

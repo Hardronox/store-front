@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/Product';
-import Slider from 'react-id-swiper'
+import Slider from './reusable/Slider';
 
 class ProductInfoComponent extends Component {
 

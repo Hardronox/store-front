@@ -6,6 +6,7 @@ import MainPageContainer from '../containers/MainPageContainer';
 import ProductInfoContainer from '../containers/ProductInfoContainer';
 import HeaderContainer from '../containers/HeaderContainer';
 import FooterComponent from '../components/FooterComponent';
+import DashboardContainer from '../containers/DashboardContainer';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -14,14 +15,15 @@ class App extends Component {
     return (
       <div>
         <Route path="/" render={(route) => {
-          return route.location.pathname==='/main' ? null : <HeaderContainer/>;
+          return route.location.pathname==='/admin' ? null : <HeaderContainer/>;
         }} />
         <Switch>
           <Route exact path="/" component={MainPageContainer} />
           <Route exact path="/product/:id" component={ProductInfoContainer} />
+          <Route exact path="/admin" component={DashboardContainer} />
         </Switch>
         <Route path="/" render={(route) =>{
-          return route.location.pathname==='/main' ? null : <FooterComponent/>;
+          return route.location.pathname==='/admin' ? null : <FooterComponent/>;
         }} />
       </div>
     );
