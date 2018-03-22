@@ -1,14 +1,14 @@
 import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Sidebar from '../admin/SidebarComponent';
-import Status from '../admin/StatusComponent';
-import History from '../admin/HistoryComponent';
-import Items from '../admin/ItemsComponent';
-import SalesBreakdownComponent from '../admin/SalesBreakdownComponent';
-import SalesByCountriesComponent from '../admin/SalesByCountriesComponent';
-import TasksComponent from '../admin/TasksComponent';
-import HeaderComponent from '../admin/HeaderComponent';
+import Sidebar from '../SidebarComponent';
+import Status from './StatusComponent';
+import History from './HistoryComponent';
+import Items from './ItemsComponent';
+import SalesBreakdownComponent from './SalesBreakdownComponent';
+import SalesByCountriesComponent from './SalesByCountriesComponent';
+import TasksComponent from './TasksComponent';
+import HeaderComponent from '../HeaderComponent';
 
 
 class DashboardComponent extends Component {

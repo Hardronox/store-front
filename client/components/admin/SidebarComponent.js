@@ -74,100 +74,26 @@ class HeaderComponent extends React.Component {
                 </a>
                 <ul className="sidebar-nav collapse" aria-expanded="false">
                   <li>
-                    <a href="items-list.html"> Items List </a>
+                    <Link to="items-list.html"> Items List </Link>
                   </li>
                   <li>
-                    <a href="item-editor.html"> Item Editor </a>
+                    <Link to="item-editor.html"> Item Editor </Link>
                   </li>
                 </ul>
               </li>
               <li>
                 <a href="" aria-expanded="false">
-                  <i className="fa fa-area-chart"/> Charts
+                  <i className="fa fa-area-chart"/> Statistics
                   <i className="fa arrow"/>
                 </a>
                 <ul className="sidebar-nav collapse" aria-expanded="false">
                   <li>
-                    <a href="charts-flot.html"> Flot Charts </a>
+                    <Link to="charts-flot.html"> Flot Charts </Link>
                   </li>
                   <li>
-                    <a href="charts-morris.html"> Morris Charts </a>
+                    <Link to="charts-morris.html"> Morris Charts </Link>
                   </li>
                 </ul>
-              </li>
-              <li className="">
-                <a href="" aria-expanded="false">
-                  <i className="fa fa-table"/> Tables
-                  <i className="fa arrow"/>
-                </a>
-                <ul className="sidebar-nav collapse" aria-expanded="false" style={{height: '0px'}}>
-                  <li>
-                    <a href="static-tables.html"> Static Tables </a>
-                  </li>
-                  <li>
-                    <a href="responsive-tables.html"> Responsive Tables </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="" aria-expanded="false">
-                  <i className="fa fa-sitemap"/> Menu Levels
-                  <i className="fa arrow"/>
-                </a>
-                <ul className="sidebar-nav collapse" aria-expanded="false">
-                  <li>
-                    <a href="#"> Second Level Item
-                      <i className="fa arrow"/>
-                    </a>
-                    <ul className="sidebar-nav collapse" aria-expanded="false">
-                      <li>
-                        <a href="#"> Third Level Item </a>
-                      </li>
-                      <li>
-                        <a href="#"> Third Level Item </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#"> Second Level Item </a>
-                  </li>
-                  <li>
-                    <a href="#"> Second Level Item
-                      <i className="fa arrow"/>
-                    </a>
-                    <ul className="sidebar-nav collapse" aria-expanded="false">
-                      <li>
-                        <a href="#"> Third Level Item </a>
-                      </li>
-                      <li>
-                        <a href="#"> Third Level Item </a>
-                      </li>
-                      <li>
-                        <a href="#"> Third Level Item
-                          <i className="fa arrow"/>
-                        </a>
-                        <ul className="sidebar-nav collapse" aria-expanded="false">
-                          <li>
-                            <a href="#"> Fourth Level Item </a>
-                          </li>
-                          <li>
-                            <a href="#"> Fourth Level Item </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="screenful.html" aria-expanded="false">
-                  <i className="fa fa-bar-chart"/> Agile Metrics
-                  <span className="label label-screenful">by Screenful</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/modularcode/modular-admin-html" aria-expanded="false">
-                  <i className="fa fa-github-alt"/> Theme Docs </a>
               </li>
             </ul>
           </nav>

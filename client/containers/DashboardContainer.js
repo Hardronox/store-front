@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import DashboardComponent from '../components/admin/DashboardComponent';
+import DashboardComponent from '../components/admin/dashboard/DashboardComponent';
 
 const mapStateToProps = state => {
   return {
