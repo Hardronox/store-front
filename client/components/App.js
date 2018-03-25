@@ -6,7 +6,7 @@ import MainPageContainer from '../containers/MainPageContainer';
 import ProductInfoContainer from '../containers/ProductInfoContainer';
 import HeaderContainer from '../containers/HeaderContainer';
 import FooterComponent from '../components/FooterComponent';
-import DashboardContainer from '../containers/DashboardContainer';
+import AdminContainer from '../containers/AdminContainer';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPageContainer} />
           <Route exact path="/product/:id" component={ProductInfoContainer} />
-          <Route exact path="/admin" component={DashboardContainer} />
+          <Route exact path="/admin" component={AdminContainer} />
         </Switch>
         <Route path="/" render={(route) =>{
           return route.location.pathname==='/admin' ? null : <FooterComponent/>;
