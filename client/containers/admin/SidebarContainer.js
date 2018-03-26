@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import DashboardComponent from '../components/admin/dashboard/DashboardComponent';
+import SidebarComponent from '../../components/admin/SidebarComponent';
 
 const mapStateToProps = state => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);

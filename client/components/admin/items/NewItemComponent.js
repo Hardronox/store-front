@@ -97,7 +97,7 @@ class NewItemComponent extends React.Component {
                         <i className="fa fa-trash-o"/>
                       </a>
                     </div>
-                    <div className="image" style="background-image:url('https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg')"/>
+                    <div className="image" style={{backgroundImage: "url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"}}/>
                   </div>
                   <div className="image-container">
                     <div className="controls">
@@ -113,7 +113,7 @@ class NewItemComponent extends React.Component {
                         <i className="fa fa-trash-o"/>
                       </a>
                     </div>
-                    <div className="image" style="background-image:url('https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg')"/>
+                    <div className="image" style={{backgroundImage:'url(https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg)'}}/>
                   </div>
                   <div className="image-container">
                     <div className="controls">
@@ -129,7 +129,7 @@ class NewItemComponent extends React.Component {
                         <i className="fa fa-trash-o"/>
                       </a>
                     </div>
-                    <div className="image" style="background-image:url('https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg')"/>
+                    <div className="image" style={{backgroundImage:'url(https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg)'}}/>
                   </div>
                   <a href="#" className="add-image" data-toggle="modal" data-target="#modal-media">
                     <div className="image-container new">

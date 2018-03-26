@@ -56,8 +56,7 @@ class ItemsListComponents extends React.Component {
               <div className="col-md-6">
                 <h3 className="title"> Items
                   <a href="item-editor.html" className="btn btn-primary btn-sm rounded-s"> Add New </a>
-                  <!--
-      -->
+
                   <div className="action dropdown">
                     <button className="btn  btn-sm rounded-s btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More actions... </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu1">

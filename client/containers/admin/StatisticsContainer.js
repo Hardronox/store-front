@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import HeaderComponent from '../components/admin/HeaderComponent';
+import StatisticsComponent from '../../components/admin/statistics/StatisticsComponent';
 
 const mapStateToProps = state => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(StatisticsComponent);

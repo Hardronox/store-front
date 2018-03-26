@@ -15,15 +15,15 @@ class App extends Component {
     return (
       <div>
         <Route path="/" render={(route) => {
-          return route.location.pathname==='/admin' ? null : <HeaderContainer/>;
+          return (route.location.pathname.indexOf('/admin') !== -1)  ? null : <HeaderContainer/>;
         }} />
         <Switch>
           <Route exact path="/" component={MainPageContainer} />
           <Route exact path="/product/:id" component={ProductInfoContainer} />
-          <Route exact path="/admin" component={AdminContainer} />
+          <Route path="/admin" component={AdminContainer} />
         </Switch>
         <Route path="/" render={(route) =>{
-          return route.location.pathname==='/admin' ? null : <FooterComponent/>;
+          return (route.location.pathname.indexOf('/admin') !== -1) ? null : <FooterComponent/>;
         }} />
       </div>
     );
