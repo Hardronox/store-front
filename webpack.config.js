@@ -1,6 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const glob = require('glob-all');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const PurifyCSSPlugin = require('purifycss-webpack');
 
 module.exports = {
 
@@ -44,6 +46,19 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("bundle.css")
+    new ExtractTextPlugin("bundle.css"),
+    // new PurifyCSSPlugin({
+    //   // Give paths to parse for rules. These should be absolute!
+    //   paths: glob.sync([
+    //     path.join(__dirname, 'client/components/admin/*.js'),
+    //     path.join(__dirname, 'client/components/admin/dashboard/*.js'),
+    //     path.join(__dirname, 'client/components/admin/items/*.js'),
+    //     path.join(__dirname, 'client/components/admin/statistics/*.js'),
+    //     path.join(__dirname, 'client/components/reusable/*.js'),
+    //     path.join(__dirname, 'client/components/*.js'),
+    //     path.join(__dirname, 'client/index.html')
+    //   ]),
+    //
+    // })
   ]
 };

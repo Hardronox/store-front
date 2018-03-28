@@ -37,7 +37,7 @@ class DashboardComponent extends Component {
   render() {
 
     return (
-      <article className="content dashboard-page">
+      <article id="kek" className="content dashboard-page">
         <section className="section">
           <div className="row sameheight-container">
             <div className="col col-12 col-sm-12 col-md-6 col-xl-5 stats-col">

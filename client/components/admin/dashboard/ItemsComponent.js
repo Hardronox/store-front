@@ -3,6 +3,8 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import Modal from '../../reusable/Modal';
 
 class ItemsComponent extends React.Component {
 
@@ -12,7 +14,13 @@ class ItemsComponent extends React.Component {
 
 
   componentWillMount() {
-
+    // console.log('taib');
+    // console.log(document.getElementById('kek'));
+    // console.log(this.props.children);
+    // return ReactDOM.createPortal(
+    //   <div style={{height: "1400px",width: "1400px",backgroundColor:'gray'}}>KEEEEEEEEEEEEEK</div>,
+    //   document.getElementById('modal')
+    // );
   }
 
   search() {
@@ -46,6 +54,15 @@ class ItemsComponent extends React.Component {
     );
   };
 
+  renderModal() {
+    console.log('taib');
+    console.log(document.getElementById('modal'));
+    ReactDOM.createPortal(
+      <h1>kek</h1>,
+      document.getElementById('modal')
+    );
+  }
+
   render () {
 
     return (
@@ -53,7 +70,7 @@ class ItemsComponent extends React.Component {
         <div className="card-header bordered">
           <div className="header-block">
             <h3 className="title"> Items </h3>
-            <a href="item-editor.html" className="btn btn-primary btn-sm"> Add new </a>
+            <button className="btn btn-primary btn-sm" onClick={this.renderModal}> Add new </button>
           </div>
           <div className="header-block pull-right">
             <label className="search">

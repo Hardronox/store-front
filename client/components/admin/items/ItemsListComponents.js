@@ -142,7 +142,7 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col fixed item-col-img md">
                   <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"/>
+                    <div className="item-img rounded" style={{backgroundImage: "url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"}}/>
                   </a>
                 </div>
                 <div className="item-col fixed pull-left item-col-title">
@@ -159,9 +159,6 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col item-col-stats no-overflow">
                   <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
                 </div>
                 <div className="item-col item-col-category no-overflow">
                   <div className="item-heading">Category</div>
@@ -217,7 +214,7 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col fixed item-col-img md">
                   <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg)"/>
+                    <div className="item-img rounded" style={{backgroundImage: "url(https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg)"}}/>
                   </a>
                 </div>
                 <div className="item-col fixed pull-left item-col-title">
@@ -234,9 +231,6 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col item-col-stats no-overflow">
                   <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
                 </div>
                 <div className="item-col item-col-category no-overflow">
                   <div className="item-heading">Category</div>
@@ -292,7 +286,7 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col fixed item-col-img md">
                   <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg)"/>
+                    <div className="item-img rounded" style={{backgroundImage: "url(https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg)"}}/>
                   </a>
                 </div>
                 <div className="item-col fixed pull-left item-col-title">
@@ -309,9 +303,6 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col item-col-stats no-overflow">
                   <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
                 </div>
                 <div className="item-col item-col-category no-overflow">
                   <div className="item-heading">Category</div>
@@ -367,7 +358,7 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col fixed item-col-img md">
                   <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/why_this/128.jpg)"/>
+                    <div className="item-img rounded" style={{backgroundImage: "url(https://s3.amazonaws.com/uifaces/faces/twitter/why_this/128.jpg)"}}/>
                   </a>
                 </div>
                 <div className="item-col fixed pull-left item-col-title">
@@ -384,9 +375,6 @@ class ItemsListComponents extends React.Component {
                 </div>
                 <div className="item-col item-col-stats no-overflow">
                   <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
                 </div>
                 <div className="item-col item-col-category no-overflow">
                   <div className="item-heading">Category</div>
@@ -398,156 +386,6 @@ class ItemsListComponents extends React.Component {
                   <div className="item-heading">Author</div>
                   <div className="no-overflow">
                     <a href="">Willard Bennett</a>
-                  </div>
-                </div>
-                <div className="item-col item-col-date">
-                  <div className="item-heading">Published</div>
-                  <div className="no-overflow"> 21 SEP 10:45 </div>
-                </div>
-                <div className="item-col fixed item-col-actions-dropdown">
-                  <div className="item-actions-dropdown">
-                    <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
-                      <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
-                    </a>
-                    <div className="item-actions-block">
-                      <ul className="item-actions-list">
-                        <li>
-                          <a className="remove" href="#" data-toggle="modal" data-target="#confirm-modal">
-                            <i className="fa fa-trash-o "/>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="edit" href="item-editor.html">
-                            <i className="fa fa-pencil"/>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li className="item">
-              <div className="item-row">
-                <div className="item-col fixed item-col-check">
-                  <label className="item-check" id="select-all-items">
-                    <input type="checkbox" className="checkbox"/>
-                      <span/>
-                  </label>
-                </div>
-                <div className="item-col fixed item-col-img md">
-                  <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/w7download/128.jpg)"/>
-                  </a>
-                </div>
-                <div className="item-col fixed pull-left item-col-title">
-                  <div className="item-heading">Name</div>
-                  <div>
-                    <a href="item-editor.html" className="">
-                      <h4 className="item-title"> Ut dui quis amet curabitur vestibulum </h4>
-                    </a>
-                  </div>
-                </div>
-                <div className="item-col item-col-sales">
-                  <div className="item-heading">Sales</div>
-                  <div> 7891 </div>
-                </div>
-                <div className="item-col item-col-stats no-overflow">
-                  <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
-                </div>
-                <div className="item-col item-col-category no-overflow">
-                  <div className="item-heading">Category</div>
-                  <div className="no-overflow">
-                    <a href="">Something Else</a>
-                  </div>
-                </div>
-                <div className="item-col item-col-author">
-                  <div className="item-heading">Author</div>
-                  <div className="no-overflow">
-                    <a href="">Ivy Lorrie</a>
-                  </div>
-                </div>
-                <div className="item-col item-col-date">
-                  <div className="item-heading">Published</div>
-                  <div className="no-overflow"> 21 SEP 10:45 </div>
-                </div>
-                <div className="item-col fixed item-col-actions-dropdown">
-                  <div className="item-actions-dropdown">
-                    <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
-                      <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
-                    </a>
-                    <div className="item-actions-block">
-                      <ul className="item-actions-list">
-                        <li>
-                          <a className="remove" href="#" data-toggle="modal" data-target="#confirm-modal">
-                            <i className="fa fa-trash-o "/>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="edit" href="item-editor.html">
-                            <i className="fa fa-pencil"/>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li className="item">
-              <div className="item-row">
-                <div className="item-col fixed item-col-check">
-                  <label className="item-check" id="select-all-items">
-                    <input type="checkbox" className="checkbox"/>
-                      <span/>
-                  </label>
-                </div>
-                <div className="item-col fixed item-col-img md">
-                  <a href="item-editor.html">
-                    <div className="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/pankogut/128.jpg)"/>
-                  </a>
-                </div>
-                <div className="item-col fixed pull-left item-col-title">
-                  <div className="item-heading">Name</div>
-                  <div>
-                    <a href="item-editor.html" className="">
-                      <h4 className="item-title"> Mus sociosqu etiam autem rutrum at molestie elit pulvinar </h4>
-                    </a>
-                  </div>
-                </div>
-                <div className="item-col item-col-sales">
-                  <div className="item-heading">Sales</div>
-                  <div> 95150 </div>
-                </div>
-                <div className="item-col item-col-stats no-overflow">
-                  <div className="item-heading">Stats</div>
-                  <div className="no-overflow">
-                    <div className="item-stats sparkline" data-type="bar"><canvas width="84" height="390625" style="display: inline-block; width: 84px; height: 390625px; vertical-align: top;"></canvas></div>
-                  </div>
-                </div>
-                <div className="item-col item-col-category no-overflow">
-                  <div className="item-heading">Category</div>
-                  <div className="no-overflow">
-                    <a href="">Other</a>
-                  </div>
-                </div>
-                <div className="item-col item-col-author">
-                  <div className="item-heading">Author</div>
-                  <div className="no-overflow">
-                    <a href="">Evander Archie</a>
                   </div>
                 </div>
                 <div className="item-col item-col-date">
