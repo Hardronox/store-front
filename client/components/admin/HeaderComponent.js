@@ -3,11 +3,16 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Modal from '../reusable/ModalComponent';
 
 class HeaderComponent extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      registerModalVisibility: false,
+      loginModalVisibility: false
+    };
   }
 
 
@@ -46,6 +51,20 @@ class HeaderComponent extends React.Component {
     );
   };
 
+  renderModal(type) {
+
+    if (this.state[`${type}ModalVisibility`]) {
+      return <Modal type={type} changeModalVisibility={this.changeModalVisibility}/>;
+    }
+  }
+
+  changeModalVisibility = (type) => {
+    console.log(this.state);
+    this.setState({
+      [`${type}ModalVisibility`]: !this.state[`${type}ModalVisibility`]
+    });
+  };
+
   render () {
 
     return (
@@ -65,6 +84,14 @@ class HeaderComponent extends React.Component {
           </form>
         </div>
         <div className="header-block header-block-nav">
+          <ul>
+            <li className="auth" onClick={() => this.changeModalVisibility('login')}>
+              Login
+            </li>
+            <li className="auth" onClick={() => this.changeModalVisibility('register')}>
+              Register
+            </li>
+          </ul>
           <ul className="nav-profile">
             <li className="notifications new">
               <a href="" data-toggle="dropdown">
@@ -141,6 +168,8 @@ class HeaderComponent extends React.Component {
             </li>
           </ul>
         </div>
+        {this.renderModal('login')}
+        {this.renderModal('register')}
       </header>
     );
   }

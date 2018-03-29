@@ -56,7 +56,6 @@ class ItemsListComponents extends React.Component {
               <div className="col-md-6">
                 <h3 className="title"> Items
                   <a href="item-editor.html" className="btn btn-primary btn-sm rounded-s"> Add New </a>
-
                   <div className="action dropdown">
                     <button className="btn  btn-sm rounded-s btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More actions... </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -75,11 +74,11 @@ class ItemsListComponents extends React.Component {
             <form className="form-inline">
               <div className="input-group">
                 <input type="text" className="form-control boxed rounded-s" placeholder="Search for..."/>
-                                    <span className="input-group-btn">
-                                        <button className="btn btn-secondary rounded-s" type="button">
-                                            <i className="fa fa-search"/>
-                                        </button>
-                                    </span>
+                  <span className="input-group-btn">
+                      <button className="btn btn-secondary rounded-s" type="button">
+                          <i className="fa fa-search"/>
+                      </button>
+                  </span>
               </div>
             </form>
           </div>
@@ -179,12 +178,12 @@ class ItemsListComponents extends React.Component {
                 <div className="item-col fixed item-col-actions-dropdown">
                   <div className="item-actions-dropdown">
                     <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
+                      <span className="inactive">
+                          <i className="fa fa-cog"/>
+                      </span>
                       <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
+                          <i className="fa fa-chevron-circle-right"/>
+                      </span>
                     </a>
                     <div className="item-actions-block">
                       <ul className="item-actions-list">
@@ -251,12 +250,12 @@ class ItemsListComponents extends React.Component {
                 <div className="item-col fixed item-col-actions-dropdown">
                   <div className="item-actions-dropdown">
                     <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
+                      <span className="inactive">
+                          <i className="fa fa-cog"/>
+                      </span>
                       <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
+                          <i className="fa fa-chevron-circle-right"/>
+                      </span>
                     </a>
                     <div className="item-actions-block">
                       <ul className="item-actions-list">
@@ -323,12 +322,12 @@ class ItemsListComponents extends React.Component {
                 <div className="item-col fixed item-col-actions-dropdown">
                   <div className="item-actions-dropdown">
                     <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
+                      <span className="inactive">
+                          <i className="fa fa-cog"/>
+                      </span>
                       <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
+                          <i className="fa fa-chevron-circle-right"/>
+                      </span>
                     </a>
                     <div className="item-actions-block">
                       <ul className="item-actions-list">
@@ -395,12 +394,12 @@ class ItemsListComponents extends React.Component {
                 <div className="item-col fixed item-col-actions-dropdown">
                   <div className="item-actions-dropdown">
                     <a className="item-actions-toggle-btn">
-                                                <span className="inactive">
-                                                    <i className="fa fa-cog"/>
-                                                </span>
+                      <span className="inactive">
+                          <i className="fa fa-cog"/>
+                      </span>
                       <span className="active">
-                                                    <i className="fa fa-chevron-circle-right"/>
-                                                </span>
+                          <i className="fa fa-chevron-circle-right"/>
+                      </span>
                     </a>
                     <div className="item-actions-block">
                       <ul className="item-actions-list">

@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import Modal from '../../reusable/Modal';
+import Modal from '../../reusable/ModalComponent';
 
 class ItemsComponent extends React.Component {
 
@@ -27,41 +27,11 @@ class ItemsComponent extends React.Component {
     console.log(this.refs.search.value);
   }
 
-  renderAuthorization = () => {
+  renderItems = () => {
 
-    let content = [
-      <div key="login">
-        <Link to="">Login</Link>
-      </div>
-    ];
 
-    if (localStorage.getItem('user')) {
-      content = [
-        <div key="user">
-          <Link to="">Hello, user</Link>
-        </div>,
-        <div key="logout">
-          <Link to="">Logout</Link>
-        </div>
-      ];
-
-    }
-
-    return (
-      <div className="authorization">
-        {content}
-      </div>
-    );
   };
 
-  renderModal() {
-    console.log('taib');
-    console.log(document.getElementById('modal'));
-    ReactDOM.createPortal(
-      <h1>kek</h1>,
-      document.getElementById('modal')
-    );
-  }
 
   render () {
 
@@ -70,7 +40,7 @@ class ItemsComponent extends React.Component {
         <div className="card-header bordered">
           <div className="header-block">
             <h3 className="title"> Items </h3>
-            <button className="btn btn-primary btn-sm" onClick={this.renderModal}> Add new </button>
+            <button className="btn btn-primary btn-sm" > Add new </button>
           </div>
           <div className="header-block pull-right">
             <label className="search">
@@ -78,15 +48,16 @@ class ItemsComponent extends React.Component {
               <i className="fa fa-search search-icon"/>
             </label>
             <div className="pagination">
-              <a href="" className="btn btn-primary btn-sm">
+              <button className="btn btn-primary btn-sm">
                 <i className="fa fa-angle-up"/>
-              </a>
-              <a href="" className="btn btn-primary btn-sm">
+              </button>
+              <button className="btn btn-primary btn-sm">
                 <i className="fa fa-angle-down"/>
-              </a>
+              </button>
             </div>
           </div>
         </div>
+        {this.renderItems()}
         <ul className="item-list striped">
           <li className="item item-list-header">
             <div className="item-row">
@@ -168,7 +139,7 @@ class ItemsComponent extends React.Component {
                 <div className="item-heading">Stats</div>
                 <div className="no-overflow">
                   <div className="item-stats sparkline" data-type="bar">
-                    <canvas width="84" height="390625" style={{display: "inline-block", width: "84px", height: "390625px", verticalAlign: "top"}}/>
+                    Stats
                   </div>
                 </div>
               </div>

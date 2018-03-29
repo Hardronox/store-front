@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Product from './reusable/Product';
-import Slider from './reusable/Slider';
+import Product from './reusable/ProductComponent';
+import Slider from './reusable/SliderComponent';
 
 class ProductInfoComponent extends Component {
 

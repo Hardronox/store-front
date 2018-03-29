@@ -88,11 +88,9 @@ class NewItemComponent extends React.Component {
                       <a href="" className="control-btn move">
                         <i className="fa fa-arrows"/>
                       </a>
-
                       <a href="" className="control-btn star">
                         <i className="fa"/>
                       </a>
-
                       <a href="#" className="control-btn remove" data-toggle="modal" data-target="#confirm-modal">
                         <i className="fa fa-trash-o"/>
                       </a>
@@ -104,11 +102,9 @@ class NewItemComponent extends React.Component {
                       <a href="" className="control-btn move">
                         <i className="fa fa-arrows"/>
                       </a>
-
                       <a href="" className="control-btn star">
                         <i className="fa"/>
                       </a>
-
                       <a href="#" className="control-btn remove" data-toggle="modal" data-target="#confirm-modal">
                         <i className="fa fa-trash-o"/>
                       </a>
@@ -120,11 +116,9 @@ class NewItemComponent extends React.Component {
                       <a href="" className="control-btn move">
                         <i className="fa fa-arrows"/>
                       </a>
-
                       <a href="" className="control-btn star">
                         <i className="fa"/>
                       </a>
-
                       <a href="#" className="control-btn remove" data-toggle="modal" data-target="#confirm-modal">
                         <i className="fa fa-trash-o"/>
                       </a>
