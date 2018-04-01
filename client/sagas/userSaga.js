@@ -3,7 +3,7 @@ import {delay } from 'redux-saga'
 import {
   REGISTER_USER_PENDING, REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
   LOGIN_USER_PENDING, LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED} from '../constants/actionTypes'
-import {getKeksApi, createKek} from '../api/ProductsApi'
+import {getKeksApi, createKek} from '../api/ItemsApi'
 
 /**
  * Generator for sending action (Tweet, Retweet ...)
