@@ -29,7 +29,7 @@ class LoginModal extends React.Component {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="main-login main-center">
-              <LoginForm  onSubmit={this.submit}/>
+              <LoginForm onSubmit={this.submit}/>
             </div>
           </div>
         </div>

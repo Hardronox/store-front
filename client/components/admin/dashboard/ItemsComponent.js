@@ -30,9 +30,9 @@ class ItemsComponent extends React.Component {
   renderItems = () => {
     const arr = [1,2,3,4,5];
 
-    return arr.map(() => {
+    return arr.map((item, i) => {
       return (
-        <li className="item">
+        <li className="item" key={i}>
           <div className="item-row">
             <div className="item-col fixed item-col-img xs">
               <a href="">

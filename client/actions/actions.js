@@ -3,7 +3,8 @@ import {GET_KEKS_PENDING,
         REGISTER_USER_PENDING, LOGIN_USER_PENDING, UPDATE_USER_PENDING,
         GET_USERS_PENDING, GET_SINGLE_USER_PENDING,
         CREATE_ITEM_PENDING, UPDATE_ITEM_PENDING, DELETE_ITEM_PENDING,
-        GET_ITEMS_PENDING, GET_SINGLE_ITEM_PENDING
+        GET_ITEMS_PENDING, GET_SINGLE_ITEM_PENDING,
+        GET_COMMENTS_PENDING, CREATE_COMMENT_PENDING, UPDATE_COMMENT_PENDING, DELETE_COMMENT_PENDING
 } from '../constants/actionTypes';
 
 
@@ -64,6 +65,30 @@ export let updateItem = (id) => {
 export let deleteItem = (id) => {
   return (dispatch) => {
     dispatch({ type: DELETE_ITEM_PENDING, payload: id});
+  };
+};
+
+export let getComments = () => {
+  return (dispatch) => {
+    dispatch({ type: GET_COMMENTS_PENDING});
+  };
+};
+
+export let createComment = (comment) => {
+  return (dispatch) => {
+    dispatch({ type: CREATE_COMMENT_PENDING, payload: comment});
+  };
+};
+
+export let updateComment = (id) => {
+  return (dispatch) => {
+    dispatch({ type: UPDATE_COMMENT_PENDING, payload: id});
+  };
+};
+
+export let deleteComment = (id) => {
+  return (dispatch) => {
+    dispatch({ type: DELETE_COMMENT_PENDING, payload: id});
   };
 };
 

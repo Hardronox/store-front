@@ -1,63 +1,39 @@
 import axios from 'axios';
 import {base_url} from '../config';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
 
-
-// Send a POST request
-export function getSingleUser (id) {
-  axios({
-    method: 'get',
-    url: `${base_url}/user/${id}`,
-
-  });
-}
 
 // GET request for remote image
-export function getUsers() {
+export function getCommentsApi() {
   return axios({
     method:'get',
-    url: `${base_url}/users`,
+    url: `${base_url}/comments`,
     // responseType:'stream'
   });
 }
 
 // Send a POST request
-export function registerUser (user) {
+export function createCommentApi(comment) {
   axios({
     method: 'post',
-    url: `${base_url}/register`,
-    data: user
+    url: `${base_url}/comment`,
+    data: comment
   });
 }
 
 // Send a POST request
-export function loginUser (user) {
+export function updateCommentApi(comment) {
   axios({
     method: 'post',
-    url: `${base_url}/login`,
-    data: user
-  }).then((res) => {
-    const {token} = res.data;
-    localStorage.setItem('jwt', token);
-    setAuthorizationToken(token);
-    console.log(jwt_decode(token));
+    url: `${base_url}/comment`,
+    data: comment
   });
 }
 
 // Send a POST request
-export function updateUser (user) {
+export function deleteCommentApi(id) {
   axios({
     method: 'post',
-    url: `${base_url}/user`,
-    data: user
-  });
-}
-
-// Send a POST request
-export function deleteUser (id) {
-  axios({
-    method: 'post',
-    url: `${base_url}/user/${id}`,
+    url: `${base_url}/comment/${id}`,
 
   });
 }
@@ -110,7 +86,7 @@ export function deleteUser (id) {
 //     enctype: 'multipart/form-data',
 //     processData:false,
 //     headers: {
-//       "Authorization": 'Bearer ' + localStorage.getUser('jwt')
+//       "Authorization": 'Bearer ' + localStorage.getComment('jwt')
 //     },
 //     success: function() {
 //       AppActions.singleBookCreated();
