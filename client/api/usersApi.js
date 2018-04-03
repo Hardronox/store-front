@@ -4,7 +4,7 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 
 
 // Send a POST request
-export function getSingleUser (id) {
+export function getSingleUserApi(id) {
   axios({
     method: 'get',
     url: `${base_url}/user/${id}`,
@@ -13,7 +13,7 @@ export function getSingleUser (id) {
 }
 
 // GET request for remote image
-export function getUsers() {
+export function getUsersApi() {
   return axios({
     method:'get',
     url: `${base_url}/users`,
@@ -22,7 +22,7 @@ export function getUsers() {
 }
 
 // Send a POST request
-export function registerUser (user) {
+export function registerUserApi(user) {
   axios({
     method: 'post',
     url: `${base_url}/register`,
@@ -31,7 +31,7 @@ export function registerUser (user) {
 }
 
 // Send a POST request
-export function loginUser (user) {
+export function loginUserApi(user) {
   axios({
     method: 'post',
     url: `${base_url}/login`,
@@ -45,7 +45,7 @@ export function loginUser (user) {
 }
 
 // Send a POST request
-export function updateUser (user) {
+export function updateUserApi(user) {
   axios({
     method: 'post',
     url: `${base_url}/user`,
@@ -54,7 +54,7 @@ export function updateUser (user) {
 }
 
 // Send a POST request
-export function deleteUser (id) {
+export function deleteUserApi(id) {
   axios({
     method: 'post',
     url: `${base_url}/user/${id}`,
@@ -110,7 +110,7 @@ export function deleteUser (id) {
 //     enctype: 'multipart/form-data',
 //     processData:false,
 //     headers: {
-//       "Authorization": 'Bearer ' + localStorage.getUser('jwt')
+//       "Authorization": 'Bearer ' + localStorage.getUserApi('jwt')
 //     },
 //     success: function() {
 //       AppActions.singleBookCreated();

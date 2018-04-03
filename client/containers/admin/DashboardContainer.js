@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 
 import DashboardComponent from '../../components/admin/dashboard/DashboardComponent';
+import {getUsers} from '../../actions/actions';
 
 const mapStateToProps = state => {
   return {
@@ -10,6 +11,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getUsers: () => {
+      dispatch(getUsers());
+    },
     getTranslations: (lang) => {
       // dispatch(getTranslations(lang));
     }
