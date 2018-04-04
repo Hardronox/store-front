@@ -24,6 +24,7 @@ class DashboardComponent extends Component {
   componentDidMount() {
     console.log('kek');
     this.props.getUsers();
+    // this.props.saveUser();
   }
 
   renderProducts = () => {

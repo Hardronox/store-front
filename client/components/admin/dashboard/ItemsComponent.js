@@ -23,6 +23,16 @@ class ItemsComponent extends React.Component {
     // );
   }
 
+  componentDidMount() {
+    // console.log('taib');
+    // console.log(document.getElementById('kek'));
+    // console.log(this.props.children);
+    // return ReactDOM.createPortal(
+    //   <div style={{height: "1400px",width: "1400px",backgroundColor:'gray'}}>KEEEEEEEEEEEEEK</div>,
+    //   document.getElementById('modal')
+    // );
+  }
+
   search() {
     console.log(this.refs.search.value);
   }

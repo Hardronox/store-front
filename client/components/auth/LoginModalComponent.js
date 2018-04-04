@@ -17,9 +17,10 @@ class LoginModal extends React.Component {
 
   }
 
-  submit = values => {
+  submit = user => {
     // print the form values to the console
-    console.log(values)
+    console.log(user)
+    this.props.login();
   };
 
   render () {

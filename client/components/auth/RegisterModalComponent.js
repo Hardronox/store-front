@@ -17,9 +17,10 @@ class RegisterModal extends React.Component {
     //as dfasd fasdf asd
   }
 
-  submit = values => {
+  submit = user => {
     // print the form values to the console
-    console.log(values)
+    // console.log(values)
+    this.props.register(user);
   };
 
   render () {

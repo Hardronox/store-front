@@ -24,7 +24,7 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_USER_FULFILLED: {
       return {
         ...state,
-        keks: action.payload
+        status: 'User is successfully registered'
       };
     }
     case REGISTER_USER_REJECTED: {
@@ -47,7 +47,6 @@ const authReducer = (state = initialState, action) => {
         keksStatus: action.error
       };
     }
-
 
 
     default:

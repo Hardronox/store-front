@@ -16,20 +16,20 @@ import {getUsersApi, getSingleUserApi, registerUserApi,
 
 
 export function* registerUser(user) {
-  console.log(user);
   try {
-    yield call(registerUserApi, data.payload);
-    yield put({ type: REGISTER_USER_FULFILLED, payload: data.payload })
+    yield call(registerUserApi, user);
+    console.log('asdfasdf');
+    yield put({ type: REGISTER_USER_FULFILLED })
   } catch (e) {
     yield put({type: REGISTER_USER_REJECTED, error: e.error || e.statusText})
   }
 }
 
-export function* loginUser() {
+export function* loginUser(data) {
   try {
-    const keks = yield call(loginUserApi);
-    console.log(keks);
-    yield put({ type: LOGIN_USER_FULFILLED, payload: keks.data })
+    const user = yield call(loginUserApi, data);
+    console.log(user);
+    yield put({ type: LOGIN_USER_FULFILLED, payload: user.data })
   } catch (e) {
     yield put({type: LOGIN_USER_REJECTED, error: e.error || e.statusText})
   }
@@ -37,39 +37,39 @@ export function* loginUser() {
 
 export function* getUsers() {
   try {
-    const keks = yield call(getUsersApi);
-    console.log(keks);
-    yield put({ type: LOGIN_USER_FULFILLED, payload: keks.data })
+    const user = yield call(getUsersApi);
+    console.log(user);
+    yield put({ type: GET_USERS_FULFILLED, payload: user.data })
   } catch (e) {
-    yield put({type: LOGIN_USER_REJECTED, error: e.error || e.statusText})
+    yield put({type: GET_USERS_REJECTED, error: e.error || e.statusText})
   }
 }
 
-export function* getSingleUser() {
+export function* getSingleUser(id) {
   try {
-    const keks = yield call(getSingleUserApi);
-    console.log(keks);
-    yield put({ type: LOGIN_USER_FULFILLED, payload: keks.data })
+    const user = yield call(getSingleUserApi, id);
+    console.log(user);
+    yield put({ type: GET_SINGLE_USER_FULFILLED, payload: user.data })
   } catch (e) {
-    yield put({type: LOGIN_USER_REJECTED, error: e.error || e.statusText})
+    yield put({type: GET_SINGLE_USER_REJECTED, error: e.error || e.statusText})
   }
 }
 
 export function* updateUser() {
   try {
-    const keks = yield call(updateUserApi);
-    console.log(keks);
-    yield put({ type: LOGIN_USER_FULFILLED, payload: keks.data })
+    const user = yield call(updateUserApi);
+    console.log(user);
+    yield put({ type: UPDATE_USER_FULFILLED, payload: user.data })
   } catch (e) {
-    yield put({type: LOGIN_USER_REJECTED, error: e.error || e.statusText})
+    yield put({type: UPDATE_USER_REJECTED, error: e.error || e.statusText})
   }
 }
 
 export function* deleteUser() {
   try {
-    const keks = yield call(deleteUserApi);
-    console.log(keks);
-    yield put({ type: LOGIN_USER_FULFILLED, payload: keks.data })
+    const user = yield call(deleteUserApi);
+    console.log(user);
+    yield put({ type: LOGIN_USER_FULFILLED, payload: user.data })
   } catch (e) {
     yield put({type: LOGIN_USER_REJECTED, error: e.error || e.statusText})
   }

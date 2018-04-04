@@ -4,8 +4,8 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
-import LoginModal from "../auth/LoginModalComponent";
-import RegisterModal from "../auth/RegisterModalComponent";
+import LoginContainer from "../../containers/LoginContainer";
+import RegisterContainer from "../../containers/RegisterContainer";
 
 class Modal extends React.Component {
 
@@ -25,10 +25,10 @@ class Modal extends React.Component {
 
     switch (this.props.type) {
       case 'login':
-        modal = <LoginModal/>;
+        modal = <LoginContainer />;
         break;
       case 'register':
-        modal = <RegisterModal/>;
+        modal = <RegisterContainer />;
         break;
     }
 

@@ -23,6 +23,7 @@ export function getUsersApi() {
 
 // Send a POST request
 export function registerUserApi(user) {
+
   axios({
     method: 'post',
     url: `${base_url}/register`,
