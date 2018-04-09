@@ -10,7 +10,6 @@ html, body {
   min-height: 100%;
   font-family: 'Open Sans', sans-serif;
   color: #4f5f6f;
-  overflow-x: hidden;
 }
 
 .main-wrapper {
@@ -18,7 +17,6 @@ html, body {
   position: absolute;
   height: 100%;
   overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .app {
@@ -147,7 +145,7 @@ html, body {
   padding: 20px;
   border: 1px dashed #ddd;
   background: #fafafa;
-  color: #444;
+  color: #b2c3d7;
   cursor: pointer;
 }
 
@@ -762,21 +760,21 @@ label, .control-label {
 .form-control {
   &::-webkit-input-placeholder {
     font-style: italic;
-    color: #c8d0da;
+    color: #b2c3d7;
   }
   &:-moz-placeholder {
     /* Firefox 18- */
     font-style: italic;
-    color: #d7dde4;
+    color: #b2c3d7;
   }
   &::-moz-placeholder {
     /* Firefox 19+ */
     font-style: italic;
-    color: #d7dde4;
+    color: #b2c3d7;
   }
   &:-ms-input-placeholder {
     font-style: italic;
-    color: #d7dde4;
+    color: #b2c3d7;
   }
 }
 
@@ -1508,10 +1506,10 @@ span a {
 }
 
 .header {
-  background-color: #d7dde4;
   height: 70px;
+  color: #b2c3d7;
   position: absolute;
-  left: 240px;
+  left: 0;
   right: 0;
   -webkit-transition: left 0.3s ease;
   transition: left 0.3s ease;
@@ -1577,7 +1575,7 @@ span a {
   width: 240px;
   padding-bottom: 60px;
   position: absolute;
-  top: 0;
+  top: 70px;
   left: 0;
   bottom: 0;
   -webkit-transition: left 0.3s ease;
@@ -1804,7 +1802,7 @@ span a {
         .search-input {
           border: none;
           background-color: inherit;
-          color: #C2CCD6;
+          color: #b2c3d7;
           width: 100px;
           -webkit-transition: color 0.3s ease;
           transition: color 0.3s ease;
@@ -1812,51 +1810,51 @@ span a {
             /* WebKit, Blink, Edge */
             -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            color: #C2CCD6;
+            color: #b2c3d7;
           }
           &:-moz-placeholder {
             /* Mozilla Firefox 4 to 18 */
             -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            color: #C2CCD6;
+            color: #b2c3d7;
           }
           &::-moz-placeholder {
             /* Mozilla Firefox 19+ */
             -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            color: #C2CCD6;
+            color: #b2c3d7;
           }
           &:-ms-input-placeholder {
             /* Internet Explorer 10-11 */
             -webkit-transition: color 0.3s ease;
             transition: color 0.3s ease;
-            color: #C2CCD6;
+            color: #b2c3d7;
           }
           &:focus {
-            color: #7e8e9f;
+            color: #b2c3d7;
             &::-webkit-input-placeholder {
               /* WebKit, Blink, Edge */
-              color: #aab4c0;
+              color: #b2c3d7;
             }
             &:-moz-placeholder {
               /* Mozilla Firefox 4 to 18 */
-              color: #aab4c0;
+              color: #b2c3d7;
             }
             &::-moz-placeholder {
               /* Mozilla Firefox 19+ */
-              color: #aab4c0;
+              color: #b2c3d7;
             }
             &:-ms-input-placeholder {
               /* Internet Explorer 10-11 */
-              color: #aab4c0;
+              color: #b2c3d7;
             }
             + .search-icon {
-              color: #7e8e9f;
+              color: #b2c3d7;
             }
           }
         }
         .search-icon {
-          color: #C2CCD6;
+          color: #b2c3d7;
           -webkit-transition: color 0.3s ease;
           transition: color 0.3s ease;
           -webkit-box-ordinal-group: 0;
@@ -2432,7 +2430,7 @@ span a {
         }
         > a {
           padding: 0 15px;
-          color: #4f5f6f;
+          color: #96a5b9;
           &:hover {
             color: #85CE36;
           }
@@ -2455,8 +2453,8 @@ span a {
     }
     .input-container {
       position: relative;
-      color: #7e8e9f;
       i {
+        color: #b2c3d7;
         position: absolute;
         pointer-events: none;
         display: block;
@@ -2467,13 +2465,26 @@ span a {
       input {
         background-color: transparent;
         border: none;
+        padding-top: 3px;
         padding-left: 25px;
         height: 40px;
-        max-width: 150px;
+        color: #b2c3d7;
+        max-width: 300px;
         &:focus + .underline {
           -webkit-transform: scaleX(1);
           transform: scaleX(1);
         }
+      }
+      input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #b2c3d7;
+        opacity: 1; /* Firefox */
+      }
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #b2c3d7;
+      }
+
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: #b2c3d7;
       }
     }
   }
@@ -2560,10 +2571,12 @@ span a {
 
 .sidebar-header {
   background-color: #3a4651;
+  width: 240px;
+  justify-content: center;
+
   .brand {
     color: #fff;
     text-align: left;
-    padding-left: 25px;
     line-height: 70px;
     font-size: 16px;
   }
@@ -2592,6 +2605,9 @@ span a {
     &.new .counter {
       color: #85CE36;
       font-weight: bold;
+    }
+    i {
+      color: #95a5b9;
     }
   }
   .notifications-dropdown-menu {
@@ -2681,6 +2697,7 @@ span a {
       display: inline-block;
       margin-right: 9px;
       font-weight: bold;
+      color: #b2c3d7;
     }
     .arrow {
       color: #85CE36;
@@ -2800,17 +2817,26 @@ body {
 
 .slider {
   margin: 0 auto;
-  padding: 40px;
+  padding: 40px 40px 0 40px;
   width: 100%;
   color: #5a5a5a;
   background: #e9ecef;
 }
 
+.swiper-slide {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    object-fit: contain;
+  }
+}
+
 .header {
   display: flex;
   background-color: #343a40;
-  color: white;
-  padding: 20px;
+  padding-right: 20px;
   align-items: center;
   justify-content: space-around;
   > div {

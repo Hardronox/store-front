@@ -16,7 +16,7 @@ class MainPageComponent extends Component {
   }
 
   componentDidMount() {
-    this.props.getKeks();
+
   }
 
   renderProducts = () => {
@@ -32,21 +32,11 @@ class MainPageComponent extends Component {
 
     return (
       <main role="main" className="content">
-
         <Slider content={''} size="big"/>
-
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">
               {this.renderProducts()}
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="container">
-            <div className="row" >
-              <button onClick={() => this.props.incr()}>incr</button>
-              <button onClick={() => this.props.storeKek({name:'kek', woah: 123})}>Store kek</button>
             </div>
           </div>
         </div>

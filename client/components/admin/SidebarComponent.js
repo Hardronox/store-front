@@ -51,21 +51,12 @@ class HeaderComponent extends React.Component {
     return (
       <aside className="sidebar">
         <div className="sidebar-container">
-          <div className="sidebar-header">
-            <div className="brand">
-              <div className="logo">
-                <span className="l l1"/>
-                <span className="l l2"/>
-                <span className="l l3"/>
-                <span className="l l4"/>
-                <span className="l l5"/>
-              </div> Modular Admin </div>
-          </div>
           <nav className="menu">
             <ul className="sidebar-menu metismenu" id="sidebar-menu">
               <li className="active">
-                <a href="index.html" aria-expanded="false">
-                  <i className="fa fa-home"/> Dashboard </a>
+                <Link to="/admin/dashboard" aria-expanded="false">
+                  <i className="fa fa-home"/> Dashboard
+                </Link>
               </li>
               <li>
                 <a href="" aria-expanded="false">

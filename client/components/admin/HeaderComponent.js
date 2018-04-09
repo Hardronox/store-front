@@ -74,6 +74,16 @@ class HeaderComponent extends React.Component {
             <i className="fa fa-bars"/>
           </button>
         </div>
+        <div className="sidebar-header">
+          <div className="brand">
+            <div className="logo">
+              <span className="l l1"/>
+              <span className="l l2"/>
+              <span className="l l3"/>
+              <span className="l l4"/>
+              <span className="l l5"/>
+            </div> Awesome Store </div>
+        </div>
         <div className="header-block header-block-search">
           <form role="search">
             <div className="input-container">

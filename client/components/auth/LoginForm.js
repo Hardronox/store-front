@@ -26,11 +26,6 @@ class LoginForm extends React.Component {
   }
 
 
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Selected: ${selectedOption.label}`);
-  };
-
   handleEditorChange(e) {
     console.log(e.target.getContent());
   };
@@ -77,7 +72,7 @@ class LoginForm extends React.Component {
         </div>
 
         <div className="form-group ">
-          <button type="submit" className="btn btn-primary btn-lg btn-block login-button">Register</button>
+          <button type="submit" className="btn btn-primary btn-lg btn-block login-button">Login</button>
         </div>
       </form>
     );
