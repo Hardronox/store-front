@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import keksReducer from './keksReducer';
-import authReducer from './usersReducer';
+import usersReducer from './usersReducer';
+import itemsReducer from './itemsReducer';
+import commentsReducer from './commentsReducer';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
-  keksReducer,
-  authReducer,
+  usersReducer,
+  itemsReducer,
+  commentsReducer,
   routing: routerReducer,
   form: formReducer
 });

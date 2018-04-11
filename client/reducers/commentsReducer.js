@@ -1,6 +1,8 @@
 import {
   GET_KEKS_FULFILLED, GET_KEKS_REJECTED,
   STORE_KEK_FULFILLED, STORE_KEK_REJECTED,
+  REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
+  LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED,
   INCR,
 } from '../constants/actionTypes';
 
@@ -14,48 +16,42 @@ const initialState = {
  * @param {Object} state - application state
  * @param {Object<type>} action
  */
-const campaignsReducer = (state = initialState, action) => {
+const commentsReducer = (state = initialState, action) => {
   let { type } = action;
 
   switch(type) {
-    case GET_KEKS_FULFILLED: {
+
+    case REGISTER_USER_FULFILLED: {
       return {
         ...state,
-        keks: action.payload
+        status: 'User is successfully registered'
       };
     }
-    case GET_KEKS_REJECTED: {
+    case REGISTER_USER_REJECTED: {
       return {
         ...state,
         keksStatus: action.error
       };
     }
 
-    case STORE_KEK_FULFILLED: {
-      console.log(action.payload);
+
+    case LOGIN_USER_FULFILLED: {
       return {
         ...state,
-        kekStatus: true
+        keks: action.payload
+      };
+    }
+    case LOGIN_USER_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
       };
     }
 
-    case STORE_KEK_REJECTED: {
-      console.log(action.payload);
-      return {
-        ...state,
-        kekStatus: false
-      };
-    }
-
-    case INCR: {
-      return {
-        kek: state.kek + 1
-      };
-    }
 
     default:
       return state;
   }
 };
 
-export default campaignsReducer;
+export default commentsReducer;

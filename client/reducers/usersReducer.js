@@ -16,7 +16,7 @@ const initialState = {
  * @param {Object} state - application state
  * @param {Object<type>} action
  */
-const authReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
   let { type } = action;
 
   switch(type) {
@@ -54,4 +54,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export default usersReducer;
