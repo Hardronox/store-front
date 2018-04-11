@@ -1322,11 +1322,11 @@ label, .control-label {
 a:not(.btn) {
   -webkit-transition: initial;
   transition: initial;
-  text-decoration: underline;
+  text-decoration: none;
   color: #969696;
   &:hover {
-    text-decoration: underline;
-    color: #70b02b;
+    text-decoration: none;
+    color: transparent;
     &:before {
       -webkit-transform: scaleX(1);
       transform: scaleX(1);
@@ -2823,6 +2823,15 @@ body {
   background: #e9ecef;
 }
 
+.product-slider {
+  margin: 0 auto;
+  padding: 40px 40px 20px 40px;
+  width: 98%;
+  height: 200px;
+  color: #5a5a5a;
+  background: #e9ecef;
+}
+
 .swiper-slide {
   height: 400px;
   display: flex;
@@ -2955,7 +2964,6 @@ body {
   }
 }
 
-
 .main-footer {
   display: flex;
   background-color: #343a40;
@@ -2973,4 +2981,14 @@ body {
   -ms-flex-align: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
+}
+
+.main-container {
+  padding-top: 70px;
+  margin-right: 25px!important;
+  margin-left: 25px!important;
+}
+
+.product-info {
+
 }
