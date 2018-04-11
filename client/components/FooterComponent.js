@@ -49,7 +49,7 @@ class FooterComponent extends React.Component {
   render () {
 
     return (
-      <div className="header">
+      <footer className="main-footer">
         <div className="navbar-left">
           <Link to="">
             About Us
@@ -65,7 +65,7 @@ class FooterComponent extends React.Component {
         <div className="navbar-right">
           All rights reserved.
         </div>
-      </div>
+      </footer>
     );
   }
 }

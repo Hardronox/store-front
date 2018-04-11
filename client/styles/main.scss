@@ -2936,12 +2936,16 @@ body {
   }
 }
 .modal-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
 }
 .modal-backdrop {
   opacity: 0.6;
+}
+.modal-dialog {
+  z-index: 1060;
 }
 
 @media (min-width: 576px) {
@@ -2949,4 +2953,24 @@ body {
     max-width: 400px!important;
     width: 370px!important;
   }
+}
+
+
+.main-footer {
+  display: flex;
+  background-color: #343a40;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
+  color: #b2c3d7;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
 }
