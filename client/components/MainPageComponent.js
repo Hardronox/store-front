@@ -30,9 +30,18 @@ class MainPageComponent extends Component {
 
   render() {
 
+    const slides = [
+      {image:'https://keddr.com/wp-content/uploads/2014/08/main.png', name: 'lol kek phaha akterskay igra', price: 17000},
+      {image:'http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661', name: 'tabi pizda', price: 7520},
+      {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
+      {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
+      {image:'http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661', name: 'tabi pizda', price: 7500},
+      {image:'http://www.atozpromotions.co.uk/wp-content/uploads/2016/05/android-5-lollipop-red-black-abstract-material-design-line-stripes-2560x1600.jpg', name: 'Holy Guacamole', price: 10000},
+    ];
+
     return (
       <main role="main" className="content">
-        <Slider content={''} size="big"/>
+        <Slider slides={slides} size="big"/>
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">

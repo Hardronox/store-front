@@ -1,5 +1,4 @@
-import {GET_KEKS_PENDING,
-        STORE_KEK_PENDING,
+import {
         REGISTER_USER_PENDING, LOGIN_USER_PENDING, UPDATE_USER_PENDING,
         GET_USERS_PENDING, GET_SINGLE_USER_PENDING,
         CREATE_ITEM_PENDING, UPDATE_ITEM_PENDING, DELETE_ITEM_PENDING,
@@ -8,85 +7,85 @@ import {GET_KEKS_PENDING,
 } from '../constants/actionTypes';
 
 
-export let getSingleUser = (id) => {
+export const getSingleUser = (id) => {
   return (dispatch) => {
     dispatch({ type: GET_SINGLE_USER_PENDING, payload: id});
   };
 };
 
-export let getUsers = () => {
+export const getUsers = () => {
   return (dispatch) => {
     dispatch({ type: GET_USERS_PENDING});
   };
 };
 
-export let registerUser = (user) => {
+export const registerUser = (user) => {
   return (dispatch) => {
     dispatch({ type: REGISTER_USER_PENDING, payload: user});
   };
 };
 
-export let loginUser = (user) => {
+export const loginUser = (user) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER_PENDING, payload: user});
   };
 };
 
-export let updateUser = (user) => {
+export const updateUser = (user) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_USER_PENDING, payload: user});
   };
 };
 
-export let getSingleItem = (id) => {
+export const getSingleItem = (id) => {
   return (dispatch) => {
     dispatch({ type: GET_SINGLE_ITEM_PENDING, payload: id});
   };
 };
 
-export let getItems = () => {
+export const getItems = () => {
   return (dispatch) => {
     dispatch({ type: GET_ITEMS_PENDING});
   };
 };
 
-export let createItem = (item) => {
+export const createItem = (item) => {
   return (dispatch) => {
     dispatch({ type: CREATE_ITEM_PENDING, payload: item});
   };
 };
 
-export let updateItem = (id) => {
+export const updateItem = (id) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_ITEM_PENDING, payload: id});
   };
 };
 
-export let deleteItem = (id) => {
+export const deleteItem = (id) => {
   return (dispatch) => {
     dispatch({ type: DELETE_ITEM_PENDING, payload: id});
   };
 };
 
-export let getComments = () => {
+export const getComments = () => {
   return (dispatch) => {
     dispatch({ type: GET_COMMENTS_PENDING});
   };
 };
 
-export let createComment = (comment) => {
+export const createComment = (comment) => {
   return (dispatch) => {
     dispatch({ type: CREATE_COMMENT_PENDING, payload: comment});
   };
 };
 
-export let updateComment = (id) => {
+export const updateComment = (id) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_COMMENT_PENDING, payload: id});
   };
 };
 
-export let deleteComment = (id) => {
+export const deleteComment = (id) => {
   return (dispatch) => {
     dispatch({ type: DELETE_COMMENT_PENDING, payload: id});
   };

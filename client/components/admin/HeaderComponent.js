@@ -11,7 +11,9 @@ class HeaderComponent extends React.Component {
     super(props);
     this.state = {
       registerModalVisibility: false,
-      loginModalVisibility: false
+      loginModalVisibility: false,
+      profileDropdownVisibility: false,
+      notificationsDropdownVisibility: false,
     };
   }
 
@@ -65,6 +67,19 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  toggleDropdown(type) {
+
+    if (!this.state[`${type}DropdownVisibility`]) {
+      this.refs[type].classList.add('showDropdown');
+    } else {
+      this.refs[type].classList.remove('showDropdown');
+    }
+
+    this.setState({
+      [`${type}DropdownVisibility`]: !this.state[`${type}DropdownVisibility`]
+    });
+  }
+
   render () {
 
     return (
@@ -108,13 +123,13 @@ class HeaderComponent extends React.Component {
           </ul>
           <ul className="nav-profile">
             <li className="notifications new">
-              <a href="" data-toggle="dropdown">
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('notifications')}>
                 <i className="fa fa-bell-o"/>
                 <sup>
                   <span className="counter">8</span>
                 </sup>
-              </a>
-              <div className="dropdown-menu notifications-dropdown-menu">
+              </div>
+              <div className="dropdown-menu notifications-dropdown-menu" ref="notifications">
                 <ul className="notifications-container">
                   <li>
                     <a href="" className="notification-item">
@@ -164,11 +179,11 @@ class HeaderComponent extends React.Component {
               </div>
             </li>
             <li className="profile dropdown">
-              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profile')}>
                 <div className="img" style={{backgroundImage: 'url(https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40)'}}> </div>
                 <span className="name"> John Doe </span>
-              </a>
-              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+              </div>
+              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profile">
                 <a className="dropdown-item" href="#">
                   <i className="fa fa-user icon"/> Profile </a>
                 <a className="dropdown-item" href="#">

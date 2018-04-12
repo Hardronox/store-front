@@ -1,7 +1,6 @@
 import {
   REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
   LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED,
-  INCR,
 } from '../constants/actionTypes';
 
 const initialState = {

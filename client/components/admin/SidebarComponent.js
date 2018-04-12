@@ -3,6 +3,7 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Dropdown from '../reusable/Dropdown';
 
 class HeaderComponent extends React.Component {
 
@@ -19,32 +20,49 @@ class HeaderComponent extends React.Component {
     console.log(this.refs.search.value);
   }
 
-  renderAuthorization = () => {
+  close = (key) => {
+    let accordionContent = document.getElementsByClassName(`dropdown-content`)[key];
+    this.closeSection(key, accordionContent);
+  };
 
-    let content = [
-      <div key="login">
-        <Link to="">Login</Link>
-      </div>
+  closeSection = (key, accordionContent) => {
+    setTimeout(() => {
+      this.refs[`section${key}`].childNodes[1].style.borderBottom = 'none';
+    }, 450);
+    accordionContent.style.height = 0;
+  };
+
+  toggleHeader(key) {
+    let accordionContent = document.getElementsByClassName(`dropdown-content`)[key];
+    if (accordionContent.clientHeight) {
+      this.closeSection(key, accordionContent);
+    } else {
+      let wrapper = document.querySelector(`.dropdown-content-wrapper${key}`);
+      accordionContent.style.height = wrapper.clientHeight + "px";
+      this.refs[`section${key}`].childNodes[1].style.borderBottom = '1px solid #bbcfe2';
+    }
+  }
+
+  renderResults() {
+
+    const results = [
+      {name: 'First Name', type: 'input'},
+      {name: 'Call Sign', type: 'input'},
     ];
 
-    if (localStorage.getItem('user')) {
-      content = [
-        <div key="user">
-          <Link to="">Hello, user</Link>
-        </div>,
-        <div key="logout">
-          <Link to="">Logout</Link>
+    return results.map((item, i) => {
+
+      return (
+        <div className="accordion-results" key={i}>
+          <div className="result-user">
+            <div className="result-name">
+              cmd larry pickering
+            </div>
+          </div>
         </div>
-      ];
-
-    }
-
-    return (
-      <div className="authorization">
-        {content}
-      </div>
-    );
-  };
+      )
+    });
+  }
 
   render () {
 
@@ -87,6 +105,44 @@ class HeaderComponent extends React.Component {
                 </ul>
               </li>
             </ul>
+            <div className="custom-dropdown">
+              <div className="dropdown-section" ref={`section0`}>
+                <div className="dropdown-header" onClick={() => this.toggleHeader(0)}>
+            <span aria-expanded="false">
+              <i className="fa fa-th-large"/> Items Manager
+              <i className="fa arrow"/>
+            </span>
+                </div>
+                <div className="dropdown-content">
+                  <div className={`dropdown-content-wrapper${0}`}>
+                    <ul className="sidebar-nav collapse" aria-expanded="false">
+                      <li>
+                        <Link to="items-list.html"> Items List </Link>
+                      </li>
+                      <li>
+                        <Link to="item-editor.html"> Item Editor </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="dropdown-section" ref={`section${1}`}>
+                <div className="dropdown-header" onClick={() => this.toggleHeader(1)}>
+                  <div>
+                    results
+                  </div>
+                  <i className="fa arrow"/>
+                </div>
+                <div className="dropdown-content">
+                  <div className={`dropdown-content-wrapper${1}`}>
+                    <div className="">
+                      {this.renderResults()}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </nav>
         </div>
       </aside>

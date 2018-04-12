@@ -17,30 +17,54 @@ class Product extends React.Component {
   }
 
 
+  renderSlides() {
+
+    return this.props.slides.map((item, i) => {
+      return (
+        <div key={i}>
+          <Link to={`/product/${i}`}>
+            <img src={item.image} />
+          </Link>
+          <div>
+            <Link to={`/product/${i}`}>{item.name}</Link>
+          </div>
+          <div className="slider-price">
+            <span>{item.price}$</span>
+          </div>
+        </div>
+      );
+    });
+
+  }
+
   render () {
+    let sliderClass;
+
+    if (this.props.size === 'big') {
+      sliderClass = 'big-slider';
+    } else {
+      sliderClass = 'small-slider';
+    }
+
     const params = {
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-      },
       grabCursor: true,
       centeredSlides: true,
       loop:true,
-      autoplay: true,
+      slidesPerView: this.props.slidesPerView || 1,
+      // autoplay: true,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      spaceBetween: 30
+      // slideClass: '',
+      spaceBetween: 30,
+      speed: 500,
+      delay: 12000
     };
     return (
-      <div className="slider">
+      <div className={sliderClass}>
         <Slider {...params}>
-          <div><img src='https://keddr.com/wp-content/uploads/2014/08/main.png' /></div>
-          <div><img src='http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661' /></div>
-          <div><img src='https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg' /></div>
-          <div><img src='http://www.atozpromotions.co.uk/wp-content/uploads/2016/05/android-5-lollipop-red-black-abstract-material-design-line-stripes-2560x1600.jpg' /></div>
+          {this.renderSlides()}
         </Slider>
       </div>
     );
