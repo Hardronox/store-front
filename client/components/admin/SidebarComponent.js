@@ -26,9 +26,6 @@ class HeaderComponent extends React.Component {
   };
 
   closeSection = (key, accordionContent) => {
-    setTimeout(() => {
-      this.refs[`section${key}`].childNodes[1].style.borderBottom = 'none';
-    }, 450);
     accordionContent.style.height = 0;
   };
 
@@ -39,27 +36,43 @@ class HeaderComponent extends React.Component {
     } else {
       let wrapper = document.querySelector(`.dropdown-content-wrapper${key}`);
       accordionContent.style.height = wrapper.clientHeight + "px";
-      this.refs[`section${key}`].childNodes[1].style.borderBottom = '1px solid #bbcfe2';
     }
   }
 
-  renderResults() {
+  renderStatistics() {
 
     const results = [
-      {name: 'First Name', type: 'input'},
-      {name: 'Call Sign', type: 'input'},
+      {name: 'Items List', url: '/admin/dashboard'},
+      {name: 'New Item', url: '/admin/dashboard'},
     ];
 
     return results.map((item, i) => {
 
       return (
-        <div className="accordion-results" key={i}>
-          <div className="result-user">
-            <div className="result-name">
-              cmd larry pickering
-            </div>
-          </div>
+        <div className="dropdown-results" key={i}>
+          <Link to={item.url}>
+            {item.name}
+          </Link>
         </div>
+      )
+    });
+  }
+
+  renderItemsManager() {
+
+    const results = [
+      {name: 'Items List', url: '/admin/dashboard'},
+      {name: 'New Item', url: '/admin/dashboard'},
+    ];
+
+    return results.map((item, i) => {
+
+      return (
+        <Link to={item.url}>
+          <div className="dropdown-results" key={i}>
+              {item.name}
+          </div>
+        </Link>
       )
     });
   }
@@ -72,72 +85,33 @@ class HeaderComponent extends React.Component {
           <nav className="menu">
             <ul className="sidebar-menu metismenu" id="sidebar-menu">
               <li className="active">
-                <Link to="/admin/dashboard" aria-expanded="false">
-                  <i className="fa fa-home"/> Dashboard
+                <Link to="/admin/dashboard">
+                  <span>Dashboard</span>
                 </Link>
-              </li>
-              <li>
-                <a href="" aria-expanded="false">
-                  <i className="fa fa-th-large"/> Items Manager
-                  <i className="fa arrow"/>
-                </a>
-                <ul className="sidebar-nav collapse" aria-expanded="false">
-                  <li>
-                    <Link to="items-list.html"> Items List </Link>
-                  </li>
-                  <li>
-                    <Link to="item-editor.html"> Item Editor </Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="" aria-expanded="false">
-                  <i className="fa fa-area-chart"/> Statistics
-                  <i className="fa arrow"/>
-                </a>
-                <ul className="sidebar-nav collapse" aria-expanded="false">
-                  <li>
-                    <Link to="charts-flot.html"> Flot Charts </Link>
-                  </li>
-                  <li>
-                    <Link to="charts-morris.html"> Morris Charts </Link>
-                  </li>
-                </ul>
               </li>
             </ul>
             <div className="custom-dropdown">
               <div className="dropdown-section" ref={`section0`}>
                 <div className="dropdown-header" onClick={() => this.toggleHeader(0)}>
-            <span aria-expanded="false">
-              <i className="fa fa-th-large"/> Items Manager
-              <i className="fa arrow"/>
-            </span>
+                  <i className="fa fa-th-large"/>
+                  <span className="dropdown-text">Items Manager</span>
+                  <i className="fa arrow"/>
                 </div>
                 <div className="dropdown-content">
                   <div className={`dropdown-content-wrapper${0}`}>
-                    <ul className="sidebar-nav collapse" aria-expanded="false">
-                      <li>
-                        <Link to="items-list.html"> Items List </Link>
-                      </li>
-                      <li>
-                        <Link to="item-editor.html"> Item Editor </Link>
-                      </li>
-                    </ul>
+                    {this.renderItemsManager()}
                   </div>
                 </div>
               </div>
-              <div className="dropdown-section" ref={`section${1}`}>
+              <div className="dropdown-section" ref={`section1`}>
                 <div className="dropdown-header" onClick={() => this.toggleHeader(1)}>
-                  <div>
-                    results
-                  </div>
+                  <i className="fa fa-area-chart"/>
+                  <span className="dropdown-text">Statistics</span>
                   <i className="fa arrow"/>
                 </div>
                 <div className="dropdown-content">
                   <div className={`dropdown-content-wrapper${1}`}>
-                    <div className="">
-                      {this.renderResults()}
-                    </div>
+                    {this.renderStatistics()}
                   </div>
                 </div>
               </div>
