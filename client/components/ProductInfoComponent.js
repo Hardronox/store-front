@@ -27,6 +27,28 @@ class ProductInfoComponent extends Component {
     });
   };
 
+  imageHover(key) {
+    console.log(key);
+    const images = Array.from(Array(5).keys());
+    images.forEach((item, i) => {
+      this.refs[`image${i}`].style.border = 'none';
+    });
+
+    this.refs[`image${key}`].style.border = '1px solid greenyellow';
+  }
+
+  renderImageSet() {
+    const products = Array.from(Array(5).keys());
+
+    return products.map((item, i) => {
+      return (
+        <div key={i} ref={`image${i}`} onMouseOver={() => this.imageHover(i)}>
+
+        </div>
+      );
+    });
+  }
+
   render() {
 
     const slides = [
@@ -42,6 +64,9 @@ class ProductInfoComponent extends Component {
       <main className="main-container" role="main">
          <h1>Product Title</h1>
           <div className="row product-info">
+            <div className="image-set">
+              {this.renderImageSet()}
+            </div>
             <div className="col-md-6 info-image">
               <img src="https://keddr.com/wp-content/uploads/2014/08/main.png" alt=""/>
             </div>
