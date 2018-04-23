@@ -21,9 +21,6 @@ class Accordion extends React.Component {
   };
 
   closeSection = (key, accordionContent) => {
-    setTimeout(() => {
-      this.refs[`section${key}`].childNodes[1].style.borderBottom = 'none';
-    }, 450);
     accordionContent.style.height = 0;
   };
 
@@ -34,7 +31,6 @@ class Accordion extends React.Component {
     } else {
       let wrapper = document.querySelector(`.dropdown-content-wrapper${key}`);
       accordionContent.style.height = wrapper.clientHeight + "px";
-      this.refs[`section${key}`].childNodes[1].style.borderBottom = '1px solid #bbcfe2';
     }
   }
 
@@ -81,7 +77,7 @@ class Accordion extends React.Component {
 
     return (
       <div className="custom-dropdown">
-        <div className="dropdown-section" ref={`section0`}>
+        <div className="dropdown-section">
           <div className="dropdown-header" onClick={() => this.toggleHeader(0)}>
             <span aria-expanded="false">
               <i className="fa fa-th-large"/> Items Manager
@@ -101,7 +97,7 @@ class Accordion extends React.Component {
             </div>
           </div>
         </div>
-        <div className="dropdown-section" ref={`section${1}`}>
+        <div className="dropdown-section">
           <div className="dropdown-header" onClick={() => this.toggleHeader(1)}>
             <div>
               results
