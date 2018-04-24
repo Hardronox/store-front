@@ -22,14 +22,16 @@ class Product extends React.Component {
     return this.props.slides.map((item, i) => {
       return (
         <div key={i}>
-          <Link to={`/product/${i}`}>
-            <img src={item.image} />
-          </Link>
           <div>
-            <Link to={`/product/${i}`}>{item.name}</Link>
-          </div>
-          <div className="slider-price">
-            <span>{item.price}$</span>
+            <Link to={`/product/${i}`}>
+              <img src={item.image} />
+            </Link>
+            <div>
+              <Link to={`/product/${i}`}>{item.name}</Link>
+            </div>
+            <div className="slider-price">
+              <span>{item.price}$</span>
+            </div>
           </div>
         </div>
       );
@@ -48,7 +50,6 @@ class Product extends React.Component {
 
     const params = {
       grabCursor: true,
-      centeredSlides: true,
       loop:true,
       slidesPerView: this.props.slidesPerView || 1,
       // autoplay: true,

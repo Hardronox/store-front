@@ -35,6 +35,7 @@ class ProductInfoComponent extends Component {
     });
 
     this.refs[`image${key}`].style.border = '1px solid greenyellow';
+    // this.refs["main-image"].href = ;
   }
 
   renderImageSet() {
@@ -48,6 +49,14 @@ class ProductInfoComponent extends Component {
       );
     });
   }
+
+  addToCart = () => {
+
+  };
+
+  buyNow = () => {
+
+  };
 
   render() {
 
@@ -68,9 +77,9 @@ class ProductInfoComponent extends Component {
               {this.renderImageSet()}
             </div>
             <div className="col-md-6 info-image">
-              <img src="https://keddr.com/wp-content/uploads/2014/08/main.png" alt=""/>
+              <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
             </div>
-            <div className="col-md-6 general-info">
+            <div className="col-md-5 general-info">
               <div className="general-info-container">
                 <div>
                   <div>Price</div>
@@ -87,6 +96,10 @@ class ProductInfoComponent extends Component {
                 <div>
                   <div>Total price</div>
                   <div>2</div>
+                </div>
+                <div>
+                  <button className="btn btn-primary" onClick={this.addToCart}>Add to cart</button>
+                  <button className="btn btn-success" onClick={this.buyNow}>Buy now</button>
                 </div>
               </div>
             </div>

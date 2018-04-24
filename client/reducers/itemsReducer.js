@@ -1,6 +1,9 @@
 import {
-  REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
-  LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED,
+  GET_SINGLE_ITEM_FULFILLED, GET_SINGLE_ITEM_REJECTED,
+  GET_ITEMS_FULFILLED, GET_ITEMS_REJECTED,
+  CREATE_ITEM_FULFILLED, CREATE_ITEM_REJECTED,
+  UPDATE_ITEM_FULFILLED, UPDATE_ITEM_REJECTED,
+  DELETE_ITEM_FULFILLED, DELETE_ITEM_REJECTED,
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -18,13 +21,13 @@ const itemsReducer = (state = initialState, action) => {
 
   switch(type) {
 
-    case REGISTER_USER_FULFILLED: {
+    case GET_SINGLE_ITEM_FULFILLED: {
       return {
         ...state,
         keks: action.payload
       };
     }
-    case REGISTER_USER_REJECTED: {
+    case GET_SINGLE_ITEM_REJECTED: {
       return {
         ...state,
         keksStatus: action.error
@@ -32,13 +35,55 @@ const itemsReducer = (state = initialState, action) => {
     }
 
 
-    case LOGIN_USER_FULFILLED: {
+    case GET_ITEMS_FULFILLED: {
       return {
         ...state,
         keks: action.payload
       };
     }
-    case LOGIN_USER_REJECTED: {
+    case GET_ITEMS_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
+      };
+    }
+
+
+    case CREATE_ITEM_FULFILLED: {
+      return {
+        ...state,
+        keks: action.payload
+      };
+    }
+    case CREATE_ITEM_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
+      };
+    }
+
+
+    case UPDATE_ITEM_FULFILLED: {
+      return {
+        ...state,
+        keks: action.payload
+      };
+    }
+    case UPDATE_ITEM_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
+      };
+    }
+
+
+    case DELETE_ITEM_FULFILLED: {
+      return {
+        ...state,
+        keks: action.payload
+      };
+    }
+    case DELETE_ITEM_REJECTED: {
       return {
         ...state,
         keksStatus: action.error
