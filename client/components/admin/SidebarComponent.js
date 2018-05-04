@@ -20,11 +20,6 @@ class HeaderComponent extends React.Component {
     console.log(this.refs.search.value);
   }
 
-  close = (key) => {
-    let accordionContent = document.getElementsByClassName(`dropdown-content`)[key];
-    this.closeSection(key, accordionContent);
-  };
-
   closeSection = (key, accordionContent) => {
     accordionContent.style.height = 0;
   };
@@ -47,6 +42,25 @@ class HeaderComponent extends React.Component {
     ];
 
     return results.map((item, i) => {
+
+      return (
+        <div className="dropdown-results" key={i}>
+          <Link to={item.url}>
+            {item.name}
+          </Link>
+        </div>
+      )
+    });
+  }
+
+  renderUsers() {
+
+    const users = [
+      {name: 'Users List', url: '/admin/users'},
+      {name: 'Send emails', url: '/admin/emails'},
+    ];
+
+    return users.map((item, i) => {
 
       return (
         <div className="dropdown-results" key={i}>
@@ -112,6 +126,18 @@ class HeaderComponent extends React.Component {
                 <div className="dropdown-content">
                   <div className={`dropdown-content-wrapper${1}`}>
                     {this.renderStatistics()}
+                  </div>
+                </div>
+              </div>
+              <div className="dropdown-section" ref={`section2`}>
+                <div className="dropdown-header" onClick={() => this.toggleHeader(2)}>
+                  <i className="fa fa-area-chart"/>
+                  <span className="dropdown-text">Users</span>
+                  <i className="fa arrow"/>
+                </div>
+                <div className="dropdown-content">
+                  <div className={`dropdown-content-wrapper2`}>
+                    {this.renderUsers()}
                   </div>
                 </div>
               </div>

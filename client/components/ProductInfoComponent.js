@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
 import Slider from './reusable/SliderComponent';
+import NumberPicker from './reusable/NumberPicker';
 
 class ProductInfoComponent extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      quantityValue: 1
+    };
   }
 
   componentWillMount() {
@@ -58,6 +62,24 @@ class ProductInfoComponent extends Component {
 
   };
 
+  updateNumberPicker = (type) => {
+
+
+    if (type) {
+      this.setState({
+        quantityValue: this.state.quantityValue + 1
+      });
+    } else {
+      if (this.state.quantityValue > 1) {
+        this.setState({
+          quantityValue: this.state.quantityValue - 1
+        });
+      }
+
+    }
+    console.log(this.state);
+  };
+
   render() {
 
     const slides = [
@@ -82,16 +104,28 @@ class ProductInfoComponent extends Component {
             <div className="col-md-5 general-info">
               <div className="general-info-container">
                 <div>
+                  <div>Delivery</div>
+                  <div>
+                    <span>Special proposition:</span><br/>
+                    <span>Get this item with 25% off. Ends in 18 hours</span>
+                  </div>
+                </div>
+              </div>
+              <div className="general-info-container">
+                <div>
                   <div>Price</div>
-                  <div>2</div>
+                  <div>200$</div>
                 </div>
                 <div>
                   <div>Delivery</div>
-                  <div>2</div>
+                  <div>
+                    <span>Free shipping in your country using Local Air Mail</span><br/>
+                    <span>Approximate shipping time: 25 days</span>
+                  </div>
                 </div>
                 <div>
                   <div>Quantity</div>
-                  <div>2</div>
+                  <NumberPicker value={this.state.quantityValue} onValueChange={this.updateNumberPicker} />
                 </div>
                 <div>
                   <div>Total price</div>
