@@ -18,6 +18,10 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPageContainer} />
           <Route exact path="/product/:id" component={ProductInfoContainer} />
+          <Route exact path="/user/:id/profile" component={ProductInfoContainer} />
+          <Route exact path="/user/:id/my-orders" component={ProductInfoContainer} />
+          <Route exact path="/user/:id/notifications" component={ProductInfoContainer} />
+          <Route exact path="/user/:id/settings" component={ProductInfoContainer} />
           <Route path="/admin" component={AdminContainer} />
         </Switch>
         <Route path="/" render={(route) =>{

@@ -53,6 +53,33 @@ class HeaderComponent extends React.Component {
     );
   };
 
+  renderNotifications = () => {
+
+    const products = Array.from(Array(4).keys());
+
+    return products.map((item, i) => {
+      return (
+        <li key={i}>
+          <Link to="" className="notification-item">
+            <div className="img-col">
+              <div className="img" style={{backgroundImage: 'url(/images/logo.png)'}}/>
+            </div>
+            <div className="body-col">
+              <p>
+                <span className="accent">Zack Alien</span> pushed new commit:
+                <span className="accent">Fix page load performance issue</span>. </p>
+            </div>
+          </Link>
+        </li>
+      );
+    });
+  };
+
+  logout = (e) => {
+    e.preventDefault();
+    console.log('logging out');
+  };
+
   renderModal(type) {
 
     if (this.state[`${type}ModalVisibility`]) {
@@ -131,51 +158,21 @@ class HeaderComponent extends React.Component {
               </div>
               <div className="dropdown-menu notifications-dropdown-menu" ref="notifications">
                 <ul className="notifications-container">
-                  <li>
-                    <a href="" className="notification-item">
-                      <div className="img-col">
-                        <div className="img" style={{backgroundImage: 'url(/images/logo.png)'}}/>
-                      </div>
-                      <div className="body-col">
-                        <p>
-                          <span className="accent">Zack Alien</span> pushed new commit:
-                          <span className="accent">Fix page load performance issue</span>. </p>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="notification-item">
-                      <div className="img-col">
-                        <div className="img" style={{backgroundImage: 'url(/images/logo.png)'}}/>
-                      </div>
-                      <div className="body-col">
-                        <p>
-                          <span className="accent">Amaya Hatsumi</span> started new task:
-                          <span className="accent">Dashboard UI design.</span>. </p>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="notification-item">
-                      <div className="img-col">
-                        <div className="img" style={{backgroundImage: 'url(/images/logo.png)'}}/>
-                      </div>
-                      <div className="body-col">
-                        <p>
-                          <span className="accent">Andy Nouman</span> deployed new version of
-                          <span className="accent">NodeJS REST Api V3</span>
-                        </p>
-                      </div>
-                    </a>
-                  </li>
+                  {this.renderNotifications()}
                 </ul>
                 <footer>
                   <ul>
                     <li>
-                      <a href=""> View All </a>
+                      <Link to="/user/12/notifications"> View All </Link>
                     </li>
                   </ul>
                 </footer>
+              </div>
+            </li>
+            <li className="notifications new">
+              <div className="nav-link" data-toggle="dropdown">
+                <i className="fa fa-cart-arrow-down"/>
+                <i className="fa fa-shopping-cart"/>
               </div>
             </li>
             <li className="profile dropdown">
@@ -184,15 +181,19 @@ class HeaderComponent extends React.Component {
                 <span className="name"> John Doe </span>
               </div>
               <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profile">
-                <a className="dropdown-item" href="#">
-                  <i className="fa fa-user icon"/> Profile </a>
-                <a className="dropdown-item" href="#">
-                  <i className="fa fa-bell icon"/> Notifications </a>
-                <a className="dropdown-item" href="#">
-                  <i className="fa fa-gear icon"/> Settings </a>
+                <Link className="dropdown-item" to="/user/12/profile">
+                  <i className="fa fa-user icon"/> Profile
+                </Link>
+                <Link className="dropdown-item" to="/user/12/my-orders">
+                  <i className="fa fa-list-alt icon"/> My orders
+                </Link>
+                <Link className="dropdown-item" to="/user/12/settings">
+                  <i className="fa fa-gear icon"/> Settings
+                </Link>
                 <div className="dropdown-divider"/>
-                <a className="dropdown-item" href="login.html">
-                  <i className="fa fa-power-off icon"/> Logout </a>
+                <Link className="dropdown-item" to="/" onClick={(e) => this.logout(e)}>
+                  <i className="fa fa-power-off icon"/> Logout
+                </Link>
               </div>
             </li>
           </ul>
