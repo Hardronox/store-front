@@ -171,7 +171,6 @@ class HeaderComponent extends React.Component {
             </li>
             <li className="notifications new">
               <div className="nav-link" data-toggle="dropdown">
-                <i className="fa fa-cart-arrow-down"/>
                 <i className="fa fa-shopping-cart"/>
               </div>
             </li>

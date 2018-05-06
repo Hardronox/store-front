@@ -3,7 +3,8 @@ import {
         GET_USERS_PENDING, GET_SINGLE_USER_PENDING,
         CREATE_ITEM_PENDING, UPDATE_ITEM_PENDING, DELETE_ITEM_PENDING,
         GET_ITEMS_PENDING, GET_SINGLE_ITEM_PENDING,
-        GET_COMMENTS_PENDING, CREATE_COMMENT_PENDING, UPDATE_COMMENT_PENDING, DELETE_COMMENT_PENDING
+        GET_COMMENTS_PENDING, CREATE_COMMENT_PENDING, UPDATE_COMMENT_PENDING, DELETE_COMMENT_PENDING,
+        ADD_ITEM_TO_CART_PENDING, REMOVE_ITEM_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_PENDING, GET_CART_ITEMS_PENDING
 } from '../constants/actionTypes';
 
 
@@ -36,6 +37,7 @@ export const updateUser = (user) => {
     dispatch({ type: UPDATE_USER_PENDING, payload: user});
   };
 };
+//-------------------------------------------------------------------------------------
 
 export const getSingleItem = (id) => {
   return (dispatch) => {
@@ -66,6 +68,7 @@ export const deleteItem = (id) => {
     dispatch({ type: DELETE_ITEM_PENDING, payload: id});
   };
 };
+//-------------------------------------------------------------------------------------
 
 export const getComments = () => {
   return (dispatch) => {
@@ -90,4 +93,30 @@ export const deleteComment = (id) => {
     dispatch({ type: DELETE_COMMENT_PENDING, payload: id});
   };
 };
+//-------------------------------------------------------------------------------------
+
+export const getCartItems = (id) => {
+  return (dispatch) => {
+    dispatch({ type: GET_CART_ITEMS_PENDING, payload: id});
+  };
+};
+
+export const addItemToCart = (id) => {
+  return (dispatch) => {
+    dispatch({ type: ADD_ITEM_TO_CART_PENDING, payload: id});
+  };
+};
+
+export const removeItemFromCart = (id) => {
+  return (dispatch) => {
+    dispatch({ type: REMOVE_ITEM_FROM_CART_PENDING, payload: id});
+  };
+};
+
+export const removeAllItemsFromCart = (id) => {
+  return (dispatch) => {
+    dispatch({ type: REMOVE_ALL_ITEMS_FROM_CART_PENDING, payload: id});
+  };
+};
+//-------------------------------------------------------------------------------------
 

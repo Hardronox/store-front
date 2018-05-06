@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import ProductInfoComponent from '../components/ProductInfoComponent';
-import {incr, storeKek, getKeks} from '../actions/actions';
+import {incr, addItemToCart} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
@@ -14,12 +14,9 @@ const mapDispatchToProps = dispatch => {
     incr: () => {
       dispatch(incr());
     },
-    storeKek: (kek) => {
-      dispatch(storeKek(kek));
-    },
-    getKeks: () => {
-      dispatch(getKeks());
-    },
+    addItemToCart: (id) => {
+      dispatch(addItemToCart(id));
+    }
   };
 };
 

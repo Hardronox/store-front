@@ -3229,6 +3229,14 @@ body {
   z-index: 1050;
 }
 
+.buy-buttons {
+  margin-left: 11px!important;
+
+  button, a {
+    margin-right: 10px;
+    width: 180px;
+  }
+}
 
 .main-login{
   background-color: #fff;

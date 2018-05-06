@@ -3,6 +3,7 @@ import {all} from 'redux-saga/effects';
 import userSaga from './userSaga'
 import itemSaga from './itemSaga'
 import commentSaga from './commentSaga'
+import cartSaga from './cartSaga'
 
 /**
  * Combine sagas
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     fork(userSaga),
     fork(itemSaga),
     fork(commentSaga),
+    fork(cartSaga),
   ]);
 }

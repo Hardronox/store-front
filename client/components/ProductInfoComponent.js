@@ -55,11 +55,7 @@ class ProductInfoComponent extends Component {
   }
 
   addToCart = () => {
-
-  };
-
-  buyNow = () => {
-
+    this.props.addItemToCart(12);
   };
 
   updateNumberPicker = (type) => {
@@ -75,9 +71,7 @@ class ProductInfoComponent extends Component {
           quantityValue: this.state.quantityValue - 1
         });
       }
-
     }
-    console.log(this.state);
   };
 
   render() {
@@ -131,9 +125,11 @@ class ProductInfoComponent extends Component {
                   <div>Total price</div>
                   <div>2</div>
                 </div>
-                <div>
-                  <button className="btn btn-primary" onClick={this.addToCart}>Add to cart</button>
-                  <button className="btn btn-success" onClick={this.buyNow}>Buy now</button>
+                <div className="buy-buttons">
+                  <button className="btn btn-primary" onClick={this.addToCart}>
+                    <i className="fa fa-cart-arrow-down"/> Add to cart
+                  </button>
+                  <Link to="/order" className="btn btn-success">Buy now</Link>
                 </div>
               </div>
             </div>

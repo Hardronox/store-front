@@ -1,6 +1,7 @@
 import {
-  REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
-  LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED,
+  ADD_ITEM_TO_CART_FULFILLED, ADD_ITEM_TO_CART_REJECTED,
+  REMOVE_ITEM_FROM_CART_FULFILLED, REMOVE_ITEM_FROM_CART_REJECTED,
+  REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED,
 } from '../constants/actionTypes';
 import axios from "axios/index";
 import {base_url} from "../config";
@@ -18,26 +19,6 @@ const initialState = {
 const itemsReducer = (state = initialState, action) => {
   let { type } = action;
 
-
-// Send a POST request
-  export function getCartItemsApi (id) {
-    axios({
-      method: 'get',
-      url: `${base_url}/item/${id}`,
-
-    });
-  }
-
-// GET request for remote image
-  export function addItemToCartApi() {
-    return axios({
-      method:'get',
-      url: `${base_url}/items`,
-      // responseType:'stream'
-    });
-  }
-
-// Send a POST request
   export function removeItemFromCartApi(item) {
     axios({
       method: 'post',
@@ -46,7 +27,6 @@ const itemsReducer = (state = initialState, action) => {
     });
   }
 
-// Send a POST request
   export function removeAllItemsFromCartApi(item) {
     axios({
       method: 'post',
@@ -55,17 +35,15 @@ const itemsReducer = (state = initialState, action) => {
     });
   }
 
-
-
   switch(type) {
 
-    case REGISTER_USER_FULFILLED: {
+    case ADD_ITEM_TO_CART_FULFILLED: {
       return {
         ...state,
         keks: action.payload
       };
     }
-    case REGISTER_USER_REJECTED: {
+    case ADD_ITEM_TO_CART_REJECTED: {
       return {
         ...state,
         keksStatus: action.error
@@ -73,7 +51,7 @@ const itemsReducer = (state = initialState, action) => {
     }
 
 
-    case LOGIN_USER_FULFILLED: {
+    case ADD: {
       return {
         ...state,
         keks: action.payload
