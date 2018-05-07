@@ -11,15 +11,6 @@ export function getCartItemsApi (id) {
   });
 }
 
-// GET request for remote image
-export function addItemToCartApi() {
-  return axios({
-    method:'get',
-    url: `${base_url}/items`,
-    // responseType:'stream'
-  });
-}
-
 // Send a POST request
 export function removeItemFromCartApi(item) {
   axios({

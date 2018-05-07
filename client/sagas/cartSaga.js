@@ -7,7 +7,7 @@ import {
   REMOVE_ALL_ITEMS_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED,
 } from '../constants/actionTypes'
 
-import {getSingleItemApi, getItemsApi, createItemApi, updateItemApi, deleteItemApi} from '../api/ItemsApi'
+import {getCartItemsApi, removeItemFromCartApi, removeAllItemsFromCartApi} from '../api/cartApi'
 
 /**
  * Generator for sending action (Tweet, Retweet ...)
@@ -15,10 +15,9 @@ import {getSingleItemApi, getItemsApi, createItemApi, updateItemApi, deleteItemA
  */
 
 
-export function* getCartItems(id) {
-  console.log(id);
+export function* getCartItems() {
   try {
-    yield call(getSingleItemApi, id);
+    yield call(getCartItemsApi, id);
     yield put({ type: GET_CART_ITEMS_FULFILLED, payload: data.payload })
   } catch (e) {
     yield put({type: GET_CART_ITEMS_REJECTED, error: e.error || e.statusText})
@@ -39,7 +38,7 @@ export function* addItemToCart(id) {
 
 export function* removeItemFromCart(item) {
   try {
-    const keks = yield call(createItemApi, item);
+    const keks = yield call(removeItemFromCartApi, item);
     console.log(keks);
     yield put({ type: REMOVE_ITEM_FROM_CART_FULFILLED, payload: keks.data })
   } catch (e) {
@@ -49,7 +48,7 @@ export function* removeItemFromCart(item) {
 
 export function* removeAllItemsFromCart(item) {
   try {
-    const keks = yield call(updateItemApi, item);
+    const keks = yield call(removeAllItemsFromCartApi, item);
     console.log(keks);
     yield put({ type: REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, payload: keks.data })
   } catch (e) {
