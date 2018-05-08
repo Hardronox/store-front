@@ -39,7 +39,6 @@ class ProductInfoComponent extends Component {
     });
 
     this.refs[`image${key}`].style.border = '1px solid greenyellow';
-    // this.refs["main-image"].href = ;
   }
 
   renderImageSet() {
@@ -55,11 +54,10 @@ class ProductInfoComponent extends Component {
   }
 
   addToCart = () => {
-    this.props.addItemToCart(12);
+    this.props.addItemToCart({productId: 12, quantity: this.state.quantityValue});
   };
 
   updateNumberPicker = (type) => {
-
 
     if (type) {
       this.setState({

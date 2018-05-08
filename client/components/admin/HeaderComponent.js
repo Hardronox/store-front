@@ -171,7 +171,7 @@ class HeaderComponent extends React.Component {
             </li>
             <li className="notifications new">
               <div className="nav-link" data-toggle="dropdown">
-                <i className="fa fa-shopping-cart"/>
+                <i className="fa fa-shopping-cart"/> {(this.props.cart.cartProducts.length !== 0) ? this.props.cart.cartProducts.length : null}
               </div>
             </li>
             <li className="profile dropdown">

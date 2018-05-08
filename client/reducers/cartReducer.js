@@ -3,12 +3,11 @@ import {
   REMOVE_ITEM_FROM_CART_FULFILLED, REMOVE_ITEM_FROM_CART_REJECTED,
   REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED,
 } from '../constants/actionTypes';
-import axios from "axios/index";
 import {base_url} from "../config";
+import {saveState, loadState} from '../utils/localStorage'
 
 const initialState = {
-  keks: [],
-  kek: 0
+  cartProducts: loadState('cartProducts') ? loadState('cartProducts') : [],
 };
 
 /**
@@ -19,28 +18,17 @@ const initialState = {
 const itemsReducer = (state = initialState, action) => {
   let { type } = action;
 
-  export function removeItemFromCartApi(item) {
-    axios({
-      method: 'post',
-      url: `${base_url}/item`,
-      data: item
-    });
-  }
-
-  export function removeAllItemsFromCartApi(item) {
-    axios({
-      method: 'post',
-      url: `${base_url}/item`,
-      data: item
-    });
-  }
-
   switch(type) {
 
     case ADD_ITEM_TO_CART_FULFILLED: {
+      let {cartProducts} = initialState;
+
+      cartProducts.push(action.payload);
+      saveState('cartProducts', cartProducts);
+
       return {
         ...state,
-        keks: action.payload
+        cartProducts
       };
     }
     case ADD_ITEM_TO_CART_REJECTED: {
@@ -50,20 +38,46 @@ const itemsReducer = (state = initialState, action) => {
       };
     }
 
+    case REMOVE_ITEM_FROM_CART_FULFILLED: {
+      let {cartProducts} = initialState;
 
-    case ADD: {
+      let newCartProducts = cartProducts.filter((item) => {
+        if (item.productId !== action.payload) {
+          return item;
+        }
+      });
+
+      saveState('cartProducts', newCartProducts);
+
       return {
         ...state,
-        keks: action.payload
+        newCartProducts
       };
     }
-    case LOGIN_USER_REJECTED: {
+    case REMOVE_ITEM_FROM_CART_REJECTED: {
       return {
         ...state,
         keksStatus: action.error
       };
     }
 
+    case REMOVE_ALL_ITEMS_FROM_CART_FULFILLED: {
+      let {cartProducts} = initialState;
+
+      cartProducts = [];
+      saveState('cartProducts', cartProducts);
+
+      return {
+        ...state,
+        cartProducts
+      };
+    }
+    case REMOVE_ALL_ITEMS_FROM_CART_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
+      };
+    }
 
 
     default:

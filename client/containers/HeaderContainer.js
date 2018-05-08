@@ -5,6 +5,7 @@ import HeaderComponent from '../components/admin/HeaderComponent';
 const mapStateToProps = state => {
   return {
     routing: state.routing,
+    cart: state.cartReducer
   };
 };
 

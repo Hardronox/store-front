@@ -7,8 +7,6 @@ import {
   REMOVE_ALL_ITEMS_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED,
 } from '../constants/actionTypes'
 
-import {getCartItemsApi, removeItemFromCartApi, removeAllItemsFromCartApi} from '../api/cartApi'
-
 /**
  * Generator for sending action (Tweet, Retweet ...)
  * @param {Object<Type>} action
@@ -24,13 +22,10 @@ export function* getCartItems() {
   }
 }
 
-export function* addItemToCart(id) {
+export function* addItemToCart(item) {
   try {
-    console.log(id);
-    localStorage.setItem("key", "value");
-
       // var lastname = localStorage.getItem("key");
-    yield put({ type: ADD_ITEM_TO_CART_FULFILLED, payload: keks.data })
+    yield put({type: ADD_ITEM_TO_CART_FULFILLED, payload: item.payload })
   } catch (e) {
     yield put({type: ADD_ITEM_TO_CART_REJECTED, error: e.error || e.statusText})
   }
@@ -38,19 +33,15 @@ export function* addItemToCart(id) {
 
 export function* removeItemFromCart(item) {
   try {
-    const keks = yield call(removeItemFromCartApi, item);
-    console.log(keks);
-    yield put({ type: REMOVE_ITEM_FROM_CART_FULFILLED, payload: keks.data })
+    yield put({type: REMOVE_ITEM_FROM_CART_FULFILLED, payload: item.payload })
   } catch (e) {
     yield put({type: REMOVE_ITEM_FROM_CART_REJECTED, error: e.error || e.statusText})
   }
 }
 
-export function* removeAllItemsFromCart(item) {
+export function* removeAllItemsFromCart() {
   try {
-    const keks = yield call(removeAllItemsFromCartApi, item);
-    console.log(keks);
-    yield put({ type: REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, payload: keks.data })
+    yield put({ type: REMOVE_ALL_ITEMS_FROM_CART_FULFILLED})
   } catch (e) {
     yield put({type: REMOVE_ALL_ITEMS_FROM_CART_REJECTED, error: e.error || e.statusText})
   }
