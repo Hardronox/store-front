@@ -4,9 +4,10 @@ import {GET_SINGLE_ITEM_PENDING, GET_SINGLE_ITEM_FULFILLED, GET_SINGLE_ITEM_REJE
         GET_ITEMS_PENDING, GET_ITEMS_FULFILLED, GET_ITEMS_REJECTED,
         CREATE_ITEM_PENDING, CREATE_ITEM_FULFILLED, CREATE_ITEM_REJECTED,
         UPDATE_ITEM_PENDING, UPDATE_ITEM_FULFILLED, UPDATE_ITEM_REJECTED,
-        DELETE_ITEM_PENDING, DELETE_ITEM_FULFILLED, DELETE_ITEM_REJECTED} from '../constants/actionTypes'
+        DELETE_ITEM_PENDING, DELETE_ITEM_FULFILLED, DELETE_ITEM_REJECTED,
+        SEARCH_ITEM_PENDING, SEARCH_ITEM_FULFILLED, SEARCH_ITEM_REJECTED} from '../constants/actionTypes'
 
-import {getSingleItemApi, getItemsApi, createItemApi, updateItemApi, deleteItemApi} from '../api/ItemsApi'
+import {getSingleItemApi, getItemsApi, createItemApi, updateItemApi, deleteItemApi, searchItemApi} from '../api/ItemsApi'
 
 /**
  * Generator for sending action (Tweet, Retweet ...)
@@ -64,6 +65,16 @@ export function* deleteItem(id) {
   }
 }
 
+export function* searchItem(keyword) {
+  try {
+    const searchValues = yield call(searchItemApi, keyword);
+    console.log(searchValues);
+    yield put({ type: SEARCH_ITEM_FULFILLED, payload: searchValues.data })
+  } catch (e) {
+    yield put({type: SEARCH_ITEM_REJECTED, error: e.error || e.statusText})
+  }
+}
+
 
 /**
  * Connect actions to generators
@@ -75,6 +86,7 @@ function* itemSaga() {
   yield takeEvery(CREATE_ITEM_PENDING, createItem);
   yield takeEvery(UPDATE_ITEM_PENDING, updateItem);
   yield takeEvery(DELETE_ITEM_PENDING, deleteItem);
+  yield takeEvery(SEARCH_ITEM_PENDING, searchItem);
 }
 
 export default itemSaga

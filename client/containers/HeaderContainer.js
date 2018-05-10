@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
+import HeaderComponent from '../components/HeaderComponent';
 
-import HeaderComponent from '../components/admin/HeaderComponent';
+import {search} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTranslations: (lang) => {
-      // dispatch(getTranslations(lang));
+    search: (keyword) => {
+      dispatch(search(keyword));
     }
   };
 };

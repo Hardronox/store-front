@@ -18,20 +18,20 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Route path="/" render={(route) => {
-        return (route.location.pathname.indexOf('/admin') !== -1)  ? null : <HeaderContainer/>;
-        }} />
-        <Switch>
-          <Route exact path="/" component={MainPageContainer} />
-          <Route exact path="/product/:id" component={ProductInfoContainer} />
-          <Route exact path="/user/:id/profile" component={ProfileContainer} />
-          <Route exact path="/user/:id/my-orders" component={MyOrdersContainer} />
-          <Route exact path="/user/:id/notifications" component={NotificationsContainer} />
-          <Route exact path="/user/:id/settings" component={SettingsContainer} />
-          <Route exact path="/order/:id" component={OrderContainer} />
-          <Route exact path="/order-success" component={OrderSuccessComponent} />
-          <Route path="/admin" component={AdminContainer} />
-        </Switch>
+        <main className="main-content">
+          <HeaderContainer/>
+          <Switch>
+            <Route exact path="/" component={MainPageContainer} />
+            <Route exact path="/product/:id" component={ProductInfoContainer} />
+            <Route exact path="/user/:id/profile" component={ProfileContainer} />
+            <Route exact path="/user/:id/my-orders" component={MyOrdersContainer} />
+            <Route exact path="/user/:id/notifications" component={NotificationsContainer} />
+            <Route exact path="/user/:id/settings" component={SettingsContainer} />
+            <Route exact path="/order/:id" component={OrderContainer} />
+            <Route exact path="/order-success" component={OrderSuccessComponent} />
+            <Route path="/admin" component={AdminContainer} />
+          </Switch>
+        </main>
         <Route path="/" render={(route) =>{
           return (route.location.pathname.indexOf('/admin') !== -1) ? null : <FooterComponent/>;
         }} />

@@ -120,3 +120,10 @@ export const removeAllItemsFromCart = (id) => {
 };
 //-------------------------------------------------------------------------------------
 
+export const search = (keyword) => {
+  return (dispatch) => {
+    dispatch({ type: REMOVE_ALL_ITEMS_FROM_CART_PENDING, payload: keyword});
+  };
+};
+//-------------------------------------------------------------------------------------
+

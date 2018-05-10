@@ -3,7 +3,8 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Modal from '../reusable/ModalComponent';
+import Modal from './reusable/ModalComponent';
+import { withRouter } from "react-router-dom";
 
 class HeaderComponent extends React.Component {
 
@@ -14,6 +15,8 @@ class HeaderComponent extends React.Component {
       loginModalVisibility: false,
       profileDropdownVisibility: false,
       notificationsDropdownVisibility: false,
+      searchDropdownVisibility: false,
+      searchOpened: false
     };
   }
 
@@ -22,9 +25,38 @@ class HeaderComponent extends React.Component {
 
   }
 
-  search() {
-    console.log(this.refs.search.value);
+  // get search results for dropdown
+  // search request fires every time when you write more than 2 symbols but dropdown opens once
+  search(e) {
+    if (e.target.value.length > 2) {
+      this.props.search(e.target.value);
+
+      if (!this.state.searchOpened) {
+        this.toggleDropdown('search');
+
+        this.setState({
+          searchOpened: !this.state.searchOpened
+        });
+      }
+
+    } else if (e.target.value.length <= 2 && this.state.searchDropdownVisibility){
+      this.toggleDropdown('search');
+
+      this.setState({
+        searchOpened: !this.state.searchOpened
+      });
+    }
+
   }
+
+  // when enter pressed
+  goToSearchResults = (e) => {
+    if (e.target.value.length > 0) {
+      if (e.keyCode === 13 || e.which === 13) {
+        this.props.history.push(`/search?value=${e.target.value}`);
+      }
+    }
+  };
 
   renderAuthorization = () => {
 
@@ -76,6 +108,24 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  renderSearchDropdown = () => {
+
+    if (this.state.searchDropdownVisibility) {
+
+      const products = Array.from(Array(6).keys());
+
+      return products.map((item, i) => {
+        return (
+          <li key={i}>
+            <Link to={`item.link`} className="notification-item">
+              Item name
+            </Link>
+          </li>
+        );
+      });
+    }
+  };
+
   logout = (e) => {
     e.preventDefault();
     console.log('logging out');
@@ -95,8 +145,10 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  // toggle different dropdowns depends on type
   toggleDropdown(type) {
-
+    console.log('toggling');
+    console.log(type);
     if (!this.state[`${type}DropdownVisibility`]) {
       this.refs[type].classList.add('showDropdown');
     } else {
@@ -132,13 +184,16 @@ class HeaderComponent extends React.Component {
           </Link>
         </div>
         <div className="header-block header-block-search">
-          <form role="search">
-            <div className="input-container">
-              <i className="fa fa-search"/>
-              <input type="search" placeholder="Search"/>
-              <div className="underline"/>
-            </div>
-          </form>
+          <div className="input-container">
+            <i className="fa fa-search"/>
+            <input type="search" placeholder="Search" onChange={(e) => this.search(e)} onKeyPress={(e) => this.goToSearchResults(e)}/>
+            <div className="underline"/>
+          </div>
+          <div className="dropdown-menu search-dropdown" ref="search">
+            <ul className="search-container">
+              {this.renderSearchDropdown()}
+            </ul>
+          </div>
         </div>
         <div className="header-block header-block-nav">
           <ul>
@@ -210,4 +265,4 @@ HeaderComponent.propTypes = {
   routing: PropTypes.object,
 };
 
-export default HeaderComponent;
+export default withRouter(HeaderComponent);
