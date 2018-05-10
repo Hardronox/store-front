@@ -1,8 +1,11 @@
 # Installation
 
-In terminal go to project root and run:
-```
 npm install
-npm run start
+
+# Development
+
+npm run watch - watch for file changes
+
+npm run start - start server
 
 Open http://localhost:3000/ and check

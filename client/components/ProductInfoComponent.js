@@ -75,7 +75,7 @@ class ProductInfoComponent extends Component {
   render() {
 
     const slides = [
-      {image:'https://keddr.com/wp-content/uploads/2014/08/main.png', name: 'lol kek phaha akterskay igra', price: 17000},
+      {image:'https://keddr.com/wp-content/uploads/2014/08/main.png', name: 'abir', price: 17000},
       {image:'http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661', name: 'tabi pizda', price: 7520},
       {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
       {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
@@ -127,14 +127,14 @@ class ProductInfoComponent extends Component {
                   <button className="btn btn-primary" onClick={this.addToCart}>
                     <i className="fa fa-cart-arrow-down"/> Add to cart
                   </button>
-                  <Link to="/order" className="btn btn-success">Buy now</Link>
+                  <Link to="/order/12" className="btn btn-success">Buy now</Link>
                 </div>
               </div>
             </div>
           </div>
           <h1>Recomended</h1>
           <div className="small-slider-container">
-            <Slider slides={slides} size="small" slidesPerView={5}/>
+            <Slider slides={slides} size="small" showInfo={true} slidesPerView={5}/>
           </div>
       </main>
 

@@ -17,11 +17,11 @@ const initialState = {
  */
 const itemsReducer = (state = initialState, action) => {
   let { type } = action;
+  let cartProducts = [...state.cartProducts];
 
   switch(type) {
 
     case ADD_ITEM_TO_CART_FULFILLED: {
-      let {cartProducts} = initialState;
 
       cartProducts.push(action.payload);
       saveState('cartProducts', cartProducts);
@@ -39,7 +39,6 @@ const itemsReducer = (state = initialState, action) => {
     }
 
     case REMOVE_ITEM_FROM_CART_FULFILLED: {
-      let {cartProducts} = initialState;
 
       let newCartProducts = cartProducts.filter((item) => {
         if (item.productId !== action.payload) {
@@ -62,7 +61,6 @@ const itemsReducer = (state = initialState, action) => {
     }
 
     case REMOVE_ALL_ITEMS_FROM_CART_FULFILLED: {
-      let {cartProducts} = initialState;
 
       cartProducts = [];
       saveState('cartProducts', cartProducts);
@@ -78,7 +76,6 @@ const itemsReducer = (state = initialState, action) => {
         keksStatus: action.error
       };
     }
-
 
     default:
       return state;

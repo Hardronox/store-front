@@ -18,15 +18,10 @@ class OrderComponent extends React.Component {
 
   render() {
 
-
     return (
       <main className="main-container" role="main">
-        <h1>Product Title</h1>
-        <div className="row product-info">
-
-          <div className="col-md-5 general-info">
-
-          </div>
+        <div>
+          Order info
         </div>
       </main>
     );

@@ -4,6 +4,10 @@ import { Switch, Route } from 'react-router-dom';
 import MainPageContainer from './containers/MainPageContainer';
 import ProductInfoContainer from './containers/ProductInfoContainer';
 import OrderContainer from './containers/OrderContainer';
+import MyOrdersContainer from './containers/MyOrdersContainer';
+import NotificationsContainer from './containers/NotificationsContainer';
+import ProfileContainer from './containers/ProfileContainer';
+import SettingsContainer from './containers/SettingsContainer';
 import OrderSuccessComponent from './components/OrderSuccessComponent';
 import HeaderContainer from './containers/HeaderContainer';
 import FooterComponent from './components/FooterComponent';
@@ -20,10 +24,10 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPageContainer} />
           <Route exact path="/product/:id" component={ProductInfoContainer} />
-          <Route exact path="/user/:id/profile" component={ProductInfoContainer} />
-          <Route exact path="/user/:id/my-orders" component={ProductInfoContainer} />
-          <Route exact path="/user/:id/notifications" component={ProductInfoContainer} />
-          <Route exact path="/user/:id/settings" component={ProductInfoContainer} />
+          <Route exact path="/user/:id/profile" component={ProfileContainer} />
+          <Route exact path="/user/:id/my-orders" component={MyOrdersContainer} />
+          <Route exact path="/user/:id/notifications" component={NotificationsContainer} />
+          <Route exact path="/user/:id/settings" component={SettingsContainer} />
           <Route exact path="/order/:id" component={OrderContainer} />
           <Route exact path="/order-success" component={OrderSuccessComponent} />
           <Route path="/admin" component={AdminContainer} />

@@ -67,7 +67,8 @@ class HeaderComponent extends React.Component {
             <div className="body-col">
               <p>
                 <span className="accent">Zack Alien</span> pushed new commit:
-                <span className="accent">Fix page load performance issue</span>. </p>
+                <span className="accent">Fix page load performance issue.</span>
+              </p>
             </div>
           </Link>
         </li>

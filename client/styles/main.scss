@@ -10,6 +10,11 @@ html, body {
   min-height: 100%;
   font-family: 'Open Sans', sans-serif;
   color: #4f5f6f;
+
+  //#root {
+  //  height: 100%;
+  //  min-height: 100%;
+  //}
 }
 
 .main-wrapper {
@@ -3311,6 +3316,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
+  //bottom: 0;
   z-index: 10;
   display: -ms-flexbox;
   -webkit-box-align: center;

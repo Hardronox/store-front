@@ -3,7 +3,6 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Dropdown from '../reusable/Dropdown';
 
 class HeaderComponent extends React.Component {
 

@@ -22,17 +22,19 @@ class Product extends React.Component {
     return this.props.slides.map((item, i) => {
       return (
         <div key={i}>
-          <div>
-            <Link to={`/product/${i}`}>
-              <img src={item.image} />
-            </Link>
+          <Link to={`/product/${i}`}>
+            <img src={item.image} />
+          </Link>
+          {this.props.showInfo ?
             <div>
-              <Link to={`/product/${i}`}>{item.name}</Link>
+              <div>
+                <Link to={`/product/${i}`}>{item.name}</Link>
+              </div>
+              <div className="slider-price">
+                <span>{item.price}$</span>
+              </div>
             </div>
-            <div className="slider-price">
-              <span>{item.price}$</span>
-            </div>
-          </div>
+          : null}
         </div>
       );
     });
