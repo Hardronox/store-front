@@ -20,9 +20,26 @@ class HeaderComponent extends React.Component {
     };
   }
 
-
   componentWillMount() {
+    this.props.getTranslations('en');
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+
+      for (let key in this.state) {
+
+        if (this.state[key] && key !== 'searchOpened') {
+
+          if (key === 'searchDropdownVisibility') {
+            this.setState({
+              searchOpened: !this.state.searchOpened
+            });
+          }
+          this.toggleDropdown(key)
+        }
+      }
+    }
   }
 
   // get search results for dropdown
@@ -32,7 +49,7 @@ class HeaderComponent extends React.Component {
       this.props.search(e.target.value);
 
       if (!this.state.searchOpened) {
-        this.toggleDropdown('search');
+        this.toggleDropdown('searchDropdownVisibility');
 
         this.setState({
           searchOpened: !this.state.searchOpened
@@ -40,7 +57,7 @@ class HeaderComponent extends React.Component {
       }
 
     } else if (e.target.value.length <= 2 && this.state.searchDropdownVisibility){
-      this.toggleDropdown('search');
+      this.toggleDropdown('searchDropdownVisibility');
 
       this.setState({
         searchOpened: !this.state.searchOpened
@@ -139,7 +156,6 @@ class HeaderComponent extends React.Component {
   }
 
   changeModalVisibility = (type) => {
-    console.log(this.state);
     this.setState({
       [`${type}ModalVisibility`]: !this.state[`${type}ModalVisibility`]
     });
@@ -147,20 +163,20 @@ class HeaderComponent extends React.Component {
 
   // toggle different dropdowns depends on type
   toggleDropdown(type) {
-    console.log('toggling');
-    console.log(type);
-    if (!this.state[`${type}DropdownVisibility`]) {
+
+    if (!this.state[type]) {
       this.refs[type].classList.add('showDropdown');
     } else {
       this.refs[type].classList.remove('showDropdown');
     }
 
     this.setState({
-      [`${type}DropdownVisibility`]: !this.state[`${type}DropdownVisibility`]
+      [type]: !this.state[type]
     });
   }
 
   render () {
+    const {cart} = this.props;
 
     return (
       <header className="header">
@@ -189,7 +205,7 @@ class HeaderComponent extends React.Component {
             <input type="search" placeholder="Search" onChange={(e) => this.search(e)} onKeyPress={(e) => this.goToSearchResults(e)}/>
             <div className="underline"/>
           </div>
-          <div className="dropdown-menu search-dropdown" ref="search">
+          <div className="dropdown-menu search-dropdown" ref="searchDropdownVisibility">
             <ul className="search-container">
               {this.renderSearchDropdown()}
             </ul>
@@ -206,13 +222,13 @@ class HeaderComponent extends React.Component {
           </ul>
           <ul className="nav-profile">
             <li className="notifications new">
-              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('notifications')}>
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('notificationsDropdownVisibility')}>
                 <i className="fa fa-bell-o"/>
                 <sup>
                   <span className="counter">8</span>
                 </sup>
               </div>
-              <div className="dropdown-menu notifications-dropdown-menu" ref="notifications">
+              <div className="dropdown-menu notifications-dropdown-menu" ref="notificationsDropdownVisibility">
                 <ul className="notifications-container">
                   {this.renderNotifications()}
                 </ul>
@@ -225,17 +241,19 @@ class HeaderComponent extends React.Component {
                 </footer>
               </div>
             </li>
-            <li className="notifications new">
-              <div className="nav-link" data-toggle="dropdown">
-                <i className="fa fa-shopping-cart"/> {(this.props.cart.cartProducts.length !== 0) ? this.props.cart.cartProducts.length : null}
+            <li className="cart new">
+              <div className="nav-link">
+                <Link to="/cart" className="dropdown-item">
+                  <i className="fa fa-shopping-cart"/> {(cart.cartProducts.length !== 0) ? cart.cartProducts.length : null}
+                </Link>
               </div>
             </li>
             <li className="profile dropdown">
-              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profile')}>
-                <div className="img" style={{backgroundImage: 'url(https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40)'}}> </div>
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profileDropdownVisibility')}>
+                <div className="img" style={{backgroundImage: 'url(https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40)'}}/>
                 <span className="name"> John Doe </span>
               </div>
-              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profile">
+              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profileDropdownVisibility">
                 <Link className="dropdown-item" to="/user/12/profile">
                   <i className="fa fa-user icon"/> Profile
                 </Link>

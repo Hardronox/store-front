@@ -18,98 +18,87 @@ class ProfileComponent extends Component {
 
   }
 
-  renderProducts = () => {
+  renderMenu = () => {
 
-    const products = Array.from(Array(10).keys());
+    const links = [
+      {title: "My profile", to: "/user/12/profile"},
+      {title: "Wishlist", to: "/user/12/profile"},
+      {title: "Cart", to: "/user/12/profile"},
+      {title: "My orders", to: "/user/12/profile"},
+      {title: "My reviews/comments", to: "/user/12/profile"},
+      {title: "Products that I viewed", to: "/user/12/profile"},
+      {title: "Mailing", to: "/user/12/profile"},
+    ];
 
-    return products.map((item, i) => {
-      return <Product key={i} />;
-    });
-  };
-
-  imageHover(key) {
-    console.log(key);
-    const images = Array.from(Array(5).keys());
-    images.forEach((item, i) => {
-      this.refs[`image${i}`].style.border = 'none';
-    });
-
-    this.refs[`image${key}`].style.border = '1px solid greenyellow';
-    // this.refs["main-image"].href = ;
-  }
-
-  renderImageSet() {
-    const products = Array.from(Array(5).keys());
-
-    return products.map((item, i) => {
+    return links.map((item, i) => {
       return (
-        <div key={i} ref={`image${i}`} onMouseOver={() => this.imageHover(i)}>
-
-        </div>
+        <li key={i} className="profile-menu-item">
+          <Link to={item.to} className="novisited profile-m-link">
+            <span className="profile-menu-item-title">{item.title}</span>
+          </Link>
+        </li>
       );
     });
-  }
-
-  addToCart = () => {
-
   };
 
-  buyNow = () => {
-
-  };
 
   render() {
 
-    const slides = [
-      {image:'https://keddr.com/wp-content/uploads/2014/08/main.png', name: 'lol kek phaha akterskay igra', price: 17000},
-      {image:'http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661', name: 'tabi pizda', price: 7520},
-      {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
-      {image:'https://i.ytimg.com/vi/C5wBkVrZAbo/maxresdefault.jpg', name: 'woah woah', price: 2000},
-      {image:'http://www.aimp.ru/forum/index.php?action=dlattach;topic=51447.0;attach=45661', name: 'tabi pizda', price: 7500},
-      {image:'http://www.atozpromotions.co.uk/wp-content/uploads/2016/05/android-5-lollipop-red-black-abstract-material-design-line-stripes-2560x1600.jpg', name: 'Holy Guacamole', price: 10000},
-    ];
-
     return (
-      <main className="main-container" role="main">
-        <h1>Product Title</h1>
-        <div className="row product-info">
-          <div className="image-set">
-            {this.renderImageSet()}
-          </div>
-          <div className="col-md-6 info-image">
-            <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
-          </div>
-          <div className="col-md-5 general-info">
-            <div className="general-info-container">
-              <div>
-                <div>Price</div>
-                <div>2</div>
+      <main className="main-container profile-container" role="main">
+        <div className="col-md-3 offset-md-1">
+          <ul className="profile-menu" id="sidebar-menu">
+            {this.renderMenu()}
+          </ul>
+        </div>
+        <div className="col-md-7">
+          <h2>Personnel information</h2>
+          <div className="profile-info">
+            <div className="info-item">
+              <div className="info-item-title">Имя</div>
+              <div className="info-item-field">
+                <div className="profile-info-l-i-text">
+                  Пинчук Александр
+                </div>
               </div>
-              <div>
-                <div>Delivery</div>
-                <div>2</div>
+            </div>
+            <div className="info-item">
+              <div className="info-item-title">Электронная почтa</div>
+              <div className="info-item-field">
+                <div className="profile-info-l-i-text">
+                  sanya.chuck@mail.ru
+                </div>
               </div>
-              <div>
-                <div>Quantity</div>
-                <div>2</div>
+            </div>
+            <div className="info-item">
+              <div className="info-item-title">Телефон</div>
+              <div className="info-item-field">
+                <span className="profile-info-l-i-text profile-info-l-i-text-indent">
+                  +380 (50) 361-29-86
+                </span>&nbsp;
+                <a href="#" className="profile-info-l-i-link xhr novisited">Подтвердить номер</a>
               </div>
-              <div>
-                <div>Total price</div>
-                <div>2</div>
-              </div>
-              <div>
-                <button className="btn btn-primary" onClick={this.addToCart}>Add to cart</button>
-                <button className="btn btn-success" onClick={this.buyNow}>Buy now</button>
+            </div>
+            <div className="info-item">
+              <div className="info-item-title">Адрес для доставок</div>
+              <div className="info-item-field">
+
+                <div className="profile-info-l-i-text">
+                  Запорожье Запорожская обл. Запорожье р-н
+                </div>
+
               </div>
             </div>
           </div>
         </div>
-        <h1>Recomended</h1>
-        <div className="small-slider-container">
-          <Slider slides={slides} size="small" slidesPerView={5}/>
+        <div className="col-md-4">
+          <div className="profile-actions">
+            <Link to="">Edit personnel information</Link>
+            <Link to="">Change password</Link>
+            <Link to="">Log out</Link>
+          </div>
         </div>
       </main>
-
     );
   }
 }

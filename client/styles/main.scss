@@ -11,6 +11,10 @@ html, body {
   font-family: 'Open Sans', sans-serif;
   color: #4f5f6f;
 
+  ul {
+    list-style: none;
+  }
+
   #root {
     display: flex;
     flex-direction: column;
@@ -895,6 +899,47 @@ label, .control-label {
   }
 }
 
+
+.profile-container {
+  display: flex;
+  padding-top: 90px!important;
+
+  .profile-actions {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #eaeaea;
+    margin-top: 100px;
+    padding-left: 20px;
+  }
+
+  .info-item {
+    margin-bottom: 10px;
+  }
+
+  .info-item-title {
+    width: 180px;
+  }
+
+  .profile-info {
+
+    >div {
+     display: flex;
+    }
+  }
+
+  .profile-menu {
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    padding: 0 0 1.15385em;
+    margin-top: 10px;
+  }
+
+  .profile-menu-item {
+
+  }
+}
+
+
 /* *******************************************
 *		  Item List general styles
 ********************************************** */
@@ -912,30 +957,7 @@ label, .control-label {
   -webkit-box-direction: normal;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  /********************************************
-	*					Header
-	*********************************************/
-  /********************************************
-	*					Heading
-	*********************************************/
-  /********************************************
-	*					Checkbox
-	*********************************************/
-  /********************************************
-	*					Image
-	*********************************************/
-  /********************************************
-	*					Title
-	*********************************************/
-  /********************************************
-	*					Stats
-	*********************************************/
-  /********************************************
-	*				     Actions
-	*********************************************/
-  /********************************************
-	*			   Something else?
-	*********************************************/
+
   &.striped {
     > li {
       border-bottom: 1px solid #e9edf0;
@@ -2922,12 +2944,40 @@ span a {
   }
 }
 
+
+
 .header {
 
   .notifications {
     font-size: 16px;
     a {
       padding-right: 10px;
+    }
+    .counter {
+      font-weight: bold;
+      font-size: 14px;
+      position: relative;
+      top: -3px;
+      left: -2px;
+    }
+    &.new .counter {
+      color: #85CE36;
+      font-weight: bold;
+    }
+    i {
+      color: #95a5b9;
+    }
+  }
+
+  .cart {
+    font-size: 16px;
+    a {
+      padding: 10px 0;
+      color: #b2c3d7!important;
+    }
+    a:hover, a:focus {
+      background-color: #343a40;
+      color: #b2c3d7;
     }
     .counter {
       font-weight: bold;
