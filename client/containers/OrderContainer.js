@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {reduxForm} from 'redux-form';
 
 import OrderComponent from '../components/OrderComponent';
 import {getUsers, registerUser} from '../actions/actions';
@@ -20,4 +21,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderComponent);
+
+export default reduxForm({
+    form: 'order-form'
+})(connect(mapStateToProps, mapDispatchToProps)(OrderComponent));
