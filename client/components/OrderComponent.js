@@ -24,10 +24,11 @@ class OrderComponent extends React.Component {
       // This item is for layout purposes
       let item = {
           title: "Apple MacBook Pro 15 (2016) i7-6920HQ/16GB/512G SSD/Touch Bar/Radeon Pro 460 4GB",
-          price: "2,199.99",
-          trackingCharge: "90.50",
-          shippingCharge: "552.43",
-          seller: "deal_train"
+          price: "2199.99",
+          shippingCharge: "90.50",
+          importCharge: "552.43",
+          seller: "deal_train",
+          quantity: 1
       }
 
     return (
@@ -75,12 +76,12 @@ class OrderComponent extends React.Component {
                                     <span>International Priority Shipping <i className="fa fa-info-circle"
                                                                              aria-hidden="true"></i></span>
                                     <span>Includes international tracking</span>
-                                    <span>US ${item.trackingCharge}</span>
+                                    <span>US ${item.shippingCharge}</span>
                                 </div>
                                 <div className="item-shipping-charge flex-col">
                                     <span>Import charges <i className="fa fa-info-circle" aria-hidden="true"></i></span>
                                     <span>No additional import charges at delivery.</span>
-                                    <span>US ${item.shippingCharge}</span>
+                                    <span>US ${item.importCharge}</span>
                                 </div>
                             </div>
                         </div>
@@ -320,51 +321,51 @@ class OrderComponent extends React.Component {
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="firstName" component="input" type="text"/>
+                                <Field name="firstName" component="input" type="text" required/>
                                 <label htmlFor="firstName">First Name</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="lastName" component="input" type="text"/>
+                                <Field name="lastName" component="input" type="text" required/>
                                 <label htmlFor="lastName">Last Name</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="streetAddress" component="input" type="text"/>
+                                <Field name="streetAddress" component="input" type="text" required/>
                                 <label htmlFor="streetAddress">Street Address</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="streetAddress2" component="input" type="text"/>
+                                <Field name="streetAddress2" component="input" type="text" required/>
                                 <label htmlFor="streetAddress2">Street Address 2 (Optional)</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="city" component="input" type="text"/>
+                                <Field name="city" component="input" type="text" required/>
                                 <label htmlFor="city">City</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="state" component="input" type="text"/>
+                                <Field name="state" component="input" type="text" required/>
                                 <label htmlFor="state">State</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="zipCode" component="input" type="text"/>
+                                <Field name="zipCode" component="input" type="text" required/>
                                 <label htmlFor="zipCode">ZIP Code</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="email" component="input" type="email"/>
+                                <Field name="email" component="input" type="email" required/>
                                 <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="confirmEmail" component="input" type="email"/>
+                                <Field name="confirmEmail" component="input" type="email" required/>
                                 <label htmlFor="confirmEmail">Email</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="phone" component="input" type="tel"/>
+                                <Field name="phone" component="input" type="tel" required/>
                                 <label htmlFor="phone">Phone Number</label>
                             </div>
                         </div>
@@ -398,13 +399,23 @@ class OrderComponent extends React.Component {
                 <div className="right-section">
                     <div className="confirmation-ctr">
                         <div className="confirmation">
-                            <div><span>Item()</span></div>
-                            <div><span>Shipping</span></div>
-                            <div><span>Import charges</span></div>
+                            <div className="flex-row space-between">
+                                <span>Item ({item.quantity})</span>
+                                <span>US ${item.price}</span>
+                            </div>
+                            <div className="flex-row space-between">
+                                <span>Shipping</span>
+                                <span>US ${item.shippingCharge}</span>
+                            </div>
+                            <div className="flex-row space-between">
+                                <span>Import charges</span>
+                                <span>US ${item.importCharge}</span>
+                            </div>
                         </div>
                         <div className="order-total-ctr">
-                            <div className="order-total">
+                            <div className="flex-row space-between">
                                 <span>Order Total</span>
+                                <span className="order-total-price">US ${(+item.price + +item.shippingCharge + +item.importCharge).toFixed(2)}</span>
                             </div>
                         </div>
                         <div className="button-ctr">
