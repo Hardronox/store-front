@@ -321,6 +321,9 @@ class OrderComponent extends React.Component {
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
+                                {   // Required attribute in this and all the following inputs is to hide the floating label once the user has entered some text
+                                    // TODO: find out if there's any other way to achieve the same effect
+                                    }
                                 <Field name="firstName" component="input" type="text" required/>
                                 <label htmlFor="firstName">First Name</label>
                             </div>
