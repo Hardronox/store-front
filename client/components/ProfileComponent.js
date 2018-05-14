@@ -58,7 +58,7 @@ class ProfileComponent extends Component {
               <div className="info-item-title">Имя</div>
               <div className="info-item-field">
                 <div className="profile-info-l-i-text">
-                  Пинчук Александр
+                  Узургалиев Топикджон
                 </div>
               </div>
             </div>
@@ -76,17 +76,15 @@ class ProfileComponent extends Component {
                 <span className="profile-info-l-i-text profile-info-l-i-text-indent">
                   +380 (50) 361-29-86
                 </span>&nbsp;
-                <a href="#" className="profile-info-l-i-link xhr novisited">Подтвердить номер</a>
+                <Link to="#" className="profile-info-l-i-link xhr novisited">Подтвердить номер</Link>
               </div>
             </div>
             <div className="info-item">
               <div className="info-item-title">Адрес для доставок</div>
               <div className="info-item-field">
-
                 <div className="profile-info-l-i-text">
                   Запорожье Запорожская обл. Запорожье р-н
                 </div>
-
               </div>
             </div>
           </div>

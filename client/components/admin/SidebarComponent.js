@@ -74,15 +74,15 @@ class HeaderComponent extends React.Component {
   renderItemsManager() {
 
     const results = [
-      {name: 'Items List', url: '/admin/dashboard'},
-      {name: 'New Item', url: '/admin/dashboard'},
+      {name: 'Items List', url: '/admin/items-list'},
+      {name: 'New Item', url: '/admin/create-item'},
     ];
 
     return results.map((item, i) => {
 
       return (
-        <Link to={item.url}>
-          <div className="dropdown-results" key={i}>
+        <Link to={item.url} key={i}>
+          <div className="dropdown-results">
               {item.name}
           </div>
         </Link>
