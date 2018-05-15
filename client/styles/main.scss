@@ -3340,6 +3340,18 @@ body {
 *			OrderComponent styles
 ********************************************** */
 
+.container-sections {
+  display: flex;
+  flex-wrap: wrap;
+}
+.left-section  {
+  position: relative;
+  @media only screen and (max-width: 1024px) {
+    position: static;
+    width: 100%;
+    flex: none;
+  }
+}
 .item-details-ctr {
   padding: 20px;
   .section-title {
@@ -3352,13 +3364,24 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
   }
+  .seller-item {
+    @media only screen and (max-width: 680px) {
+      flex-wrap: wrap;
+    }
+  }
   .seller-info {
     border-bottom: 1px solid #ccc;
     padding: 10px;
   }
   .seller-image-ctr {
     padding: 5px;
-    margin: 10px;
+    margin: 20px;
+    @media only screen and (max-width: 680px) {
+      width: 100%;
+      flex: none;
+      display: flex;
+      justify-content: center;
+    }
     .seller-image {
       max-width: 100px;
       max-height: 100px;
@@ -3366,6 +3389,10 @@ body {
   }
   .item-info-ctr {
     padding: 10px;
+    @media only screen and (max-width: 680px) {
+      width: 100%;
+      flex: none;
+    }
   }
   .item-info {
     padding: 20px 0;
@@ -3455,9 +3482,18 @@ body {
         margin: 0;
       }
     }
+    .flex-row {
+      @media only screen and (max-width: 680px) {
+        flex-wrap: wrap;
+      }
+    }
     .input-ctr {
       position: relative;
       padding: 15px;
+      @media only screen and (max-width: 680px) {
+        width: 100%;
+        flex: none;
+      }
       input {
       border: none;
       border-bottom: 2px solid #ccc;
@@ -3473,10 +3509,10 @@ body {
         top: 10px;
         font-size: 12px;
       }
-      &:valid {
+    }
+      input.filled {
         background: white;
       }
-    }
       label {
         position: absolute;
         bottom: 25px;
@@ -3539,9 +3575,15 @@ body {
 }
 
 .right-section {
-  position: fixed;
-  top: 134px;
-  right: 200px;
+    position: fixed;
+    left: 1084px;
+    top: 134px;
+  @media only screen and (max-width: 1024px) {
+    position: static;
+    width: 100%;
+    flex: none;
+    margin: 20px 0;
+  }
   .confirmation-ctr {
     padding: 20px;
     border: 1px solid #ccc;
@@ -3572,7 +3614,11 @@ body {
 }
 
 .form-ctr {
-  position: relative;
+  display: flex;
+  width: 100%;
+  @media only screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 }
 
 .space-between {

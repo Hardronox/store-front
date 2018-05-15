@@ -3,6 +3,36 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field } from 'redux-form';
 
+
+export const validate = (values) => {
+        const errors = {};
+        if (!values.firstName) {
+            errors.firstName = 'Required'
+        }
+        // if (!values.lastName) {
+        //     errors.lastName = 'Required'
+        // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        //     errors.email = 'Invalid email address'
+        // }
+        // if (!values.age) {
+        //     errors.age = 'Required'
+        // } else if (isNaN(Number(values.age))) {
+        //     errors.age = 'Must be a number'
+        // } else if (Number(values.age) < 18) {
+        //     errors.age = 'Sorry, you must be at least 18 years old'
+        // }
+        return errors;
+    }
+
+
+const renderField = ({  type, meta: { touched, error }}) => {
+    return (
+        <div>
+            <input type={type}/>
+            {touched && error && <span>{error}</span>}
+        </div>
+    );
+}
 class OrderComponent extends React.Component {
 
   constructor(props) {
@@ -16,7 +46,18 @@ class OrderComponent extends React.Component {
 
   }
 
+  onSubmit(values) {
+      console.log(values);
+      this.props.submitOrder(values)
+  }
 
+  getClassName = (name) => {
+     return this.props.orderForm.values[name] ? 'filled' : '';
+  }
+
+  getValue = (name) => {
+      return this.props.orderForm.values[name] ? this.props.orderForm.values[name] : '';
+  }
 
   render() {
 
@@ -24,17 +65,20 @@ class OrderComponent extends React.Component {
       // This item is for layout purposes
       let item = {
           title: "Apple MacBook Pro 15 (2016) i7-6920HQ/16GB/512G SSD/Touch Bar/Radeon Pro 460 4GB",
+          src: "../images/Huawei-matebook-x-13-0-inte-core-i5-7200U-i7-7500U-4-8.jpg",
           price: "2199.99",
           shippingCharge: "90.50",
           importCharge: "552.43",
           seller: "deal_train",
           quantity: 1
       }
+      console.log(this.props);
+
+      const { handleSubmit, pristine, reset, submitting, orderForm } = this.props;
 
     return (
       <main className="main-container" role="main">
-        <div>
-          <form>
+          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="flex-row form-ctr">
               <div className="left-section flex-col">
                 <div className="item-details-ctr flex-col">
@@ -47,7 +91,7 @@ class OrderComponent extends React.Component {
                     </div>
                     <div className="seller-item flex-row">
                         <div className="seller-image-ctr">
-                            <img className="seller-image" src="../images/Huawei-matebook-x-13-0-inte-core-i5-7200U-i7-7500U-4-8.jpg" alt="item"/>
+                            <img className="seller-image" src={item.src} alt="item"/>
                         </div>
                         <div className="item-info-ctr flex-col">
                           <div className="item-info flex-row">
@@ -72,7 +116,7 @@ class OrderComponent extends React.Component {
                             <div className="item-shipping flex-col">
                                 <div className="item-global-shipping flex-col">
                                     <span>Shipping</span>
-                                    <span>Est. delivery: May 21</span>
+                                    <span>Est. delivery:</span>
                                     <span>International Priority Shipping <i className="fa fa-info-circle"
                                                                              aria-hidden="true"></i></span>
                                     <span>Includes international tracking</span>
@@ -324,51 +368,57 @@ class OrderComponent extends React.Component {
                                 {   // Required attribute in this and all the following inputs is to hide the floating label once the user has entered some text
                                     // TODO: find out if there's any other way to achieve the same effect
                                     }
-                                <Field name="firstName" component="input" type="text" required/>
+                                <Field
+                                    name="firstName"
+                                    component="input"
+                                    type="text"
+                                    className={this.getClassName('firstName')}
+                                    value={this.getValue('firstName')}
+                                />
                                 <label htmlFor="firstName">First Name</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="lastName" component="input" type="text" required/>
+                                <Field name="lastName" component="input" type="text" className={this.getClassName('lastName')}/>
                                 <label htmlFor="lastName">Last Name</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="streetAddress" component="input" type="text" required/>
+                                <Field name="streetAddress" component="input" type="text" className={this.getClassName('streetAddress')}/>
                                 <label htmlFor="streetAddress">Street Address</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="streetAddress2" component="input" type="text" required/>
+                                <Field name="streetAddress2" component="input" type="text" className={this.getClassName('streetAddress2')}/>
                                 <label htmlFor="streetAddress2">Street Address 2 (Optional)</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="city" component="input" type="text" required/>
+                                <Field name="city" component="input" type="text" className={this.getClassName('city')}/>
                                 <label htmlFor="city">City</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="state" component="input" type="text" required/>
+                                <Field name="state" component="input" type="text" className={this.getClassName('state')}/>
                                 <label htmlFor="state">State</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="zipCode" component="input" type="text" required/>
+                                <Field name="zipCode" component="input" type="text" className={this.getClassName('zipCode')}/>
                                 <label htmlFor="zipCode">ZIP Code</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="email" component="input" type="email" required/>
+                                <Field name="email" component="input" type="email" className={this.getClassName('email')}/>
                                 <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="confirmEmail" component="input" type="email" required/>
+                                <Field name="confirmEmail" component="input" type="email" className={this.getClassName('confirmEmail')}/>
                                 <label htmlFor="confirmEmail">Email</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="phone" component="input" type="tel" required/>
+                                <Field name="phone" component="input" type="tel" className={this.getClassName('phone')}/>
                                 <label htmlFor="phone">Phone Number</label>
                             </div>
                         </div>
@@ -403,8 +453,8 @@ class OrderComponent extends React.Component {
                     <div className="confirmation-ctr">
                         <div className="confirmation">
                             <div className="flex-row space-between">
-                                <span>Item ({item.quantity})</span>
-                                <span>US ${item.price}</span>
+                                <span>Item ({this.props.orderForm.values.orderQuantity})</span>
+                                <span>US ${(item.price * this.props.orderForm.values.orderQuantity).toFixed(2)}</span>
                             </div>
                             <div className="flex-row space-between">
                                 <span>Shipping</span>
@@ -418,18 +468,17 @@ class OrderComponent extends React.Component {
                         <div className="order-total-ctr">
                             <div className="flex-row space-between">
                                 <span>Order Total</span>
-                                <span className="order-total-price">US ${(+item.price + +item.shippingCharge + +item.importCharge).toFixed(2)}</span>
+                                <span className="order-total-price">US ${(+item.price * this.props.orderForm.values.orderQuantity + +item.shippingCharge + +item.importCharge).toFixed(2)}</span>
                             </div>
                         </div>
                         <div className="button-ctr">
-                            <button type="submit" className="btn btn-primary">Confirm and pay</button>
+                            <button type="submit" disabled={ pristine || submitting } className="btn btn-primary">Confirm and pay</button>
                         </div>
 
                     </div>
                 </div>
             </div>
           </form>
-        </div>
       </main>
     );
   }
@@ -439,5 +488,6 @@ OrderComponent.propTypes = {
   children: PropTypes.element,
 
 };
+
 
 export default OrderComponent;

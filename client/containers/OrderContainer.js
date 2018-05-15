@@ -2,11 +2,12 @@ import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 
 import OrderComponent from '../components/OrderComponent';
-import {getUsers, registerUser} from '../actions/actions';
+import {getUsers, registerUser, submitOrder} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
     routing: state.routing,
+    orderForm: state.form['order-form']
   };
 };
 
@@ -17,11 +18,17 @@ const mapDispatchToProps = dispatch => {
     },
     register: () => {
       dispatch(registerUser());
+    },
+    submitOrder: () => {
+      dispatch(submitOrder())
     }
   };
 };
 
 
 export default reduxForm({
-    form: 'order-form'
+    form: 'order-form',
+    initialValues: {
+      orderQuantity: 1
+    }
 })(connect(mapStateToProps, mapDispatchToProps)(OrderComponent));
