@@ -1,36 +1,36 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field } from 'redux-form';
 
 
-export const validate = (values) => {
-        const errors = {};
-        if (!values.firstName) {
-            errors.firstName = 'Required'
-        }
-        // if (!values.lastName) {
-        //     errors.lastName = 'Required'
-        // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        //     errors.email = 'Invalid email address'
-        // }
-        // if (!values.age) {
-        //     errors.age = 'Required'
-        // } else if (isNaN(Number(values.age))) {
-        //     errors.age = 'Must be a number'
-        // } else if (Number(values.age) < 18) {
-        //     errors.age = 'Sorry, you must be at least 18 years old'
-        // }
-        return errors;
-    }
+// export const validate = (values) => {
+//     const errors = {};
+//     if (!values.firstName) {
+//         errors.firstName = 'Required'
+//     }
+//     // if (!values.lastName) {
+//     //     errors.lastName = 'Required'
+//     // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+//     //     errors.email = 'Invalid email address'
+//     // }
+//     // if (!values.age) {
+//     //     errors.age = 'Required'
+//     // } else if (isNaN(Number(values.age))) {
+//     //     errors.age = 'Must be a number'
+//     // } else if (Number(values.age) < 18) {
+//     //     errors.age = 'Sorry, you must be at least 18 years old'
+//     // }
+//     return errors;
+// }
 
-
-const renderField = ({  type, meta: { touched, error }}) => {
+const renderField = ({ input, className, type, meta: { touched, error }}) => {
+    console.log(error);
     return (
-        <div>
-            <input type={type}/>
-            {touched && error && <span>{error}</span>}
-        </div>
+        <Fragment>
+            <input {...input} type={type} className={className}/>
+            {touched && error && <span className="error">{error}</span>}
+        </Fragment>
     );
 }
 class OrderComponent extends React.Component {
@@ -370,63 +370,65 @@ class OrderComponent extends React.Component {
                                     }
                                 <Field
                                     name="firstName"
-                                    component="input"
+                                    component={renderField}
                                     type="text"
                                     className={this.getClassName('firstName')}
-                                    value={this.getValue('firstName')}
                                 />
                                 <label htmlFor="firstName">First Name</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="lastName" component="input" type="text" className={this.getClassName('lastName')}/>
+                                <Field name="lastName" component={renderField} type="text" className={this.getClassName('lastName')}/>
                                 <label htmlFor="lastName">Last Name</label>
+                            </div>
+                            <div className="input-ctr">
+
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="streetAddress" component="input" type="text" className={this.getClassName('streetAddress')}/>
+                                <Field name="streetAddress" component={renderField} type="text" className={this.getClassName('streetAddress')}/>
                                 <label htmlFor="streetAddress">Street Address</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="streetAddress2" component="input" type="text" className={this.getClassName('streetAddress2')}/>
+                                <Field name="streetAddress2" component={renderField} type="text" className={this.getClassName('streetAddress2')}/>
                                 <label htmlFor="streetAddress2">Street Address 2 (Optional)</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="city" component="input" type="text" className={this.getClassName('city')}/>
+                                <Field name="city" component={renderField} type="text" className={this.getClassName('city')}/>
                                 <label htmlFor="city">City</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="state" component="input" type="text" className={this.getClassName('state')}/>
+                                <Field name="state" component={renderField} type="text" className={this.getClassName('state')}/>
                                 <label htmlFor="state">State</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="zipCode" component="input" type="text" className={this.getClassName('zipCode')}/>
+                                <Field name="zipCode" component={renderField} type="text" className={this.getClassName('zipCode')}/>
                                 <label htmlFor="zipCode">ZIP Code</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="email" component="input" type="email" className={this.getClassName('email')}/>
+                                <Field name="email" component={renderField} type="email" className={this.getClassName('email')}/>
                                 <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-ctr">
-                                <Field name="confirmEmail" component="input" type="email" className={this.getClassName('confirmEmail')}/>
-                                <label htmlFor="confirmEmail">Email</label>
+                                <Field name="confirmEmail" component={renderField} type="email" className={this.getClassName('confirmEmail')}/>
+                                <label htmlFor="confirmEmail">Confirm email</label>
                             </div>
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                <Field name="phone" component="input" type="tel" className={this.getClassName('phone')}/>
+                                <Field name="phone" component={renderField} type="tel" className={this.getClassName('phone')}/>
                                 <label htmlFor="phone">Phone Number</label>
                             </div>
                         </div>
-                        <div className="flex-row button-ctr">
-                            <button className="btn btn-primary">
-                                Done
-                            </button>
-                        </div>
+                        {/*<div className="flex-row button-ctr">*/}
+                            {/*<button className="btn btn-primary">*/}
+                                {/*Done*/}
+                            {/*</button>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
                 <div className="payment-methods-ctr">
