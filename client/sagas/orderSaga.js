@@ -9,7 +9,7 @@ export function* submitOrder(order) {
         const response = yield call(submitOrderApi, order);
         yield put({
             type: SUBMIT_ORDER_FULFILLED,
-            payload: response.data
+            payload: response
         });
     } catch(e) {
         yield put({
