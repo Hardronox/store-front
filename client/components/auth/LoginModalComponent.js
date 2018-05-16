@@ -19,18 +19,16 @@ class LoginModal extends React.Component {
 
   submit = user => {
     // print the form values to the console
-    console.log('kek');
-    console.log(user);
-    this.props.login();
+    this.props.login(user);
   };
 
   render () {
 
     return  (
-      <div className="show" id="myModal">
+      <div className="show">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="main-login main-center">
+            <div className="modal-auth">
               <LoginForm onSubmit={this.submit}/>
             </div>
           </div>

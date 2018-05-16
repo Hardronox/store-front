@@ -8,7 +8,7 @@ import Items from './ItemsComponent';
 import SalesBreakdownComponent from './SalesBreakdownComponent';
 import SalesByCountriesComponent from './SalesByCountriesComponent';
 import TasksComponent from './TasksComponent';
-import HeaderComponent from '../HeaderComponent';
+import HeaderComponent from '../../HeaderComponent';
 
 
 class DashboardComponent extends Component {

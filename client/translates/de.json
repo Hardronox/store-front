@@ -1,0 +1,9 @@
+{
+  "dashboard": "DEdashboard",
+  "status": "DEstatus",
+  "messages": "DEmessages",
+  "admin": "DEadmin",
+  "logout": "DElogout",
+  "search": "DEsearch",
+  "enter values": "DEenter values"
+}

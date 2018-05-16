@@ -32,7 +32,7 @@ class ProductInfoComponent extends Component {
   };
 
   imageHover(key) {
-    console.log(key);
+
     const images = Array.from(Array(5).keys());
     images.forEach((item, i) => {
       this.refs[`image${i}`].style.border = 'none';

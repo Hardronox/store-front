@@ -19,17 +19,16 @@ class RegisterModal extends React.Component {
 
   submit = user => {
     // print the form values to the console
-    // console.log(values)
     this.props.register(user);
   };
 
   render () {
 
     return  (
-      <div className="show" id="myModal">
+      <div className="show">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="main-login main-center">
+            <div className="modal-auth">
               <RegisterForm onSubmit={this.submit}/>
             </div>
           </div>
