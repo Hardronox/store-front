@@ -9,9 +9,10 @@ import PropTypes from 'prop-types';
 import ItemsListContainer from "../../containers/admin/ItemsListContainer";
 import NewItemContainer from "../../containers/admin/NewItemContainer";
 import DashboardContainer from "../../containers/admin/DashboardContainer";
-import HeaderContainer from "../../containers/HeaderContainer";
 import SidebarContainer from "../../containers/admin/SidebarContainer";
 import StatisticsContainer from "../../containers/admin/StatisticsContainer";
+import UsersListContainer from "../../containers/admin/UsersListContainer";
+import SendEmailsContainer from "../../containers/admin/SendEmailsContainer";
 
 class AdminComponent extends React.Component {
 
@@ -28,40 +29,12 @@ class AdminComponent extends React.Component {
     console.log(this.refs.search.value);
   }
 
-  renderAuthorization = () => {
-
-    let content = [
-      <div key="login">
-        <Link to="">Login</Link>
-      </div>
-    ];
-
-    if (localStorage.getItem('user')) {
-      content = [
-        <div key="user">
-          <Link to="">Hello, user</Link>
-        </div>,
-        <div key="logout">
-          <Link to="">Logout</Link>
-        </div>
-      ];
-
-    }
-
-    return (
-      <div className="authorization">
-        {content}
-      </div>
-    );
-  };
-
   render () {
     const {match} = this.props;
 
     return (
-      <div className="main-wrapper">
+      <div className="admin-wrapper">
         <div className="app" id="app">
-          <HeaderContainer />
           <SidebarContainer />
           <div className="sidebar-overlay" id="sidebar-overlay"/>
           <div className="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"/>
@@ -72,6 +45,8 @@ class AdminComponent extends React.Component {
             <Route path={`${match.url}/create-item`} component={NewItemContainer} />
             <Route path={`${match.url}/items-list`} component={ItemsListContainer} />
             <Route path={`${match.url}/statistics`} component={StatisticsContainer} />
+            <Route path={`${match.url}/users-list`} component={UsersListContainer} />
+            <Route path={`${match.url}/send-emails`} component={SendEmailsContainer} />
           </Switch>
 
           <footer className="footer">

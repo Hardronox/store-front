@@ -133,6 +133,21 @@ export const removeAllItemsFromCart = (id) => {
 };
 //-------------------------------------------------------------------------------------
 
+export const search = (keyword) => {
+  return (dispatch) => {
+    dispatch({ type: REMOVE_ALL_ITEMS_FROM_CART_PENDING, payload: keyword});
+  };
+};
+//-------------------------------------------------------------------------------------
+
+export let getTranslations = (lang) => {
+  return (dispatch) => {
+    let response = require(`../translates/${lang}.json`);
+
+    dispatch({ type: GET_TRANSLATIONS_FULFILLED, payload: response });
+  };
+};
+
 export const submitOrder = (order) => {
   return (dispatch) => {
     dispatch({ type: SUBMIT_ORDER_PENDING, payload: order})

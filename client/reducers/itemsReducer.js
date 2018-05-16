@@ -4,6 +4,7 @@ import {
   CREATE_ITEM_FULFILLED, CREATE_ITEM_REJECTED,
   UPDATE_ITEM_FULFILLED, UPDATE_ITEM_REJECTED,
   DELETE_ITEM_FULFILLED, DELETE_ITEM_REJECTED,
+  SEARCH_ITEM_FULFILLED, SEARCH_ITEM_REJECTED
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -84,6 +85,19 @@ const itemsReducer = (state = initialState, action) => {
       };
     }
     case DELETE_ITEM_REJECTED: {
+      return {
+        ...state,
+        keksStatus: action.error
+      };
+    }
+
+    case SEARCH_ITEM_FULFILLED: {
+      return {
+        ...state,
+        searchResults: action.payload
+      };
+    }
+    case SEARCH_ITEM_REJECTED: {
       return {
         ...state,
         keksStatus: action.error

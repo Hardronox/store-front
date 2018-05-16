@@ -3,7 +3,8 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Modal from '../reusable/ModalComponent';
+import Modal from './reusable/ModalComponent';
+import { withRouter } from "react-router-dom";
 
 class HeaderComponent extends React.Component {
 
@@ -14,17 +15,65 @@ class HeaderComponent extends React.Component {
       loginModalVisibility: false,
       profileDropdownVisibility: false,
       notificationsDropdownVisibility: false,
+      searchDropdownVisibility: false,
+      searchOpened: false
     };
   }
 
-
   componentWillMount() {
+    this.props.getTranslations('en');
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+
+      for (let key in this.state) {
+
+        if (this.state[key] && key !== 'searchOpened') {
+
+          if (key === 'searchDropdownVisibility') {
+            this.setState({
+              searchOpened: !this.state.searchOpened
+            });
+          }
+          this.toggleDropdown(key)
+        }
+      }
+    }
+  }
+
+  // get search results for dropdown
+  // search request fires every time when you write more than 2 symbols but dropdown opens once
+  search(e) {
+    if (e.target.value.length > 2) {
+      this.props.search(e.target.value);
+
+      if (!this.state.searchOpened) {
+        this.toggleDropdown('searchDropdownVisibility');
+
+        this.setState({
+          searchOpened: !this.state.searchOpened
+        });
+      }
+
+    } else if (e.target.value.length <= 2 && this.state.searchDropdownVisibility){
+      this.toggleDropdown('searchDropdownVisibility');
+
+      this.setState({
+        searchOpened: !this.state.searchOpened
+      });
+    }
 
   }
 
-  search() {
-    console.log(this.refs.search.value);
-  }
+  // when enter pressed
+  goToSearchResults = (e) => {
+    if (e.target.value.length > 0) {
+      if (e.keyCode === 13 || e.which === 13) {
+        this.props.history.push(`/search?value=${e.target.value}`);
+      }
+    }
+  };
 
   renderAuthorization = () => {
 
@@ -76,6 +125,24 @@ class HeaderComponent extends React.Component {
     });
   };
 
+  renderSearchDropdown = () => {
+
+    if (this.state.searchDropdownVisibility) {
+
+      const products = Array.from(Array(6).keys());
+
+      return products.map((item, i) => {
+        return (
+          <li key={i}>
+            <Link to={`item.link`} className="notification-item">
+              Item name
+            </Link>
+          </li>
+        );
+      });
+    }
+  };
+
   logout = (e) => {
     e.preventDefault();
     console.log('logging out');
@@ -89,26 +156,27 @@ class HeaderComponent extends React.Component {
   }
 
   changeModalVisibility = (type) => {
-    console.log(this.state);
     this.setState({
       [`${type}ModalVisibility`]: !this.state[`${type}ModalVisibility`]
     });
   };
 
+  // toggle different dropdowns depends on type
   toggleDropdown(type) {
 
-    if (!this.state[`${type}DropdownVisibility`]) {
+    if (!this.state[type]) {
       this.refs[type].classList.add('showDropdown');
     } else {
       this.refs[type].classList.remove('showDropdown');
     }
 
     this.setState({
-      [`${type}DropdownVisibility`]: !this.state[`${type}DropdownVisibility`]
+      [type]: !this.state[type]
     });
   }
 
   render () {
+    const {cart} = this.props;
 
     return (
       <header className="header">
@@ -132,13 +200,16 @@ class HeaderComponent extends React.Component {
           </Link>
         </div>
         <div className="header-block header-block-search">
-          <form role="search">
-            <div className="input-container">
-              <i className="fa fa-search"/>
-              <input type="search" placeholder="Search"/>
-              <div className="underline"/>
-            </div>
-          </form>
+          <div className="input-container">
+            <i className="fa fa-search"/>
+            <input type="search" placeholder="Search" onChange={(e) => this.search(e)} onKeyPress={(e) => this.goToSearchResults(e)}/>
+            <div className="underline"/>
+          </div>
+          <div className="dropdown-menu search-dropdown" ref="searchDropdownVisibility">
+            <ul className="search-container">
+              {this.renderSearchDropdown()}
+            </ul>
+          </div>
         </div>
         <div className="header-block header-block-nav">
           <ul>
@@ -151,13 +222,13 @@ class HeaderComponent extends React.Component {
           </ul>
           <ul className="nav-profile">
             <li className="notifications new">
-              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('notifications')}>
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('notificationsDropdownVisibility')}>
                 <i className="fa fa-bell-o"/>
                 <sup>
                   <span className="counter">8</span>
                 </sup>
               </div>
-              <div className="dropdown-menu notifications-dropdown-menu" ref="notifications">
+              <div className="dropdown-menu notifications-dropdown-menu" ref="notificationsDropdownVisibility">
                 <ul className="notifications-container">
                   {this.renderNotifications()}
                 </ul>
@@ -170,17 +241,19 @@ class HeaderComponent extends React.Component {
                 </footer>
               </div>
             </li>
-            <li className="notifications new">
-              <div className="nav-link" data-toggle="dropdown">
-                <i className="fa fa-shopping-cart"/> {(this.props.cart.cartProducts.length !== 0) ? this.props.cart.cartProducts.length : null}
+            <li className="cart new">
+              <div className="nav-link">
+                <Link to="/cart" className="dropdown-item">
+                  <i className="fa fa-shopping-cart"/> {(cart.cartProducts.length !== 0) ? cart.cartProducts.length : null}
+                </Link>
               </div>
             </li>
             <li className="profile dropdown">
-              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profile')}>
-                <div className="img" style={{backgroundImage: 'url(https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40)'}}> </div>
+              <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profileDropdownVisibility')}>
+                <div className="img" style={{backgroundImage: 'url(https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40)'}}/>
                 <span className="name"> John Doe </span>
               </div>
-              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profile">
+              <div className="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" ref="profileDropdownVisibility">
                 <Link className="dropdown-item" to="/user/12/profile">
                   <i className="fa fa-user icon"/> Profile
                 </Link>
@@ -210,4 +283,4 @@ HeaderComponent.propTypes = {
   routing: PropTypes.object,
 };
 
-export default HeaderComponent;
+export default withRouter(HeaderComponent);
