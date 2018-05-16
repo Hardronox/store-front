@@ -3580,6 +3580,7 @@ body {
       color: #2d363f;
       font-weight: normal;
       margin: 0;
+      margin-right: 20px;
     }
     input {
       border: 1px solid #ccc;
@@ -3587,6 +3588,11 @@ body {
       padding: 5px;
       margin: 5px;
     }
+    .btn {
+      padding: 10px;
+      margin: 5px;
+    }
+
   }
 }
 
@@ -3603,6 +3609,7 @@ body {
   .confirmation-ctr {
     padding: 20px;
     border: 1px solid #ccc;
+    min-width: 350px;
     border-radius: 3px;
   }
   .confirmation {

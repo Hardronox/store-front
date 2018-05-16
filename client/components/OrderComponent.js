@@ -2,30 +2,20 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field } from 'redux-form';
+import NumberFormat from 'react-number-format';
 
 
-// export const validate = (values) => {
-//     const errors = {};
-//     if (!values.firstName) {
-//         errors.firstName = 'Required'
-//     }
-//     // if (!values.lastName) {
-//     //     errors.lastName = 'Required'
-//     // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//     //     errors.email = 'Invalid email address'
-//     // }
-//     // if (!values.age) {
-//     //     errors.age = 'Required'
-//     // } else if (isNaN(Number(values.age))) {
-//     //     errors.age = 'Must be a number'
-//     // } else if (Number(values.age) < 18) {
-//     //     errors.age = 'Sorry, you must be at least 18 years old'
-//     // }
-//     return errors;
-// }
-
-const renderField = ({ input, className, type, meta: { touched, error }}) => {
-    console.log(error);
+const renderField = ({ input, className, type, meta: { touched, error }, select, children}) => {
+    if(select) {
+        return (
+          <Fragment>
+              <select {...input}>
+                  {children}
+              </select>
+                  {touched && error && <span className="error">{error}</span>}
+          </Fragment>
+        );
+    }
     return (
         <Fragment>
             <input {...input} type={type} className={className}/>
@@ -55,9 +45,11 @@ class OrderComponent extends React.Component {
      return this.props.orderForm.values[name] ? 'filled' : '';
   }
 
-  getValue = (name) => {
-      return this.props.orderForm.values[name] ? this.props.orderForm.values[name] : '';
-  }
+  // TODO: set initial values if they exist in the store
+
+  // getValue = (name) => {
+  //     return this.props.orderForm.values[name] ? this.props.orderForm.values[name] : '';
+  // }
 
   render() {
 
@@ -66,15 +58,18 @@ class OrderComponent extends React.Component {
       let item = {
           title: "Apple MacBook Pro 15 (2016) i7-6920HQ/16GB/512G SSD/Touch Bar/Radeon Pro 460 4GB",
           src: "../images/Huawei-matebook-x-13-0-inte-core-i5-7200U-i7-7500U-4-8.jpg",
-          price: "2199.99",
-          shippingCharge: "90.50",
-          importCharge: "552.43",
+          price: 2199.99,
+          shippingCharge: 90.55,
+          importCharge: 552.43,
           seller: "deal_train",
           quantity: 1
       }
-      console.log(this.props);
 
-      const { handleSubmit, pristine, reset, submitting, orderForm } = this.props;
+      const { handleSubmit, pristine, submitting, orderForm: {values} } = this.props;
+      const totalItemPrice = (item.price * values.orderQuantity).toFixed(2);
+      const totalImportCharge = (item.importCharge * values.orderQuantity).toFixed(2);
+      const totalOrderPrice = (item.price * values.orderQuantity + item.shippingCharge + item.importCharge * values.orderQuantity).toFixed(2);
+      const pricePrefix = 'US $';
 
     return (
       <main className="main-container" role="main">
@@ -96,11 +91,13 @@ class OrderComponent extends React.Component {
                         <div className="item-info-ctr flex-col">
                           <div className="item-info flex-row">
                             <div className="item-title">{item.title}</div>
-                            <div className="item-price">${item.price}</div>
+                            <div className="item-price">
+                                <NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                            </div>
                           </div>
                           <div className="item-quantity flex-row">
                             <label className="lbl" htmlFor="orderQuantity">Quantity</label>
-                              <Field component="select" name="orderQuantity" value="1">
+                              <Field component={renderField} select name="orderQuantity" value="1">
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -110,7 +107,7 @@ class OrderComponent extends React.Component {
                                   <option value="7">7</option>
                                   <option value="8">8</option>
                                   <option value="9">9</option>
-                                  <option value="10+">10+</option>
+                                  <option value="10">10+</option>
                               </Field>
                           </div>
                             <div className="item-shipping flex-col">
@@ -120,12 +117,16 @@ class OrderComponent extends React.Component {
                                     <span>International Priority Shipping <i className="fa fa-info-circle"
                                                                              aria-hidden="true"></i></span>
                                     <span>Includes international tracking</span>
-                                    <span>US ${item.shippingCharge}</span>
+                                    <span>
+                                        <NumberFormat value={item.shippingCharge} displayType={'text'} thousandSeparator={true} prefix={pricePrefix}/>
+                                    </span>
                                 </div>
                                 <div className="item-shipping-charge flex-col">
                                     <span>Import charges <i className="fa fa-info-circle" aria-hidden="true"></i></span>
                                     <span>No additional import charges at delivery.</span>
-                                    <span>US ${item.importCharge}</span>
+                                    <span>
+                                        <NumberFormat value={totalImportCharge} displayType={'text'} thousandSeparator={true} prefix={pricePrefix} />
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +139,8 @@ class OrderComponent extends React.Component {
                         <div className="flex-row select-ctr">
                             <label htmlFor="shippingCountry">Country or region</label>
                             <Field
-                                component="select"
+                                component={renderField}
+                                select
                                 name="shippingCountry"
                                 dvalue="UA"
                                 autoComplete="country">
@@ -365,8 +367,11 @@ class OrderComponent extends React.Component {
                         </div>
                         <div className="flex-row">
                             <div className="input-ctr">
-                                {   // Required attribute in this and all the following inputs is to hide the floating label once the user has entered some text
+                                {   // Required attribute in this and all the following inputs is to hide the floating label
+                                    // once the user has entered some text
                                     // TODO: find out if there's any other way to achieve the same effect
+
+                                    // Update: added getClassName method to achieve the same effect & removed the required attribute
                                     }
                                 <Field
                                     name="firstName"
@@ -435,6 +440,8 @@ class OrderComponent extends React.Component {
                     <h2 className="section-title">Pay with</h2>
                     <div className="payment-methods">
                         <div>
+                            {// TODO: find out whether some alternative payment methods should be added
+                            }
                             <img src="" alt=""/>
                         </div>
                     </div>
@@ -442,9 +449,11 @@ class OrderComponent extends React.Component {
                 <div className="incentives-ctr">
                     <h2 className="section-title">Add coupons</h2>
                     <div className="incentives">
+                        {// TODO: find out whether a coupon system should be implemented
+                            }
                         <div>
                             <label htmlFor="couponCode">Enter code</label>
-                            <Field name="couponCode" component="input" type="text"/>
+                            <Field name="couponCode" component={renderField} type="text"/>
                             <button className="btn btn-secondary">Apply</button>
                         </div>
                     </div>
@@ -455,22 +464,30 @@ class OrderComponent extends React.Component {
                     <div className="confirmation-ctr">
                         <div className="confirmation">
                             <div className="flex-row space-between">
-                                <span>Item ({this.props.orderForm.values.orderQuantity})</span>
-                                <span>US ${(item.price * this.props.orderForm.values.orderQuantity).toFixed(2)}</span>
+                                <span>Item ({values.orderQuantity})</span>
+                                <span>
+                                    <NumberFormat value={totalItemPrice} displayType={'text'} thousandSeparator={true} prefix={pricePrefix} />
+                                </span>
                             </div>
                             <div className="flex-row space-between">
                                 <span>Shipping</span>
-                                <span>US ${item.shippingCharge}</span>
+                                <span>
+                                     <NumberFormat value={item.shippingCharge} displayType={'text'} thousandSeparator={true} prefix={pricePrefix} />
+                                </span>
                             </div>
                             <div className="flex-row space-between">
                                 <span>Import charges</span>
-                                <span>US ${item.importCharge}</span>
+                                <span>
+                                     <NumberFormat value={totalImportCharge} displayType={'text'} thousandSeparator={true} prefix={pricePrefix} />
+                                </span>
                             </div>
                         </div>
                         <div className="order-total-ctr">
                             <div className="flex-row space-between">
                                 <span>Order Total</span>
-                                <span className="order-total-price">US ${(+item.price * this.props.orderForm.values.orderQuantity + +item.shippingCharge + +item.importCharge).toFixed(2)}</span>
+                                <span className="order-total-price">
+                                     <NumberFormat value={totalOrderPrice} displayType={'text'} thousandSeparator={true} prefix={pricePrefix} />
+                                </span>
                             </div>
                         </div>
                         <div className="button-ctr">
