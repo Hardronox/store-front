@@ -1,10 +1,23 @@
 import {
-        REGISTER_USER_PENDING, LOGIN_USER_PENDING, UPDATE_USER_PENDING,
-        GET_USERS_PENDING, GET_SINGLE_USER_PENDING,
-        CREATE_ITEM_PENDING, UPDATE_ITEM_PENDING, DELETE_ITEM_PENDING,
-        GET_ITEMS_PENDING, GET_SINGLE_ITEM_PENDING, GET_TRANSLATIONS_FULFILLED,
-        GET_COMMENTS_PENDING, CREATE_COMMENT_PENDING, UPDATE_COMMENT_PENDING, DELETE_COMMENT_PENDING,
-        ADD_ITEM_TO_CART_PENDING, REMOVE_ITEM_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_PENDING, GET_CART_ITEMS_PENDING
+    REGISTER_USER_PENDING,
+    LOGIN_USER_PENDING,
+    UPDATE_USER_PENDING,
+    GET_USERS_PENDING,
+    GET_SINGLE_USER_PENDING,
+    CREATE_ITEM_PENDING,
+    UPDATE_ITEM_PENDING,
+    DELETE_ITEM_PENDING,
+    GET_ITEMS_PENDING,
+    GET_SINGLE_ITEM_PENDING,
+    GET_COMMENTS_PENDING,
+    CREATE_COMMENT_PENDING,
+    UPDATE_COMMENT_PENDING,
+    DELETE_COMMENT_PENDING,
+    ADD_ITEM_TO_CART_PENDING,
+    REMOVE_ITEM_FROM_CART_PENDING,
+    REMOVE_ALL_ITEMS_FROM_CART_PENDING,
+    GET_CART_ITEMS_PENDING,
+    SUBMIT_ORDER_PENDING
 } from '../constants/actionTypes';
 
 
@@ -127,7 +140,6 @@ export const search = (keyword) => {
 };
 //-------------------------------------------------------------------------------------
 
-
 export let getTranslations = (lang) => {
   return (dispatch) => {
     let response = require(`../translates/${lang}.json`);
@@ -135,3 +147,9 @@ export let getTranslations = (lang) => {
     dispatch({ type: GET_TRANSLATIONS_FULFILLED, payload: response });
   };
 };
+
+export const submitOrder = (order) => {
+  return (dispatch) => {
+    dispatch({ type: SUBMIT_ORDER_PENDING, payload: order})
+  }
+}
