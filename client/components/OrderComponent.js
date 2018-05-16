@@ -65,7 +65,7 @@ class OrderComponent extends React.Component {
           quantity: 1
       }
 
-      const { handleSubmit, pristine, submitting, orderForm: {values} } = this.props;
+      const { handleSubmit, pristine, submitting, invalid,  orderForm: {values} } = this.props;
       const totalItemPrice = (item.price * values.orderQuantity).toFixed(2);
       const totalImportCharge = (item.importCharge * values.orderQuantity).toFixed(2);
       const totalOrderPrice = (item.price * values.orderQuantity + item.shippingCharge + item.importCharge * values.orderQuantity).toFixed(2);
@@ -491,7 +491,7 @@ class OrderComponent extends React.Component {
                             </div>
                         </div>
                         <div className="button-ctr">
-                            <button type="submit" disabled={ pristine || submitting } className="btn btn-primary">Confirm and pay</button>
+                            <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-primary">Confirm and pay</button>
                         </div>
 
                     </div>
