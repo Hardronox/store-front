@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
@@ -6,6 +6,8 @@ import Slider from './reusable/SliderComponent';
 import NumberPicker from './reusable/NumberPicker';
 import Comment from './reusable/Comment';
 import DescriptionItem from './reusable/DescriptionItem';
+import CommentForm from './reusable/CommentForm';
+
 
 class ProductInfoComponent extends Component {
 
@@ -290,6 +292,9 @@ class ProductInfoComponent extends Component {
           <div className="comments-container flex-col">
               <div className="comments-header"></div>
               <div>{this.renderComments()}</div>
+              <div>
+                  <CommentForm/>
+              </div>
           </div>
         </div>
       </main>
