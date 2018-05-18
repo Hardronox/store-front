@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
@@ -7,6 +7,7 @@ import NumberPicker from './reusable/NumberPicker';
 import Comment from './reusable/Comment';
 import DescriptionItem from './reusable/DescriptionItem';
 import CommentForm from './reusable/CommentForm';
+import { Helmet } from 'react-helmet';
 
 
 class ProductInfoComponent extends Component {
@@ -166,108 +167,115 @@ class ProductInfoComponent extends Component {
 
 
     return (
-      <main className="main-container" role="main">
-         <h1>Product Title</h1>
-          <div className="row product-info">
-            <div className="image-set">
-              {this.renderImageSet()}
-            </div>
-            <div className="col-md-6 info-image">
-              <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
-            </div>
-            <div className="col-md-5 general-info">
-              <div className="general-info-container">
-                <div>
-                  <div>Delivery</div>
-                  <div>
-                    <span>Special proposition:</span><br/>
-                    <span>Get this item with 25% off. Ends in 18 hours</span>
+        <Fragment>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Product Info</title>
+                <meta name="description" content="Some info about the product" />
+            </Helmet>
+              <main className="main-container" role="main">
+                 <h1>Product Title</h1>
+                  <div className="row product-info">
+                    <div className="image-set">
+                      {this.renderImageSet()}
+                    </div>
+                    <div className="col-md-6 info-image">
+                      <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
+                    </div>
+                    <div className="col-md-5 general-info">
+                      <div className="general-info-container">
+                        <div>
+                          <div>Delivery</div>
+                          <div>
+                            <span>Special proposition:</span><br/>
+                            <span>Get this item with 25% off. Ends in 18 hours</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="general-info-container">
+                        <div>
+                          <div>Price</div>
+                          <div>200$</div>
+                        </div>
+                        <div>
+                          <div>Delivery</div>
+                          <div>
+                            <span>Free shipping in your country using Local Air Mail</span><br/>
+                            <span>Approximate shipping time: 25 days</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div>Quantity</div>
+                          <NumberPicker value={this.state.quantityValue} onValueChange={this.updateNumberPicker} />
+                        </div>
+                        <div>
+                          <div>Total price</div>
+                          <div>2</div>
+                        </div>
+                        <div className="buy-buttons">
+                          <button className="btn btn-primary" onClick={this.addToCart}>
+                            <i className="fa fa-cart-arrow-down"/> Add to cart
+                          </button>
+                          <Link to="/order/12" className="btn btn-success">Buy now</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h1>Recomended</h1>
+                  <div className="small-slider-container">
+                    <Slider slides={slides} size="small" showInfo={true} slidesPerView={5}/>
+                  </div>
+                <div className="flex-row space-between">
+                  <div className="product-description-container flex-col">
+                    <div className="product-description-header flex-col">
+                        <div className="product-description-title">
+                            Technical Characteristics:
+                        </div>
+                        <div className="product-description-buttons flex-row">
+                          <button
+                              onClick={() => this.selectTab('product-description-general')}
+                              className="select-general-button active">
+                              General
+                          </button>
+                          <button
+                              onClick={() => this.selectTab('product-description-complete')}
+                              className="select-complete-button"
+                          >All characteristics</button>
+                        </div>
+                    </div>
+                    <div className="product-description flex-col">
+                      <div className="product-description-general selected flex-col"
+                        >
+                          {this.renderDescriptionItems('general')}
+                      </div>
+                      <div className="product-description-complete"
+                      >
+                          {this.renderDescriptionItems('complete')}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="comments-container flex-col">
+                      <div className="comments-header"></div>
+                      <div>{this.renderComments()}</div>
+                      { !this.state.commentsExpanded && this.props.comments.comments.length > 3 &&
+                      <div className="flex-row button-container">
+                          <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: true})}>
+                              Show All
+                          </button>
+                      </div>}
+                      { this.state.commentsExpanded &&
+                      <div className="flex-row button-container">
+                          <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: false})}>
+                              Collapse
+                          </button>
+                      </div>}
+                      <div>
+                          <CommentForm/>
+                      </div>
                   </div>
                 </div>
-              </div>
-              <div className="general-info-container">
-                <div>
-                  <div>Price</div>
-                  <div>200$</div>
-                </div>
-                <div>
-                  <div>Delivery</div>
-                  <div>
-                    <span>Free shipping in your country using Local Air Mail</span><br/>
-                    <span>Approximate shipping time: 25 days</span>
-                  </div>
-                </div>
-                <div>
-                  <div>Quantity</div>
-                  <NumberPicker value={this.state.quantityValue} onValueChange={this.updateNumberPicker} />
-                </div>
-                <div>
-                  <div>Total price</div>
-                  <div>2</div>
-                </div>
-                <div className="buy-buttons">
-                  <button className="btn btn-primary" onClick={this.addToCart}>
-                    <i className="fa fa-cart-arrow-down"/> Add to cart
-                  </button>
-                  <Link to="/order/12" className="btn btn-success">Buy now</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h1>Recomended</h1>
-          <div className="small-slider-container">
-            <Slider slides={slides} size="small" showInfo={true} slidesPerView={5}/>
-          </div>
-        <div className="flex-row space-between">
-          <div className="product-description-container flex-col">
-            <div className="product-description-header flex-col">
-                <div className="product-description-title">
-                    Technical Characteristics:
-                </div>
-                <div className="product-description-buttons flex-row">
-                  <button
-                      onClick={() => this.selectTab('product-description-general')}
-                      className="select-general-button active">
-                      General
-                  </button>
-                  <button
-                      onClick={() => this.selectTab('product-description-complete')}
-                      className="select-complete-button"
-                  >All characteristics</button>
-                </div>
-            </div>
-            <div className="product-description flex-col">
-              <div className="product-description-general selected flex-col"
-                >
-                  {this.renderDescriptionItems('general')}
-              </div>
-              <div className="product-description-complete"
-              >
-                  {this.renderDescriptionItems('complete')}
-              </div>
-            </div>
-          </div>
-          <div className="comments-container flex-col">
-              <div className="comments-header"></div>
-              <div>{this.renderComments()}</div>
-              { !this.state.commentsExpanded && this.props.comments.comments.length > 3 &&
-              <div className="flex-row button-container">
-                  <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: true})}>
-                      Show All
-                  </button>
-              </div>}
-              { this.state.commentsExpanded &&
-              <div className="flex-row button-container">
-                  <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: false})}>
-                      Collapse
-                  </button>
-              </div>}
-              <div>
-                  <CommentForm/>
-              </div>
-          </div>
-        </div>
-      </main>
+              </main>
+        </Fragment>
 
     );
   }
