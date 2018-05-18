@@ -24,7 +24,7 @@ import {
     DISLIKE_COMMENT_PENDING
 } from '../constants/actionTypes'
 
-import {getCommentsApi, createCommentApi, updateCommentApi, deleteCommentApi} from '../api/commentsApi'
+import {getCommentsApi, createCommentApi, updateCommentApi, deleteCommentApi, likeCommentApi, dislikeCommentApi, createReplyApi } from '../api/commentsApi'
 
 /**
  * Generator for sending action (Tweet, Retweet ...)
@@ -86,7 +86,8 @@ export function* createReply(action) {
 
 export function* likeComment(action) {
     try {
-        // TODO: update comment's 'liked' property in the database
+        // TODO: update comment's 'liked' property in the database by calling Api
+        // TODO: use likeCommentApi function
         yield put({ type: LIKE_COMMENT_FULFILLED, id: action.id})
     } catch (e) {
         yield put({type: LIKE_COMMENT_REJECTED, error: e.error || e.statusText})
@@ -95,7 +96,8 @@ export function* likeComment(action) {
 
 export function* dislikeComment(action) {
     try {
-        // TODO: update comment's 'disliked' property in the database
+        // TODO: update comment's 'disliked' property in the database by calling Api
+        // TODO: use dislikeCommentApi function
         yield put({ type: DISLIKE_COMMENT_FULFILLED, id: action.id})
     } catch (e) {
         yield put({type: DISLIKE_COMMENT_REJECTED, error: e.error || e.statusText})
