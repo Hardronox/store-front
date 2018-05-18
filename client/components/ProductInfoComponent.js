@@ -15,7 +15,7 @@ class ProductInfoComponent extends Component {
     super(props);
     this.state = {
       quantityValue: 1,
-        selectedTab: 1
+      commentsExpanded: false
     };
   }
 
@@ -80,7 +80,6 @@ class ProductInfoComponent extends Component {
   selectTab = (tabSelector) => {
       const tab = document.getElementsByClassName(tabSelector)[0];
       if(tab.classList.contains('selected')) {
-          console.log('immediattwe');
           return;
       }
       const general = document.getElementsByClassName('product-description-general')[0];
@@ -101,10 +100,15 @@ class ProductInfoComponent extends Component {
   }
 
   renderComments() {
+    if(!this.state.commentsExpanded) {
+        return this.props.comments.comments.slice(0, 2).map((comment) => {
+            return <Comment comment={comment} key={comment.id}/>
+        });
+    }
+
     return this.props.comments.comments.map((comment) => {
       return <Comment comment={comment} key={comment.id} />
-        }
-      );
+        });
   }
 
   renderDescriptionItem() {
@@ -226,6 +230,16 @@ class ProductInfoComponent extends Component {
           <div className="comments-container flex-col">
               <div className="comments-header"></div>
               <div>{this.renderComments()}</div>
+              { !this.state.commentsExpanded && <div className="flex-row button-container">
+                  <button className="btn btn-secondary" onClick={() => this.setState({commentsExpanded: true})}>
+                      Show All
+                  </button>
+              </div>}
+              { this.state.commentsExpanded && <div className="flex-row button-container">
+                  <button className="btn btn-secondary" onClick={() => this.setState({commentsExpanded: false})}>
+                      Collapse
+                  </button>
+              </div>}
               <div>
                   <CommentForm/>
               </div>

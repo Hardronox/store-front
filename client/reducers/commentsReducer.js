@@ -121,7 +121,6 @@ const commentsReducer = (state = initialState, action) => {
           };
       }
       case LIKE_COMMENT_FULFILLED: {
-          console.log(78);
           return {
               ...state,
               comments: state.comments.map(
@@ -130,8 +129,6 @@ const commentsReducer = (state = initialState, action) => {
           };
       }
       case DISLIKE_COMMENT_FULFILLED: {
-          console.log(73338);
-          console.log(action.id);
           return {
               ...state,
               comments: state.comments.map(

@@ -3797,69 +3797,74 @@ body {
     width: 25%;
     flex: none;
   }
-  .description-value {
-
-  }
 }
 
-/* *******************************************
-*			Comment Form styles
-********************************************** */
-
-.comment-form {
-  padding: 20px;
-  .comment-form-header {
+.comments-container {
+  .button-container {
     justify-content: center;
+    padding: 20px;
   }
-  .input-container {
-    margin-top: 10px;
-    align-items: center;
-    label {
-      margin: 0;
-      margin-right: 10px;
-      width: 25%;
+}
+  /* *******************************************
+  *			Comment Form styles
+  ********************************************** */
+
+  .comment-form {
+    padding: 20px;
+    .comment-form-header {
+      justify-content: center;
     }
-    .input-field {
-      width: 250px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      padding: 5px;
-      &:focus {
-        border: 1px solid #369AED;
-        outline: none;
+    .input-container {
+      margin-top: 10px;
+      align-items: center;
+      label {
+        margin: 0;
+        margin-right: 10px;
+        width: 25%;
+      }
+      .input-field {
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 5px;
+        &:focus {
+          border: 1px solid #369AED;
+          outline: none;
+        }
       }
     }
-  }
-  .button-container {
-    margin-top: 15px;
-    justify-content: center;
-  }
-}
-
-.comment-reply-form {
-  padding: 20px;
-  margin-left: 50px;
-  .input-container {
-    margin-top: 10px;
-    align-items: center;
-    label {
-      width: 30%;
-      margin: 0;
-      margin-right: 10px;
+    .button-container {
+      margin-top: 15px;
+      justify-content: center;
     }
-    .input-field {
-      width: 200px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      padding: 5px;
-      &:focus {
-        border: 1px solid #369AED;
-        outline: none;
+  }
+
+  .comment-reply-form {
+    padding: 20px;
+    margin-left: 50px;
+    .input-container {
+      margin-top: 10px;
+      align-items: center;
+      label {
+        width: 30%;
+        margin: 0;
+        margin-right: 10px;
+      }
+      .input-field {
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 5px;
+        &:focus {
+          border: 1px solid #369AED;
+          outline: none;
+        }
       }
     }
+    .button-container {
+      margin-top: 15px;
+      justify-content: center;
+    }
   }
-  .button-container {
-    margin-top: 15px;
-    justify-content: center;
-  }
-}
+  
+
