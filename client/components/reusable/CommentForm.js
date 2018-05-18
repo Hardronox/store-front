@@ -43,7 +43,6 @@ class CommentForm extends Component {
     }
 
     render() {
-        console.log(this.props);
         const { handleSubmit,  pristine, submitting, invalid } = this.props;
         return (
             <form className="flex-col comment-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
