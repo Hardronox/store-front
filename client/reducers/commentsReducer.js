@@ -4,7 +4,11 @@ import {
     CREATE_COMMENT_REJECTED,
     CREATE_REPLY_PENDING,
     CREATE_REPLY_FULFILLED,
-    CREATE_REPLY_REJECTED, LIKE_COMMENT_FULFILLED, DISLIKE_COMMENT_FULFILLED
+    CREATE_REPLY_REJECTED,
+    LIKE_COMMENT_FULFILLED,
+    DISLIKE_COMMENT_FULFILLED,
+    LIKE_COMMENT_REJECTED,
+    DISLIKE_COMMENT_REJECTED
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -23,17 +27,7 @@ const initialState = {
                   author: 'author',
                   date: 1526551702895,
                   text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-              },
-              {
-                  author: 'author',
-                  date: 1526551702895,
-                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-              },
-              {
-                  author: 'author',
-                  date: 1526551702895,
-                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-              },
+              }
           ]
       },
       {   author: 'author',
@@ -120,6 +114,12 @@ const commentsReducer = (state = initialState, action) => {
               )
           };
       }
+      case CREATE_REPLY_REJECTED: {
+          return {
+              ...state,
+              error: action.payload
+          }
+      }
       case LIKE_COMMENT_FULFILLED: {
           return {
               ...state,
@@ -127,6 +127,12 @@ const commentsReducer = (state = initialState, action) => {
                   (comment) => comment.id === action.id ? {...comment, liked: comment.liked + 1} : comment
               )
           };
+      }
+      case LIKE_COMMENT_REJECTED: {
+          return {
+              ...state,
+              error: action.payload
+          }
       }
       case DISLIKE_COMMENT_FULFILLED: {
           return {
@@ -136,7 +142,12 @@ const commentsReducer = (state = initialState, action) => {
               )
           };
       }
-
+      case DISLIKE_COMMENT_REJECTED: {
+          return {
+              ...state,
+              error: action.payload
+          }
+      }
 
     default:
       return state;
