@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createReply } from "../../actions/actions";
 
 const renderField = ({ input, textarea, type, className, meta: { touched, error }})  => {
     if(textarea) {
@@ -22,7 +24,9 @@ const renderField = ({ input, textarea, type, className, meta: { touched, error 
 class CommentReplyForm extends Component {
 
     onSubmit(values) {
-        console.log(values);
+        const date =  Date.now();
+        this.props.createReply({...values, date}, this.props.comment.id);
+        this.props.reset();
     }
 
     render() {
@@ -48,6 +52,16 @@ class CommentReplyForm extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        createReply: (reply, id) => {
+            dispatch(createReply(reply, id));
+        },
+    };
+};
+
+CommentReplyForm = connect(null, mapDispatchToProps)(CommentReplyForm);
 
 export default reduxForm({
     form: 'comment-reply'

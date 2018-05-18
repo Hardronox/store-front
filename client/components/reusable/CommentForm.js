@@ -1,6 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import ReactStars from 'react-stars'
+import { connect } from 'react-redux';
+import {createComment} from "../../actions/actions";
+import { v4 } from "uuid";
 
 const renderField = ({ input, textarea, type, className, meta: { touched, error }})  => {
     if(textarea) {
@@ -31,10 +34,16 @@ class CommentForm extends Component {
     }
 
     onSubmit(values) {
-        console.log(values);
+        const id = v4();
+        const date = Date.now();
+        console.log(date);
+        this.props.createComment({...values, id, replies: [], date, liked: 0, disliked: 0});
+        this.setState({starRating: 0})
+        this.props.reset();
     }
 
     render() {
+        console.log(this.props);
         const { handleSubmit,  pristine, submitting, invalid } = this.props;
         return (
             <form className="flex-col comment-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -77,6 +86,17 @@ class CommentForm extends Component {
         );
     }
 }
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        createComment: (comment) => {
+            dispatch(createComment(comment));
+        },
+    };
+};
+
+CommentForm = connect(null, mapDispatchToProps)(CommentForm);
 
 export default reduxForm({
     form: 'comment'

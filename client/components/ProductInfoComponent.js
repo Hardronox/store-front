@@ -101,74 +101,8 @@ class ProductInfoComponent extends Component {
   }
 
   renderComments() {
-    const comments = [
-        {   author: 'author',
-            rating: 3,
-            date: 'today',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-            pros: 'b illo inventore veritatis et quasi a',
-            cons: 'b illo inventore veritatis et quasi a',
-            replies: [
-                {
-                    author: 'author',
-                    date: 'yesterday',
-                    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-                },
-                {
-                    author: 'author',
-                    date: 'yesterday',
-                    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-                },
-                {
-                    author: 'author',
-                    date: 'yesterday',
-                    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-                },
-            ]
-        },
-        {   author: 'author',
-            rating: 5,
-            date: 'today',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-            pros: 'b illo inventore veritatis et quasi a',
-            cons: 'b illo inventore veritatis et quasi a'
-        },
-        {   author: 'dedsed',
-            rating: 4.5,
-            date: 'today',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-            pros: 'b illo inventore veritatis et quasi a',
-            cons: 'b illo inventore veritatis et quasi a',
-            replies: [
-                {
-                    author: 'author',
-                    date: 'yesterday',
-                    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-                },
-                {
-                    author: 'author',
-                    date: 'yesterday',
-                    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
-                },
-            ]
-        },
-        {   author: 'author',
-            rating: 1,
-            date: 'today',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-            pros: 'b illo inventore veritatis et quasi a',
-            cons: 'b illo inventore veritatis et quasi a'
-        },
-        {   author: 'author',
-            rating: 5,
-            date: 'today',
-            text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-            pros: 'b illo inventore veritatis et quasi a',
-            cons: 'b illo inventore veritatis et quasi a'
-        }
-    ];
-    return comments.map((comment, i) => {
-      return <Comment comment={comment} key={i} />
+    return this.props.comments.comments.map((comment) => {
+      return <Comment comment={comment} key={comment.id} />
         }
       );
   }

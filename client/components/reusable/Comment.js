@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import ProductInfoComponent from "../ProductInfoComponent";
 import ReactStars from 'react-stars';
 import CommentReplyForm from './CommentReplyForm';
+import {connect} from 'react-redux';
+import {likeComment, dislikeComment} from "../../actions/actions";
 
 
 class Comment extends Component {
@@ -44,7 +46,7 @@ class Comment extends Component {
                 <div className="comment-container flex-col" key={i}>
                     <div className="comment-header flex-row space-between">
                         <div className="comment-author">{reply.author}</div>
-                        <div className="comment-date">{reply.date}</div>
+                        <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
                     </div>
                         <div className="comment-body flex-col">
                             <div className="comment-text">
@@ -59,7 +61,7 @@ class Comment extends Component {
     }
 
     render() {
-    const { author, rating, date, text, pros, cons, replies } = this.props.comment;
+    const { author, rating, date, text, pros, cons, replies, liked, disliked, id } = this.props.comment;
     const ratingConfig = {
         count: 5,
         half: true,
@@ -81,8 +83,8 @@ class Comment extends Component {
                     </div>}
                 </div>
                 <div className="flex-row">
-                    <div className="comment-date">{date}</div>
-                    <div className="comment-link">
+                    <div className="comment-date">{new Date(date).toLocaleString()}</div>
+                    <div className="comment-link" onClick={() => console.log(id)}>
                         <i className="fa fa-link" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -98,8 +100,14 @@ class Comment extends Component {
                     { this.renderReplyButton()}
                 </div>
                 <div className="comment-react-buttons flex-row">
-                    <LikeButton onClick={() => console.log("liked")} />
-                    <DislikeButton onClick={() => console.log("disliked")} />
+                    <div className="flex-col">
+                        <span className="likes">{liked}</span>
+                        <LikeButton onClick={() => this.props.likeComment(id)} />
+                    </div>
+                    <div className="flex-col">
+                        <span className="dislikes">{disliked}</span>
+                        <DislikeButton onClick={() => this.props.dislikeComment(id)} />
+                    </div>
 
                 </div>
             </div>
@@ -108,7 +116,7 @@ class Comment extends Component {
             { replies && this.renderReplies()}
         </div>
         <div>
-            {this.state.replyFormOpen && <CommentReplyForm/> }
+            {this.state.replyFormOpen && <CommentReplyForm comment={this.props.comment}/> }
         </div>
     </div>
 );
@@ -121,4 +129,23 @@ class Comment extends Component {
 //
 // };
 
-export default Comment;
+
+// const mapStateToProps = state => {
+//     return {
+//         keks: state.keksReducer,
+//         comments: state.commentsReducer
+//     };
+// };
+
+const mapDispatchToProps = dispatch => {
+    return {
+        likeComment: (id) => {
+            dispatch(likeComment(id));
+        },
+        dislikeComment: (id) => {
+            dispatch(dislikeComment(id));
+        },
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Comment);

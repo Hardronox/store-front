@@ -1,57 +1,150 @@
 import {
-  GET_KEKS_FULFILLED, GET_KEKS_REJECTED,
-  STORE_KEK_FULFILLED, STORE_KEK_REJECTED,
-  REGISTER_USER_FULFILLED, REGISTER_USER_REJECTED,
-  LOGIN_USER_FULFILLED, LOGIN_USER_REJECTED,
-  INCR,
+    CREATE_COMMENT_PENDING,
+    CREATE_COMMENT_FULFILLED,
+    CREATE_COMMENT_REJECTED,
+    CREATE_REPLY_PENDING,
+    CREATE_REPLY_FULFILLED,
+    CREATE_REPLY_REJECTED, LIKE_COMMENT_FULFILLED, DISLIKE_COMMENT_FULFILLED
 } from '../constants/actionTypes';
 
 const initialState = {
-  keks: [],
-  kek: 0
+  comments: [
+      {   author: 'author',
+          id: '416ac246-e7ac-49ff-93b4-f7e94d997e6b',
+          rating: 3,
+          date: 1526551702895,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          pros: 'b illo inventore veritatis et quasi a',
+          cons: 'b illo inventore veritatis et quasi a',
+          liked: 0,
+          disliked: 0,
+          replies: [
+              {
+                  author: 'author',
+                  date: 1526551702895,
+                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
+              },
+              {
+                  author: 'author',
+                  date: 1526551702895,
+                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
+              },
+              {
+                  author: 'author',
+                  date: 1526551702895,
+                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
+              },
+          ]
+      },
+      {   author: 'author',
+          id: '416ac246-e7ac-49ff-93b4-f7e94d997e61',
+          rating: 5,
+          date: 1526551702895,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          pros: 'b illo inventore veritatis et quasi a',
+          cons: 'b illo inventore veritatis et quasi a',
+          liked: 0,
+          disliked: 0,
+          replies: []
+      },
+      {   author: 'dedsed',
+          id: '416ac246-e7ac-49ff-93b4-f7e94d997e62',
+          rating: 4.5,
+          date: 1526551702895,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          pros: 'b illo inventore veritatis et quasi a',
+          cons: 'b illo inventore veritatis et quasi a',
+          liked: 0,
+          disliked: 0,
+          replies: [
+              {
+                  author: 'author',
+                  date: 1526551702895,
+                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
+              },
+              {
+                  author: 'author',
+                  date: 1526551702895,
+                  text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'
+              },
+          ]
+      },
+      {   author: 'author',
+          id: '416ac246-e7ac-49ff-93b4-f7e94d997e63',
+          rating: 1,
+          date: 1526551702895,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          pros: 'b illo inventore veritatis et quasi a',
+          cons: 'b illo inventore veritatis et quasi a',
+          liked: 0,
+          disliked: 0,
+          replies: []
+      },
+      {   author: 'author',
+          id: '416ac246-e7ac-49ff-93b4-f7e94d997e64',
+          rating: 5,
+          date: 1526551702895,
+          text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          pros: 'b illo inventore veritatis et quasi a',
+          cons: 'b illo inventore veritatis et quasi a',
+          liked: 0,
+          disliked: 0,
+          replies: []
+      }
+  ]
 };
 
-/**
- * reducer for companies
- * @param {Object} state - application state
- * @param {Object<type>} action
- */
 const commentsReducer = (state = initialState, action) => {
   let { type } = action;
 
   switch(type) {
 
-    case REGISTER_USER_FULFILLED: {
+    case CREATE_COMMENT_FULFILLED: {
       return {
         ...state,
-        status: 'User is successfully registered'
+        comments: [].concat(state.comments, action.payload)
       };
     }
-    case REGISTER_USER_REJECTED: {
+    case CREATE_COMMENT_REJECTED: {
       return {
         ...state,
-        keksStatus: action.error
+        error: action.payload
       };
     }
-
-
-    case LOGIN_USER_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case LOGIN_USER_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
+      case CREATE_REPLY_FULFILLED: {
+          return {
+              ...state,
+              comments: state.comments.map(
+                  (comment) => comment.id === action.id ? {...comment, replies: [...comment.replies, action.payload]}
+                      : comment
+              )
+          };
+      }
+      case LIKE_COMMENT_FULFILLED: {
+          console.log(78);
+          return {
+              ...state,
+              comments: state.comments.map(
+                  (comment) => comment.id === action.id ? {...comment, liked: comment.liked + 1} : comment
+              )
+          };
+      }
+      case DISLIKE_COMMENT_FULFILLED: {
+          console.log(73338);
+          console.log(action.id);
+          return {
+              ...state,
+              comments: state.comments.map(
+                  (comment) => comment.id === action.id ? {...comment, disliked: comment.disliked - 1} : comment
+              )
+          };
+      }
 
 
     default:
       return state;
   }
 };
+
 
 export default commentsReducer;
