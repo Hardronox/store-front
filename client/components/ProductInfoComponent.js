@@ -111,15 +111,43 @@ class ProductInfoComponent extends Component {
         });
   }
 
-  renderDescriptionItem() {
-      const itemDescritpion = {
+  renderDescriptionItems(type) {
+      const itemGeneralDescritpion = {
               "Memory": "dddd",
               "Screen": "dddw3dewds",
               "3G": "yes",
               "bla": "blabla"
           };
 
-      return Object.entries(itemDescritpion).map(([k, v], i) => {
+      const itemCompleteDescritpion = {
+              "Memory": "dddd",
+              "Screen": "dddw3dewds",
+              "3G": "yes",
+              "bla": "blabla",
+              "Memoy": "dddd",
+              "Sceen": "dddw3dewds",
+              "3": "yes",
+              "ba": "blabla",
+              "Mmoy": "dddd",
+              "Scen": "dddw3dewds",
+              "G": "yes",
+              "a": "blabla",
+              "Mmor": "dddd",
+              "Scrn": "dddw3dewds",
+              "la": "blabla",
+              "Meory": "dddd",
+              "reen": "dddw3dewds",
+              "mory": "dddd",
+              "Sren": "dddw3dewds",
+              "l": "blabla"
+      };
+      if(type === 'general') {
+          return Object.entries(itemGeneralDescritpion).map(([k, v], i) => {
+              return <DescriptionItem title={k} value={v} key={i} />
+          });
+      }
+
+      return Object.entries(itemCompleteDescritpion).map(([k, v], i) => {
           return <DescriptionItem title={k} value={v} key={i} />
       });
 
@@ -136,14 +164,6 @@ class ProductInfoComponent extends Component {
       {image:'http://www.atozpromotions.co.uk/wp-content/uploads/2016/05/android-5-lollipop-red-black-abstract-material-design-line-stripes-2560x1600.jpg', name: 'Holy Guacamole', price: 10000},
     ];
 
-
-    const descriptionComplete = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et nulla eros. Donec ultrices tellus lectus,
-     eget congue mauris maximus sit amet. Duis et enim ut lacus scelerisque viverra. Sed vehicula commodo neque, et bibendum odio fringilla sit amet. 
-     Vivamus sed odio commodo, vehicula mi ac, elementum metus. Nam sit amet tincidunt mi, a porta elit. Mauris accumsan dictum nisl at mollis.
-     Pellentesque vitae dignissim elit. Praesent ut eros euismod, pellentesque purus nec, iaculis justo. Suspendisse in mauris nec quam rhoncus
-      volutpat. Duis tristique mi quis bibendum bibendum. Sed aliquet convallis ipsum, eget eleifend quam pharetra sit amet. Donec in diam dui. 
-      Sed mollis dapibus elit eu semper. Mauris a sapien id elit gravida mattis quis sed eros. Ut et est aliquet sem pulvinar sodales. 
-      Integer auctor ultrices porttitor.`
 
     return (
       <main className="main-container" role="main">
@@ -219,11 +239,11 @@ class ProductInfoComponent extends Component {
             <div className="product-description flex-col">
               <div className="product-description-general selected flex-col"
                 >
-                  {this.renderDescriptionItem()}
+                  {this.renderDescriptionItems('general')}
               </div>
               <div className="product-description-complete"
               >
-                  {descriptionComplete}
+                  {this.renderDescriptionItems('complete')}
               </div>
             </div>
           </div>
