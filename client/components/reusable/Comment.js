@@ -13,7 +13,7 @@ class Comment extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { replyFormOpen: false};
+        this.state = { replyFormOpen: false, repliesExpanded: false};
         this.toggleReplyForm = this.toggleReplyForm.bind(this);
     }
 
@@ -24,7 +24,7 @@ class Comment extends Component {
     renderReplyButton() {
         if(!this.state.replyFormOpen) {
             return (
-                <button onClick={this.toggleReplyForm}>
+                <button className="btn btn-link"  onClick={this.toggleReplyForm}>
                     <i className="fa fa-reply" aria-hidden="true"></i>
                     Reply
                 </button>
@@ -32,14 +32,33 @@ class Comment extends Component {
         }
 
         return (
-            <button onClick={this.toggleReplyForm}>
-                Close Reply Form
+            <button className="btn btn-link" onClick={this.toggleReplyForm}>
+                Close reply form
             </button>
         );
     }
 
     renderReplies() {
-        // TODO: add logic for when replies.length is > 3
+        if(!this.state.repliesExpanded && this.props.comment.replies.length > 3) {
+            return this.props.comment.replies.slice(0, 3).map((reply, i) => {
+                return (
+                    <div className="comment-container flex-col" key={i}>
+                        <div className="comment-header flex-row space-between">
+                            <div className="comment-author">{reply.author}</div>
+                            <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
+                        </div>
+                        <div className="comment-body flex-col">
+                            <div className="comment-text">
+                                {reply.text}
+                            </div>
+                        </div>
+                        <div className="comment-footer flex-row space-between">
+                        </div>
+                    </div>
+                );
+            })
+        }
+
 
         return this.props.comment.replies.map((reply, i) => {
             return (
@@ -114,6 +133,18 @@ class Comment extends Component {
         </div>
         <div className="comment-thread">
             { replies && this.renderReplies()}
+            { !this.state.repliesExpanded && replies.length > 3 &&
+            <div className="flex-row button-container">
+                <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: true})}>
+                    Show all replies
+                </button>
+            </div> }
+            { this.state.repliesExpanded &&
+            <div className="flex-row button-container">
+                <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: false})}>
+                    Collapse
+                </button>
+            </div>}
         </div>
         <div>
             {this.state.replyFormOpen && <CommentReplyForm comment={this.props.comment}/> }

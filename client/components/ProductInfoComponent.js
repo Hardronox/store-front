@@ -100,8 +100,8 @@ class ProductInfoComponent extends Component {
   }
 
   renderComments() {
-    if(!this.state.commentsExpanded) {
-        return this.props.comments.comments.slice(0, 2).map((comment) => {
+    if(!this.state.commentsExpanded && this.props.comments.comments.length > 3) {
+        return this.props.comments.comments.slice(0, 3).map((comment) => {
             return <Comment comment={comment} key={comment.id}/>
         });
     }
@@ -230,13 +230,15 @@ class ProductInfoComponent extends Component {
           <div className="comments-container flex-col">
               <div className="comments-header"></div>
               <div>{this.renderComments()}</div>
-              { !this.state.commentsExpanded && <div className="flex-row button-container">
-                  <button className="btn btn-secondary" onClick={() => this.setState({commentsExpanded: true})}>
+              { !this.state.commentsExpanded && this.props.comments.comments.length > 3 &&
+              <div className="flex-row button-container">
+                  <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: true})}>
                       Show All
                   </button>
               </div>}
-              { this.state.commentsExpanded && <div className="flex-row button-container">
-                  <button className="btn btn-secondary" onClick={() => this.setState({commentsExpanded: false})}>
+              { this.state.commentsExpanded &&
+              <div className="flex-row button-container">
+                  <button className="btn btn-link" onClick={() => this.setState({commentsExpanded: false})}>
                       Collapse
                   </button>
               </div>}

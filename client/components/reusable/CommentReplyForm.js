@@ -44,7 +44,7 @@ class CommentReplyForm extends Component {
                 </div>
 
                 <div className="flex-row button-container">
-                    <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-primary">
+                    <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-secondary">
                         Reply
                     </button>
                 </div>

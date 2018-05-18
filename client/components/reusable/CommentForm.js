@@ -78,7 +78,7 @@ class CommentForm extends Component {
                     <Field component={renderField} type="text" name="cons"  className="input-field"/>
                 </div>
                 <div className="flex-row button-container">
-                    <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-primary">
+                    <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-success">
                         Comment
                     </button>
                 </div>

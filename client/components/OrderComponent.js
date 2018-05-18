@@ -491,7 +491,7 @@ class OrderComponent extends React.Component {
                             </div>
                         </div>
                         <div className="button-ctr">
-                            <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-primary">Confirm and pay</button>
+                            <button type="submit" disabled={ pristine || submitting || invalid } className="btn btn-success">Confirm and pay</button>
                         </div>
 
                     </div>
