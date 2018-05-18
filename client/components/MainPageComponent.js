@@ -1,8 +1,9 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
 import Slider from './reusable/SliderComponent';
+import {Helmet} from "react-helmet";
 
 
 class MainPageComponent extends Component {
@@ -40,17 +41,23 @@ class MainPageComponent extends Component {
     ];
 
     return (
-      <main role="main" className="content">
-        <Slider slides={slides} size="big"/>
-        <div className="album py-5 bg-light">
-          <div className="container">
-            <div className="row">
-              {this.renderProducts()}
+        <Fragment>
+          <Helmet>
+              <meta charSet="utf-8" />
+              <title>Main Page</title>
+              <meta name="description" content="Store main page" />
+          </Helmet>
+          <main role="main" className="content">
+            <Slider slides={slides} size="big"/>
+            <div className="album py-5 bg-light">
+              <div className="container">
+                <div className="row">
+                  {this.renderProducts()}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </main>
-      
+          </main>
+        </Fragment>
     );
   }
 }

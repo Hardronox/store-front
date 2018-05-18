@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-class OrderSuccessComponent extends React.Component {
+class OrderSuccessComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -20,9 +21,16 @@ class OrderSuccessComponent extends React.Component {
 
 
     return (
-      <main className="main-container" role="main">
-        <h1>Your order is proceed successfully!</h1>
-      </main>
+        <Fragment>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Order Success</title>
+                <meta name="description" content="Order submitted successfully" />
+            </Helmet>
+            <main className="main-container" role="main">
+              <h1>Your order is proceed successfully!</h1>
+            </main>
+        </Fragment>
     );
   }
 }

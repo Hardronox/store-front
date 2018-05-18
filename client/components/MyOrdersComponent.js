@@ -1,8 +1,9 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
 import Slider from './reusable/SliderComponent';
+import { Helmet } from 'react-helmet';
 
 class MyOrdersComponent extends Component {
 
@@ -70,45 +71,52 @@ class MyOrdersComponent extends Component {
     ];
 
     return (
-      <main className="main-container" role="main">
-        <h1>Product Title</h1>
-        <div className="row product-info">
-          <div className="image-set">
-            {this.renderImageSet()}
-          </div>
-          <div className="col-md-6 info-image">
-            <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
-          </div>
-          <div className="col-md-5 general-info">
-            <div className="general-info-container">
-              <div>
-                <div>Price</div>
-                <div>2</div>
+        <Fragment>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Notifications Page</title>
+                <meta name="description" content="Your notifications" />
+            </Helmet>
+            <main className="main-container" role="main">
+              <h1>Product Title</h1>
+              <div className="row product-info">
+                <div className="image-set">
+                  {this.renderImageSet()}
+                </div>
+                <div className="col-md-6 info-image">
+                  <img ref="main-image" src={slides[0].image} alt={slides[0].name} />
+                </div>
+                <div className="col-md-5 general-info">
+                  <div className="general-info-container">
+                    <div>
+                      <div>Price</div>
+                      <div>2</div>
+                    </div>
+                    <div>
+                      <div>Delivery</div>
+                      <div>2</div>
+                    </div>
+                    <div>
+                      <div>Quantity</div>
+                      <div>2</div>
+                    </div>
+                    <div>
+                      <div>Total price</div>
+                      <div>2</div>
+                    </div>
+                    <div>
+                      <button className="btn btn-primary" onClick={this.addToCart}>Add to cart</button>
+                      <button className="btn btn-success" onClick={this.buyNow}>Buy now</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div>Delivery</div>
-                <div>2</div>
+              <h1>Recomended</h1>
+              <div className="small-slider-container">
+                <Slider slides={slides} size="small" slidesPerView={5}/>
               </div>
-              <div>
-                <div>Quantity</div>
-                <div>2</div>
-              </div>
-              <div>
-                <div>Total price</div>
-                <div>2</div>
-              </div>
-              <div>
-                <button className="btn btn-primary" onClick={this.addToCart}>Add to cart</button>
-                <button className="btn btn-success" onClick={this.buyNow}>Buy now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h1>Recomended</h1>
-        <div className="small-slider-container">
-          <Slider slides={slides} size="small" slidesPerView={5}/>
-        </div>
-      </main>
+            </main>
+        </Fragment>
     );
   }
 }
