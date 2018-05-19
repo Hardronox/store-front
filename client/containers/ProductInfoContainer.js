@@ -5,7 +5,8 @@ import {incr, addItemToCart} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
-    keks: state.keksReducer
+    keks: state.keksReducer,
+    comments: state.commentsReducer
   };
 };
 

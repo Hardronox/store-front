@@ -17,7 +17,12 @@ import {
     REMOVE_ITEM_FROM_CART_PENDING,
     REMOVE_ALL_ITEMS_FROM_CART_PENDING,
     GET_CART_ITEMS_PENDING,
-    SUBMIT_ORDER_PENDING
+    SUBMIT_ORDER_PENDING,
+    CREATE_REPLY_PENDING,
+    CREATE_REPLY_FULFILLED,
+    CREATE_REPLY_REJECTED,
+    LIKE_COMMENT_PENDING,
+    DISLIKE_COMMENT_PENDING
 } from '../constants/actionTypes';
 
 
@@ -106,6 +111,24 @@ export const deleteComment = (id) => {
     dispatch({ type: DELETE_COMMENT_PENDING, payload: id});
   };
 };
+
+export const createReply = (reply, id) => {
+    return (dispatch) => {
+        dispatch({ type: CREATE_REPLY_PENDING, payload: reply, id: id});
+    };
+};
+
+export const likeComment = (id) => {
+    return(dispatch) => {
+        dispatch({ type: LIKE_COMMENT_PENDING, id: id})
+    }
+}
+
+export const dislikeComment = (id) => {
+    return(dispatch) => {
+        dispatch({ type: DISLIKE_COMMENT_PENDING, id: id})
+    }
+}
 //-------------------------------------------------------------------------------------
 
 export const getCartItems = (id) => {
