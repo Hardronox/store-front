@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import ItemsListComponents from '../../components/admin/items/ItemsListComponents';
+import ItemsListComponents from '../../components/admin/items/ItemsListComponent';
 
 const mapStateToProps = state => {
   return {

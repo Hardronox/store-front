@@ -28,33 +28,6 @@ class ItemsListComponents extends React.Component {
     console.log(this.refs.search.value);
   }
 
-  renderAuthorization = () => {
-
-    let content = [
-      <div key="login">
-        <Link to="">Login</Link>
-      </div>
-    ];
-
-    if (localStorage.getItem('user')) {
-      content = [
-        <div key="user">
-          <Link to="">Hello, user</Link>
-        </div>,
-        <div key="logout">
-          <Link to="">Logout</Link>
-        </div>
-      ];
-
-    }
-
-    return (
-      <div className="authorization">
-        {content}
-      </div>
-    );
-  };
-
   renderItems = () => {
     const arr = [1,2,3,4,5];
 

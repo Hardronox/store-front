@@ -47,7 +47,7 @@ function configureStoreDev(initialState) {
     thunk,
     reactRouterMiddleware,
     sagaMiddleware,
-    logger
+    // logger
   ];
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
