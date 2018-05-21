@@ -1,7 +1,8 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Product from './reusable/ProductComponent';
+import { Helmet } from 'react-helmet';
 
 class NotificationsComponent extends Component {
 
@@ -31,9 +32,16 @@ class NotificationsComponent extends Component {
 
 
     return (
-      <main className="main-container" role="main">
-        <h1>Notifications</h1>
-      </main>
+        <Fragment>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Main Page</title>
+                <meta name="description" content="Store main page" />
+            </Helmet>
+            <main className="main-container" role="main">
+              <h1>Notifications</h1>
+            </main>
+        </Fragment>
 
     );
   }

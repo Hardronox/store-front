@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 class NewItemComponent extends React.Component {
 
@@ -49,70 +50,77 @@ class NewItemComponent extends React.Component {
   render () {
 
     return (
-      <article className="content charts-morris-page">
-        <div className="title-block">
-          <h3 className="title"> Charts Morris </h3>
-          <p className="title-description"> List of sample charts with custom colors </p>
-        </div>
-        <section className="section">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-block">
-                  <div className="card-title-block">
-                    <h3 className="title"> Area Chart Example </h3>
+        <Fragment>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Statistics</title>
+                <meta name="description" content="Statistics page" />
+            </Helmet>
+            <article className="content charts-morris-page">
+              <div className="title-block">
+                <h3 className="title"> Charts Morris </h3>
+                <p className="title-description"> List of sample charts with custom colors </p>
+              </div>
+              <section className="section">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card">
+                      <div className="card-block">
+                        <div className="card-title-block">
+                          <h3 className="title"> Area Chart Example </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="card">
+                      <div className="card-block">
+                        <div className="card-title-block">
+                          <h3 className="title"> Bar Chart Example </h3>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-block">
-                  <div className="card-title-block">
-                    <h3 className="title"> Bar Chart Example </h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="section">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-block">
-                  <div className="card-title-block">
-                    <h3 className="title"> Line Chart Example </h3>
-                  </div>
+              </section>
+              <section className="section">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card">
+                      <div className="card-block">
+                        <div className="card-title-block">
+                          <h3 className="title"> Line Chart Example </h3>
+                        </div>
 
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-block">
-                  <div className="card-title-block">
-                    <h3 className="title"> Donut Chart Example </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="card">
+                      <div className="card-block">
+                        <div className="card-title-block">
+                          <h3 className="title"> Donut Chart Example </h3>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="section">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-block">
-                  <div className="card-title-block">
-                    <h3 className="title"> Simple one line Example </h3>
+              </section>
+              <section className="section">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="card">
+                      <div className="card-block">
+                        <div className="card-title-block">
+                          <h3 className="title"> Simple one line Example </h3>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </article>
+              </section>
+            </article>
+        </Fragment>
     );
   }
 }
