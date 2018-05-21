@@ -171,9 +171,11 @@ class HeaderComponent extends React.Component {
               </div>
             </li>
             <li className="notifications new">
-              <div className="nav-link" data-toggle="dropdown">
-                <i className="fa fa-shopping-cart"/> {(this.props.cart.cartProducts.length !== 0) ? this.props.cart.cartProducts.length : null}
-              </div>
+              <Link to="/cart">
+                <div className="nav-link" data-toggle="dropdown">
+                  <i className="fa fa-shopping-cart"/> {(this.props.cart.cartProducts.length !== 0) ? this.props.cart.cartProducts.length : null}
+                </div>
+              </Link>
             </li>
             <li className="profile dropdown">
               <div className="nav-link" data-toggle="dropdown" onClick={() => this.toggleDropdown('profile')}>

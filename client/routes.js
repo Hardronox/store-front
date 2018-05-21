@@ -12,6 +12,7 @@ import OrderSuccessComponent from './components/OrderSuccessComponent';
 import HeaderContainer from './containers/HeaderContainer';
 import FooterComponent from './components/FooterComponent';
 import AdminContainer from './containers/AdminContainer';
+import CartContainer from "./containers/CartContainer";
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
           <Route exact path="/user/:id/settings" component={SettingsContainer} />
           <Route exact path="/order/:id" component={OrderContainer} />
           <Route exact path="/order-success" component={OrderSuccessComponent} />
+          <Route exact path="/cart" component={CartContainer} />
           <Route path="/admin" component={AdminContainer} />
         </Switch>
         <Route path="/" render={(route) =>{
