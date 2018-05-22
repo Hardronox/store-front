@@ -2,7 +2,8 @@ import React from 'react';
 import DescriptionItem from './DescriptionItem';
 import NumberFormat from 'react-number-format';
 
-const CartItem = ({item}) => {
+const CartItem = (props) => {
+    const {item} = props;
 
     const renderDescription = () => {
         return Object.entries(item.description).map(([k, v], i) => {
@@ -49,7 +50,7 @@ const CartItem = ({item}) => {
                 <div className="item-price-container flex-col">
                     <div className="flex-row">
                         <div className="item-quantity">
-                            Quantity: 1
+                            Quantity: {item.quantity}
                         </div>
                         <div className="item-price">
                             <NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'US $'} />
@@ -62,7 +63,7 @@ const CartItem = ({item}) => {
                             <span>Expedited International Shipping</span>
                         </div>
                         <div className="item-shipping-price">
-                            <NumberFormat value={39.45} displayType={'text'} thousandSeparator={true} prefix={'+US $'} />
+                            <NumberFormat value={item.shippingCharge} displayType={'text'} thousandSeparator={true} prefix={'+US $'} />
                         </div>
                     </div>
 
@@ -70,7 +71,7 @@ const CartItem = ({item}) => {
             </div>
             <div className="cart-item-footer flex-row">
                 <div className="cart-item-buttons">
-                    <button className="btn btn-link">Remove</button>
+                    <button className="btn btn-link" onClick={() => props.onRemove(item.id)}>Remove</button>
                     <button className="btn btn-link">Save for later</button>
                 </div>
             </div>
