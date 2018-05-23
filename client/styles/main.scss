@@ -3895,6 +3895,8 @@ span a {
     }
   }
   .left-section {
+    width: 50%;
+    flex: none;
     @media only screen and (max-width: 680px) {
       flex: none;
       width: 100%;
@@ -3905,6 +3907,8 @@ span a {
     }
   }
   .right-section {
+    width: 25%;
+    flex: none;
     @media only screen and (max-width: 680px) {
       flex: none;
       width: 100%;
@@ -3914,6 +3918,7 @@ span a {
       flex: none;
       width: 40%
     }
+
   }
   .cart {
     @media only screen and (max-width: 768px) {
@@ -4036,6 +4041,8 @@ span a {
           flex-wrap: wrap;
         }
         .item-image-container {
+          width: 30%;
+          flex: none;
           margin-right: 10px;
           align-items: center;
           justify-content: center;
@@ -4044,7 +4051,8 @@ span a {
             flex: none;
           }
           .item-image {
-            width: 150px;
+            width: 75%;
+            flex: none;
             border: 1px solid #ccc;
             border-radius: 3px;
             @media only screen and (max-width: 768px) {
