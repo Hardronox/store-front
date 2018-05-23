@@ -18,7 +18,8 @@ const cartItems = [
             "model": "iKitty 6S",
             "storage": "64GB"
         },
-        price: 121.99
+        price: 121.99,
+        shippingCharge: 38.56
     },
     {
         id: 2,
@@ -31,7 +32,8 @@ const cartItems = [
             "model": "iKitty 6S",
             "storage": "64GB"
         },
-        price: 121.99
+        price: 121.99,
+        shippingCharge: 38.56
     },
     {
         id: 3,
@@ -44,7 +46,8 @@ const cartItems = [
             "model": "iKitty 6S",
             "storage": "64GB"
         },
-        price: 121.99
+        price: 121.99,
+        shippingCharge: 38.56
     },
     {
         id: 4,
@@ -57,7 +60,8 @@ const cartItems = [
             "model": "iKitty 6S",
             "storage": "64GB"
         },
-        price: 121.99
+        price: 121.99,
+        shippingCharge: 38.56
     },
     {
         id: 5,
@@ -70,7 +74,8 @@ const cartItems = [
             "model": "iKitty 6S",
             "storage": "64GB"
         },
-        price: 121.99
+        price: 121.99,
+        shippingCharge: 38.56
     },
 ];
 
