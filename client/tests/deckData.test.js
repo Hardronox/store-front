@@ -4,16 +4,14 @@
 // let deckdataClone = deckdata.clone;
 // const {length} = deckdata._cards;
 
-describe("deckDataTest", function() {
-
-
+describe('deckDataTest', function () {
   // it("should check if deck has enough cards at least for 1 round", function() {
   //   expect(deckdata._cards.length).toBeGreaterThan(1);
   // });
 
   it('should start the game', () => {
-    expect(true).toEqual(true)
-  })
+    expect(true).toEqual(true);
+  });
 
   // it("should check if topCard returns last card", function() {
   //   let topCard = deckdata.topCard;
@@ -36,5 +34,4 @@ describe("deckDataTest", function() {
   //
   //   expect(deckdataClone._cards.length).toBe(length - 1);
   // });
-
 });

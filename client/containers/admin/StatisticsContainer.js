@@ -4,7 +4,7 @@ import StatisticsComponent from '../../components/admin/statistics/StatisticsCom
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

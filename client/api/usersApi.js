@@ -1,41 +1,39 @@
 import axios from 'axios';
-import {base_url} from '../config';
+import {baseUrl} from '../config';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 
-
 // Send a POST request
-export function getSingleUserApi(id) {
+export function getSingleUserApi (id) {
   axios({
     method: 'get',
-    url: `${base_url}/user/${id}`,
+    url: `${baseUrl}/user/${id}`
 
   });
 }
 
 // GET request for remote image
-export function getUsersApi() {
+export function getUsersApi () {
   return axios({
-    method:'get',
-    url: `${base_url}/users`,
+    method: 'get',
+    url: `${baseUrl}/users`
     // responseType:'stream'
   });
 }
 
 // Send a POST request
-export function registerUserApi(user) {
-
+export function registerUserApi (user) {
   axios({
     method: 'post',
-    url: `${base_url}/register`,
+    url: `${baseUrl}/register`,
     data: user
   });
 }
 
 // Send a POST request
-export function loginUserApi(user) {
+export function loginUserApi (user) {
   axios({
     method: 'post',
-    url: `${base_url}/login`,
+    url: `${baseUrl}/login`,
     data: user
   }).then((res) => {
     const {token} = res.data;
@@ -46,25 +44,22 @@ export function loginUserApi(user) {
 }
 
 // Send a POST request
-export function updateUserApi(user) {
+export function updateUserApi (user) {
   axios({
     method: 'post',
-    url: `${base_url}/user`,
+    url: `${baseUrl}/user`,
     data: user
   });
 }
 
 // Send a POST request
-export function deleteUserApi(id) {
+export function deleteUserApi (id) {
   axios({
     method: 'post',
-    url: `${base_url}/user/${id}`,
+    url: `${baseUrl}/user/${id}`
 
   });
 }
-
-
-
 
 //
 // getAllBooksAttempt() {
@@ -156,4 +151,3 @@ export function deleteUserApi(id) {
 //     }.bind(this)
 //   });
 // }
-

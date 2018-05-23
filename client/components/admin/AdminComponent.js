@@ -6,26 +6,24 @@ import {
 
 import PropTypes from 'prop-types';
 
-import ItemsListContainer from "../../containers/admin/ItemsListContainer";
-import NewItemContainer from "../../containers/admin/NewItemContainer";
-import DashboardContainer from "../../containers/admin/DashboardContainer";
-import SidebarContainer from "../../containers/admin/SidebarContainer";
-import StatisticsContainer from "../../containers/admin/StatisticsContainer";
-import UsersListContainer from "../../containers/admin/UsersListContainer";
-import SendEmailsContainer from "../../containers/admin/SendEmailsContainer";
+import ItemsListContainer from '../../containers/admin/ItemsListContainer';
+import NewItemContainer from '../../containers/admin/NewItemContainer';
+import DashboardContainer from '../../containers/admin/DashboardContainer';
+import SidebarContainer from '../../containers/admin/SidebarContainer';
+import StatisticsContainer from '../../containers/admin/StatisticsContainer';
+import UsersListContainer from '../../containers/admin/UsersListContainer';
+import SendEmailsContainer from '../../containers/admin/SendEmailsContainer';
 
 class AdminComponent extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
 
-
-  componentWillMount() {
+  componentWillMount () {
 
   }
 
-  search() {
+  search () {
     console.log(this.refs.search.value);
   }
 
@@ -65,7 +63,7 @@ class AdminComponent extends React.Component {
 
 AdminComponent.propTypes = {
   children: PropTypes.element,
-  routing: PropTypes.object,
+  routing: PropTypes.object
 };
 
 export default AdminComponent;

@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
     },
     getKeks: () => {
       dispatch(getKeks());
-    },
+    }
   };
 };
 

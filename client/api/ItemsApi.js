@@ -1,58 +1,56 @@
 import axios from 'axios';
-import {base_url} from '../config';
-
+import {baseUrl} from '../config';
 
 // Send a POST request
 export function getSingleItemApi (id) {
   axios({
     method: 'get',
-    url: `${base_url}/item/${id}`,
+    url: `${baseUrl}/item/${id}`
 
   });
 }
 
 // GET request for remote image
-export function getItemsApi() {
+export function getItemsApi () {
   return axios({
-    method:'get',
-    url: `${base_url}/items`,
+    method: 'get',
+    url: `${baseUrl}/items`
     // responseType:'stream'
   });
 }
 
 // Send a POST request
-export function createItemApi(item) {
+export function createItemApi (item) {
   axios({
     method: 'post',
-    url: `${base_url}/item`,
+    url: `${baseUrl}/item`,
     data: item
   });
 }
 
 // Send a POST request
-export function updateItemApi(item) {
+export function updateItemApi (item) {
   axios({
     method: 'post',
-    url: `${base_url}/item`,
+    url: `${baseUrl}/item`,
     data: item
   });
 }
 
 // Send a POST request
-export function deleteItemApi(id) {
+export function deleteItemApi (id) {
   axios({
     method: 'post',
-    url: `${base_url}/item/${id}`,
+    url: `${baseUrl}/item/${id}`
 
   });
 }
 
 // Send a POST request
-export function searchItemApi(id) {
+export function searchItemApi (id) {
   axios({
     method: 'get',
-    url: `${base_url}/item/${id}`,
+    url: `${baseUrl}/item/${id}`
 
   });
 }
-

@@ -1,56 +1,54 @@
-import {call, put, takeEvery } from 'redux-saga/effects'
-import {delay } from 'redux-saga'
+import {call, put, takeEvery} from 'redux-saga/effects';
 import {
   GET_CART_ITEMS_PENDING, GET_CART_ITEMS_FULFILLED, GET_CART_ITEMS_REJECTED,
   ADD_ITEM_TO_CART_PENDING, ADD_ITEM_TO_CART_FULFILLED, ADD_ITEM_TO_CART_REJECTED,
   REMOVE_ITEM_FROM_CART_PENDING, REMOVE_ITEM_FROM_CART_FULFILLED, REMOVE_ITEM_FROM_CART_REJECTED,
-  REMOVE_ALL_ITEMS_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED,
-} from '../constants/actionTypes'
+  REMOVE_ALL_ITEMS_FROM_CART_PENDING, REMOVE_ALL_ITEMS_FROM_CART_FULFILLED, REMOVE_ALL_ITEMS_FROM_CART_REJECTED
+} from '../constants/actionTypes';
 
 /**
  * Generator for sending action (Tweet, Retweet ...)
  * @param {Object<Type>} action
  */
 
-
-export function* getCartItems() {
+export function * getCartItems () {
   try {
     yield call(getCartItemsApi, id);
-    yield put({ type: GET_CART_ITEMS_FULFILLED, payload: data.payload })
+    yield put({type: GET_CART_ITEMS_FULFILLED, payload: data.payload});
   } catch (e) {
-    yield put({type: GET_CART_ITEMS_REJECTED, error: e.error || e.statusText})
+    yield put({type: GET_CART_ITEMS_REJECTED, error: e.error || e.statusText});
   }
 }
 
-export function* addItemToCart(item) {
+export function * addItemToCart (item) {
   try {
-      // var lastname = localStorage.getItem("key");
-    yield put({type: ADD_ITEM_TO_CART_FULFILLED, payload: item.payload })
+    // var lastname = localStorage.getItem("key");
+    yield put({type: ADD_ITEM_TO_CART_FULFILLED, payload: item.payload});
   } catch (e) {
-    yield put({type: ADD_ITEM_TO_CART_REJECTED, error: e.error || e.statusText})
+    yield put({type: ADD_ITEM_TO_CART_REJECTED, error: e.error || e.statusText});
   }
 }
 
-export function* removeItemFromCart(item) {
+export function * removeItemFromCart (item) {
   try {
-    yield put({type: REMOVE_ITEM_FROM_CART_FULFILLED, payload: item.payload })
+    yield put({type: REMOVE_ITEM_FROM_CART_FULFILLED, payload: item.payload});
   } catch (e) {
-    yield put({type: REMOVE_ITEM_FROM_CART_REJECTED, error: e.error || e.statusText})
+    yield put({type: REMOVE_ITEM_FROM_CART_REJECTED, error: e.error || e.statusText});
   }
 }
 
-export function* removeAllItemsFromCart() {
+export function * removeAllItemsFromCart () {
   try {
-    yield put({ type: REMOVE_ALL_ITEMS_FROM_CART_FULFILLED})
+    yield put({type: REMOVE_ALL_ITEMS_FROM_CART_FULFILLED});
   } catch (e) {
-    yield put({type: REMOVE_ALL_ITEMS_FROM_CART_REJECTED, error: e.error || e.statusText})
+    yield put({type: REMOVE_ALL_ITEMS_FROM_CART_REJECTED, error: e.error || e.statusText});
   }
 }
 
 /**
  * Connect actions to generators
  */
-function* cartSaga() {
+function * cartSaga () {
   // yield takeEvery(SET_PREDEFINED_COMMENTS_PENDING, setPreDefinedComments)
   yield takeEvery(GET_CART_ITEMS_PENDING, getCartItems);
   yield takeEvery(ADD_ITEM_TO_CART_PENDING, addItemToCart);
@@ -58,4 +56,4 @@ function* cartSaga() {
   yield takeEvery(REMOVE_ALL_ITEMS_FROM_CART_PENDING, removeAllItemsFromCart);
 }
 
-export default cartSaga
+export default cartSaga;
