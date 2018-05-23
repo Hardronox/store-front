@@ -75,7 +75,8 @@ const cartItems = [
 ];
 
 const initialState = {
-  cartProducts: loadState('cartProducts') ? loadState('cartProducts') : cartItems,
+  //cartProducts: loadState('cartProducts') ? loadState('cartProducts') : cartItems,
+    cartProducts: cartItems
 };
 
 /**
@@ -109,7 +110,7 @@ const itemsReducer = (state = initialState, action) => {
     case REMOVE_ITEM_FROM_CART_FULFILLED: {
 
       let newCartProducts = cartProducts.filter((item) => {
-        if (item.productId !== action.payload) {
+        if (item.id !== action.payload) {
           return item;
         }
       });
@@ -118,7 +119,7 @@ const itemsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        newCartProducts
+        cartProducts: newCartProducts
       };
     }
     case REMOVE_ITEM_FROM_CART_REJECTED: {

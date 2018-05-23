@@ -3887,9 +3887,42 @@ body {
 ********************************************** */
 
 .cart-container {
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
   .cart-header {
     font-size: 32px;
     padding: 10px;
+    @media only screen and (max-width: 680px) {
+      flex: none;
+      width: 100%;
+    }
+  }
+  .left-section {
+    @media only screen and (max-width: 680px) {
+      flex: none;
+      width: 100%;
+    }
+    @media only screen and (min-width: 680px) and (max-width: 768px) {
+      flex: none;
+      width: 60%
+    }
+  }
+  .right-section {
+    @media only screen and (max-width: 680px) {
+      flex: none;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 680px) and (max-width: 768px) {
+      flex: none;
+      width: 40%
+    }
+  }
+  .cart {
+    @media only screen and (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
   .cart-empty-container {
     padding: 20px;
@@ -3904,6 +3937,10 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
     margin: 10px;
+    @media only screen and (max-width: 680px) {
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
     .cart-item {
       border: 1px solid #ccc;
       margin-bottom: 20px;
@@ -3911,8 +3948,17 @@ body {
         background: #EDEDEE;
         padding: 5px;
         align-items: center;
+        @media only screen and (max-width: 768px) {
+          flex-wrap: wrap;
+        }
         .item-seller {
           color: #3a4651;
+          @media only screen and (max-width: 768px) {
+            width: 100%;
+            flex: none;
+            margin-left: 10px;
+            margin-bottom: 5px;
+          }
           span {
             color: #369AED;
             &:hover {
@@ -3924,8 +3970,18 @@ body {
         .centered {
           align-items: center;
           justify-content: center;
+          @media only screen and (min-width: 680px) and (max-width: 768px) {
+            flex-wrap: wrap;
+            width: 100%;
+            flex: none;
+          }
         }
         .item-header-buttons {
+          @media only screen and (min-width: 680px) and (max-width: 768px) {
+            width: 80%;
+            flex: none;
+            flex-wrap: wrap;
+          }
           .item-header-button {
             background: white;
             border: 1px solid #DCDCDC;
@@ -3949,10 +4005,24 @@ body {
               box-shadow: 0 0 0 1pt #369AED;
               outline: none;
             }
+            @media only screen and (max-width: 768px) {
+              width: 45%;
+              flex: none;
+              margin: 0;
+            }
           }
         }
         .item-header-info {
           color: #808080;
+          @media only screen and (max-width: 680px) {
+            width: 5%;
+            margin-right: 5px;
+            flex: none;
+          }
+          @media only screen and (min-width: 680px) and (max-width: 768px) {
+            width: 20%;
+            flex: none;
+          }
           &:hover {
             cursor: pointer;
             color: #369AED;
@@ -3961,37 +4031,68 @@ body {
       }
       .cart-item-body {
         padding: 15px;
+        @media only screen and (max-width: 768px) {
+          flex-wrap: wrap;
+        }
         .item-image-container {
           margin-right: 10px;
           align-items: center;
           justify-content: center;
+          @media only screen and (max-width: 768px) {
+            width: 100%;
+            flex: none;
+          }
           .item-image {
-            max-width: 150px;
+            width: 150px;
             border: 1px solid #ccc;
             border-radius: 3px;
+            @media only screen and (max-width: 768px) {
+              width: 100%;
+              flex: none;
+            }
           }
         }
         .item-description-container {
           min-width: 250px;
+          @media only screen and (max-width: 768px) {
+            width: 100%;
+            flex: none;
+          }
           .item-title {
             font-size: 28px;
             color: #369AED;
+            @media only screen and (max-width: 768px) {
+              text-align: center;
+            }
           }
           .item-description {
             color: #5a636a;
             font-size: 14px;
+            @media only screen and (max-width: 768px) {
+              margin-bottom: 10px;
+            }
             .description-item {
               .description-title {
                 width: 40%;
                 flex: none;
+                @media only screen and (max-width: 768px) {
+                  width: 70%;
+                }
               }
             }
           }
         }
         .item-price-container {
+          @media only screen and (max-width: 768px) {
+            width: 100%;
+            flex: none;
+          }
           .item-quantity, .item-shipping {
             width: 60%;
             flex: none;
+            @media only screen and (max-width: 768px) {
+              width: 70%;
+            }
           }
           .item-price {
             font-weight: bold;
@@ -4010,10 +4111,15 @@ body {
     }
   }
   .cart-summary {
-    max-width: 320px;
     padding: 20px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
     margin: 10px;
+    @media only screen and (max-width: 680px) {
+      flex-wrap: wrap;
+      flex: none;
+      width: 100%;
+      margin: 10px 0;
+    }
     .cart-summary-header {
       font-size: 22px;
       font-weight: bold;

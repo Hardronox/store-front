@@ -108,6 +108,15 @@ class CartComponent extends Component {
         return num === this.state.openListItem ? 'fa fa-caret-down' : 'fa fa-caret-right';
     }
 
+    renderItemsNumber() {
+        const { cartProducts } = this.props.cart;
+        if(cartProducts.length === 1) {
+            return `${cartProducts.length} item`;
+        } else {
+            return `${cartProducts.length} items`;
+        }
+    }
+
     render() {
         const { cartProducts } = this.props.cart;
         const totalPrice = cartProducts.reduce((total, item) => {
@@ -135,7 +144,7 @@ class CartComponent extends Component {
                                 <div className="cart-summary">
                                     <div className="cart-summary-header">
                                         Cart Summary
-                                        <sub>({cartProducts.length} items)</sub>
+                                        <sub>({this.renderItemsNumber()})</sub>
                                     </div>
                                     <div className="cart-summary-body flex-col">
                                         <div className="cart-summary-total">
