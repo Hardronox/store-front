@@ -1,23 +1,21 @@
 import {connect} from 'react-redux';
-
 import CartComponent from '../components/CartComponent';
-import {getUsers, registerUser} from '../actions/actions';
+import { removeItemFromCart } from '../actions/actions';
 
 const mapStateToProps = state => {
-  return {
-    routing: state.routing,
-  };
+    return {
+        routing: state.routing,
+        cart: state.cartReducer
+    };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getUsers: () => {
-      dispatch(getUsers());
-    },
-    register: () => {
-      dispatch(registerUser());
-    }
-  };
+    return {
+        removeItemFromCart: (id) => {
+            dispatch(removeItemFromCart(id));
+        }
+    };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartComponent);

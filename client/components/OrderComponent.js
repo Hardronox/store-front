@@ -467,7 +467,7 @@ class OrderComponent extends React.Component {
                             </div>
                         </div>
 
-                        <div className="right-section">
+                        <div className="order-right-section">
                             <div className="confirmation-ctr">
                                 <div className="confirmation">
                                     <div className="flex-row space-between">
