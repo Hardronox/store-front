@@ -6,8 +6,82 @@ import {
 import {base_url} from "../config";
 import {saveState, loadState} from '../utils/localStorage'
 
+const cartItems = [
+    {
+        id: 1,
+        seller: "acronwing23342",
+        image: "https://iheartcats.com/wp-content/uploads/2015/02/5255462794_19f91d3463_z-e1424134684199.jpg",
+        title: "Kitty",
+        description: {
+            "condition": "battered",
+            "color": "gray",
+            "model": "iKitty 6S",
+            "storage": "64GB"
+        },
+        price: 121.99,
+        shippingCharge: 38.56
+    },
+    {
+        id: 2,
+        seller: "acronwing23342",
+        image: "https://iheartcats.com/wp-content/uploads/2015/02/5255462794_19f91d3463_z-e1424134684199.jpg",
+        title: "Kitty",
+        description: {
+            "condition": "battered",
+            "color": "gray",
+            "model": "iKitty 6S",
+            "storage": "64GB"
+        },
+        price: 121.99,
+        shippingCharge: 38.56
+    },
+    {
+        id: 3,
+        seller: "acronwing23342",
+        image: "https://iheartcats.com/wp-content/uploads/2015/02/5255462794_19f91d3463_z-e1424134684199.jpg",
+        title: "Kitty",
+        description: {
+            "condition": "battered",
+            "color": "gray",
+            "model": "iKitty 6S",
+            "storage": "64GB"
+        },
+        price: 121.99,
+        shippingCharge: 38.56
+    },
+    {
+        id: 4,
+        seller: "acronwing23342",
+        image: "https://iheartcats.com/wp-content/uploads/2015/02/5255462794_19f91d3463_z-e1424134684199.jpg",
+        title: "Kitty",
+        description: {
+            "condition": "battered",
+            "color": "gray",
+            "model": "iKitty 6S",
+            "storage": "64GB"
+        },
+        price: 121.99,
+        shippingCharge: 38.56
+    },
+    {
+        id: 5,
+        seller: "acronwing23342",
+        image: "https://iheartcats.com/wp-content/uploads/2015/02/5255462794_19f91d3463_z-e1424134684199.jpg",
+        title: "Kitty",
+        description: {
+            "condition": "battered",
+            "color": "gray",
+            "model": "iKitty 6S",
+            "storage": "64GB"
+        },
+        price: 121.99,
+        shippingCharge: 38.56
+    },
+];
+
 const initialState = {
-  cartProducts: loadState('cartProducts') ? loadState('cartProducts') : [],
+  //cartProducts: loadState('cartProducts') ? loadState('cartProducts') : cartItems,
+    cartProducts: cartItems
 };
 
 /**
@@ -41,7 +115,7 @@ const itemsReducer = (state = initialState, action) => {
     case REMOVE_ITEM_FROM_CART_FULFILLED: {
 
       let newCartProducts = cartProducts.filter((item) => {
-        if (item.productId !== action.payload) {
+        if (item.id !== action.payload) {
           return item;
         }
       });
@@ -50,7 +124,7 @@ const itemsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        newCartProducts
+        cartProducts: newCartProducts
       };
     }
     case REMOVE_ITEM_FROM_CART_REJECTED: {
