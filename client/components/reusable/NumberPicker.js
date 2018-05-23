@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class NumberPicker extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       uncheckedResults: []
-    }
+    };
   }
 
-  componentDidMount() {
+  componentDidMount () {
 
   }
 
-
-  render() {
-
-
+  render () {
     return (
       <div className="number-picker">
         <div className="button" onClick={() => this.props.onValueChange(false)}>-</div>
@@ -30,7 +26,7 @@ class NumberPicker extends React.Component {
 }
 
 NumberPicker.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element
 
 };
 

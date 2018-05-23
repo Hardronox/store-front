@@ -4,7 +4,7 @@ import SendEmailsComponent from '../../components/admin/users/SendEmailsComponen
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

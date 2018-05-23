@@ -10,18 +10,18 @@ const initialState = {
  * @param {Object<type>} action
  */
 const locationReducer = (state = initialState, action) => {
-  let { type } = action;
+  let {type} = action;
 
-  switch(type) {
-    case GET_TRANSLATIONS_FULFILLED: {
-      return {
-        ...state,
-        translations: action.payload
-      };
-    }
+  switch (type) {
+  case GET_TRANSLATIONS_FULFILLED: {
+    return {
+      ...state,
+      translations: action.payload
+    };
+  }
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

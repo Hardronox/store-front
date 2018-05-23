@@ -1,19 +1,19 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 import createHistory from 'history/createBrowserHistory';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
-import { routerMiddleware } from 'react-router-redux';
+import {routerMiddleware} from 'react-router-redux';
 import rootReducer from '../reducers';
-import rootSaga from '../sagas'
-import logger from 'redux-logger'
+import rootSaga from '../sagas';
+import logger from 'redux-logger';
 
 export const history = createHistory();
 
 const sagaMiddleware = createSagaMiddleware();
 
-function configureStoreProd(initialState) {
+function configureStoreProd (initialState) {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
@@ -22,19 +22,19 @@ function configureStoreProd(initialState) {
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk,
     reactRouterMiddleware,
-    sagaMiddleware,
+    sagaMiddleware
   ];
 
   const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middlewares)
-    )
+  )
   );
   sagaMiddleware.run(rootSaga);
 
   return store;
 }
 
-function configureStoreDev(initialState) {
+function configureStoreDev (initialState) {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
@@ -46,7 +46,7 @@ function configureStoreDev(initialState) {
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk,
     reactRouterMiddleware,
-    sagaMiddleware,
+    sagaMiddleware
     // logger
   ];
 
@@ -54,7 +54,7 @@ function configureStoreDev(initialState) {
 
   const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(...middlewares)
-    )
+  )
   );
   sagaMiddleware.run(rootSaga);
 

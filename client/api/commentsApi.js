@@ -1,73 +1,70 @@
 import axios from 'axios';
-import {base_url} from '../config';
-
+import {baseUrl} from '../config';
 
 // GET request for remote image
-export function getCommentsApi() {
+export function getCommentsApi () {
   return axios({
-    method:'get',
-    url: `${base_url}/comments`,
+    method: 'get',
+    url: `${baseUrl}/comments`
     // responseType:'stream'
   });
 }
 
 // Send a POST request
-export function createCommentApi(comment) {
+export function createCommentApi (comment) {
   axios({
     method: 'post',
-    url: `${base_url}/comment`,
+    url: `${baseUrl}/comment`,
     data: comment
   });
 }
 
-export function createReplyApi(reply, id) {
-    // TODO: update comments[id] replies array property
-    axios({
-        method: 'post',
-        url: `${base_url}/comment`,
-        data: comment
-    });
-}
-
-// Send a POST request
-export function updateCommentApi(comment) {
+export function createReplyApi (reply, id) {
+  // TODO: update comments[id] replies array property
   axios({
     method: 'post',
-    url: `${base_url}/comment`,
+    url: `${baseUrl}/comment`,
     data: comment
   });
 }
 
 // Send a POST request
-export function deleteCommentApi(id) {
+export function updateCommentApi (comment) {
   axios({
     method: 'post',
-    url: `${base_url}/comment/${id}`,
+    url: `${baseUrl}/comment`,
+    data: comment
+  });
+}
+
+// Send a POST request
+export function deleteCommentApi (id) {
+  axios({
+    method: 'post',
+    url: `${baseUrl}/comment/${id}`
 
   });
 }
 
-
 // Send a POST request
-export function likeCommentApi(id) {
+export function likeCommentApi (id) {
   // TODO: update comment's liked property
-    axios({
-        method: 'post',
-        url: `${base_url}/comment/${id}`,
+  axios({
+    method: 'post',
+    url: `${baseUrl}/comment/${id}`
 
-    });
+  });
 }
 
 // Send a POST request
-export function dislikeCommentApi(id) {
-    // TODO: update comment's disliked property
-    axios({
-        method: 'post',
-        url: `${base_url}/comment/${id}`,
+export function dislikeCommentApi (id) {
+  // TODO: update comment's disliked property
+  axios({
+    method: 'post',
+    url: `${baseUrl}/comment/${id}`
 
-    });
+  });
 }
-
 
 //
 // getAllBooksAttempt() {
@@ -159,4 +156,3 @@ export function dislikeCommentApi(id) {
 //     }.bind(this)
 //   });
 // }
-

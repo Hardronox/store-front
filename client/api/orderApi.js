@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {base_url} from '../config';
+import {baseUrl} from '../config';
 
-export function submitOrderApi(order) {
-    // axios({
-    //     method: 'post',
-    //     url: `${base_url}/orders`,
-    //     data: order
-    // });
+export function submitOrderApi (order) {
+  // axios({
+  //     method: 'post',
+  //     url: `${baseUrl}/orders`,
+  //     data: order
+  // });
 
-    console.log(order);
-    return order;
+  console.log(order);
+  return order;
 }

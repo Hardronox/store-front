@@ -1,165 +1,160 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import LikeButton from './LikeButton';
 import DislikeButton from './DislikeButton';
 import PropTypes from 'prop-types';
-import ProductInfoComponent from "../ProductInfoComponent";
+import ProductInfoComponent from '../ProductInfoComponent';
 import ReactStars from 'react-stars';
 import CommentReplyForm from './CommentReplyForm';
 import {connect} from 'react-redux';
-import {likeComment, dislikeComment} from "../../actions/actions";
-
+import {likeComment, dislikeComment} from '../../actions/actions';
 
 class Comment extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {replyFormOpen: false, repliesExpanded: false};
+    this.toggleReplyForm = this.toggleReplyForm.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = { replyFormOpen: false, repliesExpanded: false};
-        this.toggleReplyForm = this.toggleReplyForm.bind(this);
-    }
+  toggleReplyForm () {
+    this.setState({replyFormOpen: !this.state.replyFormOpen});
+  }
 
-    toggleReplyForm() {
-        this.setState({replyFormOpen: !this.state.replyFormOpen});
-    }
-
-    renderReplyButton() {
-        if(!this.state.replyFormOpen) {
-            return (
-                <button className="btn btn-link"  onClick={this.toggleReplyForm}>
-                    <i className="fa fa-reply" aria-hidden="true"></i>
+  renderReplyButton () {
+    if (!this.state.replyFormOpen) {
+      return (
+        <button className="btn btn-link" onClick={this.toggleReplyForm}>
+          <i className="fa fa-reply" aria-hidden="true"></i>
                     Reply
-                </button>
-            );
-        }
+        </button>
+      );
+    }
 
-        return (
-            <button className="btn btn-link" onClick={this.toggleReplyForm}>
+    return (
+      <button className="btn btn-link" onClick={this.toggleReplyForm}>
                 Close reply form
-            </button>
+      </button>
+    );
+  }
+
+  renderReplies () {
+    if (!this.state.repliesExpanded && this.props.comment.replies.length > 3) {
+      return this.props.comment.replies.slice(0, 3).map((reply, i) => {
+        return (
+          <div className="comment-container flex-col" key={i}>
+            <div className="comment-header flex-row space-between">
+              <div className="comment-author">{reply.author}</div>
+              <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
+            </div>
+            <div className="comment-body flex-col">
+              <div className="comment-text">
+                {reply.text}
+              </div>
+            </div>
+            <div className="comment-footer flex-row space-between">
+            </div>
+          </div>
         );
+      });
     }
 
-    renderReplies() {
-        if(!this.state.repliesExpanded && this.props.comment.replies.length > 3) {
-            return this.props.comment.replies.slice(0, 3).map((reply, i) => {
-                return (
-                    <div className="comment-container flex-col" key={i}>
-                        <div className="comment-header flex-row space-between">
-                            <div className="comment-author">{reply.author}</div>
-                            <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
-                        </div>
-                        <div className="comment-body flex-col">
-                            <div className="comment-text">
-                                {reply.text}
-                            </div>
-                        </div>
-                        <div className="comment-footer flex-row space-between">
-                        </div>
-                    </div>
-                );
-            })
-        }
+    return this.props.comment.replies.map((reply, i) => {
+      return (
+        <div className="comment-container flex-col" key={i}>
+          <div className="comment-header flex-row space-between">
+            <div className="comment-author">{reply.author}</div>
+            <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
+          </div>
+          <div className="comment-body flex-col">
+            <div className="comment-text">
+              {reply.text}
+            </div>
+          </div>
+          <div className="comment-footer flex-row space-between">
+          </div>
+        </div>
+      );
+    });
+  }
 
-
-        return this.props.comment.replies.map((reply, i) => {
-            return (
-                <div className="comment-container flex-col" key={i}>
-                    <div className="comment-header flex-row space-between">
-                        <div className="comment-author">{reply.author}</div>
-                        <div className="comment-date">{new Date(reply.date).toLocaleString()}</div>
-                    </div>
-                        <div className="comment-body flex-col">
-                            <div className="comment-text">
-                                {reply.text}
-                            </div>
-                        </div>
-                    <div className="comment-footer flex-row space-between">
-                    </div>
-                </div>
-            );
-        })
-    }
-
-    render() {
-    const { author, rating, date, text, pros, cons, replies, liked, disliked, id } = this.props.comment;
+  render () {
+    const {author, rating, date, text, pros, cons, replies, liked, disliked, id} = this.props.comment;
     const ratingConfig = {
-        count: 5,
-        half: true,
-        value: rating,
-        color: '#ffd700',
-        edit: false
+      count: 5,
+      half: true,
+      value: rating,
+      color: '#ffd700',
+      edit: false
     };
 
     return (
 
-    <div className="comment-thread-container flex-col">
+      <div className="comment-thread-container flex-col">
         <div className="comment-container flex-col">
-            <div className="comment-header flex-row space-between">
-                <div className="flex-row">
-                    <div className="comment-author">{author}</div>
-                    {rating &&
+          <div className="comment-header flex-row space-between">
+            <div className="flex-row">
+              <div className="comment-author">{author}</div>
+              {rating &&
                     <div className="comment-rating">
-                        <ReactStars {...ratingConfig} />
+                      <ReactStars {...ratingConfig} />
                     </div>}
-                </div>
-                <div className="flex-row">
-                    <div className="comment-date">{new Date(date).toLocaleString()}</div>
-                    <div className="comment-link" onClick={() => console.log(id)}>
-                        <i className="fa fa-link" aria-hidden="true"></i>
-                    </div>
-                </div>
+            </div>
+            <div className="flex-row">
+              <div className="comment-date">{new Date(date).toLocaleString()}</div>
+              <div className="comment-link" onClick={() => console.log(id)}>
+                <i className="fa fa-link" aria-hidden="true"></i>
+              </div>
+            </div>
+
+          </div>
+          <div className="comment-body flex-col">
+            <div className="comment-text">{text}</div>
+            { pros && <div className="comment-pros"><span>Pros: </span>{pros}</div>}
+            { cons && <div className="comment-cons"><span>Cons: </span>{cons}</div> }
+          </div>
+          <div className="comment-footer flex-row space-between">
+            <div className="comment-reply-button">
+              { this.renderReplyButton()}
+            </div>
+            <div className="comment-react-buttons flex-row">
+              <div className="flex-col">
+                <span className="likes">{liked}</span>
+                <LikeButton onClick={() => this.props.likeComment(id)} />
+              </div>
+              <div className="flex-col">
+                <span className="dislikes">{disliked}</span>
+                <DislikeButton onClick={() => this.props.dislikeComment(id)} />
+              </div>
 
             </div>
-            <div className="comment-body flex-col">
-                <div className="comment-text">{text}</div>
-                { pros && <div className="comment-pros"><span>Pros: </span>{pros}</div>}
-                { cons && <div className="comment-cons"><span>Cons: </span>{cons}</div> }
-            </div>
-            <div className="comment-footer flex-row space-between">
-                <div className="comment-reply-button">
-                    { this.renderReplyButton()}
-                </div>
-                <div className="comment-react-buttons flex-row">
-                    <div className="flex-col">
-                        <span className="likes">{liked}</span>
-                        <LikeButton onClick={() => this.props.likeComment(id)} />
-                    </div>
-                    <div className="flex-col">
-                        <span className="dislikes">{disliked}</span>
-                        <DislikeButton onClick={() => this.props.dislikeComment(id)} />
-                    </div>
-
-                </div>
-            </div>
+          </div>
         </div>
         <div className="comment-thread">
-            { replies && this.renderReplies()}
-            { !this.state.repliesExpanded && replies.length > 3 &&
+          { replies && this.renderReplies()}
+          { !this.state.repliesExpanded && replies.length > 3 &&
             <div className="flex-row button-container">
-                <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: true})}>
+              <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: true})}>
                     Show all replies
-                </button>
+              </button>
             </div> }
-            { this.state.repliesExpanded &&
+          { this.state.repliesExpanded &&
             <div className="flex-row button-container">
-                <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: false})}>
+              <button className="btn btn-link" onClick={() => this.setState({repliesExpanded: false})}>
                     Collapse
-                </button>
+              </button>
             </div>}
         </div>
         <div>
-            {this.state.replyFormOpen && <CommentReplyForm comment={this.props.comment}/> }
+          {this.state.replyFormOpen && <CommentReplyForm comment={this.props.comment}/> }
         </div>
-    </div>
-);
-}
-
+      </div>
+    );
+  }
 }
 
 // Comment.propTypes = {
 //     comment: PropTypes.object.required,
 //
 // };
-
 
 // const mapStateToProps = state => {
 //     return {
@@ -169,14 +164,14 @@ class Comment extends Component {
 // };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        likeComment: (id) => {
-            dispatch(likeComment(id));
-        },
-        dislikeComment: (id) => {
-            dispatch(dislikeComment(id));
-        },
-    };
+  return {
+    likeComment: (id) => {
+      dispatch(likeComment(id));
+    },
+    dislikeComment: (id) => {
+      dispatch(dislikeComment(id));
+    }
+  };
 };
 
 export default connect(null, mapDispatchToProps)(Comment);

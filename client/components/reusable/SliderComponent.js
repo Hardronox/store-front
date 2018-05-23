@@ -3,30 +3,26 @@ import {
   NavLink, Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Slider from 'react-id-swiper'
+import Slider from 'react-id-swiper';
 
 class Product extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
 
-
-  componentWillMount() {
+  componentWillMount () {
 
   }
 
-
-  renderSlides() {
-
+  renderSlides () {
     return this.props.slides.map((item, i) => {
       return (
         <div key={i}>
           <Link to={`/product/${i}`}>
             <img src={item.image} />
           </Link>
-          {this.props.showInfo ?
-            <div>
+          {this.props.showInfo
+            ? <div>
               <div>
                 <Link to={`/product/${i}`}>{item.name}</Link>
               </div>
@@ -34,11 +30,10 @@ class Product extends React.Component {
                 <span>{item.price}$</span>
               </div>
             </div>
-          : null}
+            : null}
         </div>
       );
     });
-
   }
 
   render () {
@@ -52,7 +47,7 @@ class Product extends React.Component {
 
     const params = {
       grabCursor: true,
-      loop:true,
+      loop: true,
       slidesPerView: this.props.slidesPerView || 1,
       // autoplay: true,
       navigation: {
@@ -76,7 +71,7 @@ class Product extends React.Component {
 
 Product.propTypes = {
   children: PropTypes.element,
-  routing: PropTypes.object,
+  routing: PropTypes.object
 };
 
 export default Product;

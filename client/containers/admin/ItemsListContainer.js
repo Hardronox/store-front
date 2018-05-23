@@ -4,7 +4,7 @@ import ItemsListComponents from '../../components/admin/items/ItemsListComponent
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

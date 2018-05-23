@@ -5,14 +5,12 @@
 // let deckdata = new DeckData();
 
 const defaultState = {
-  activePlayer: 0,     // index of current player - 0 or 1
+  activePlayer: 0, // index of current player - 0 or 1
   cards: [null, null], // player1 and player2 cards respectively
-  scores: [0, 0],      // player1 and player2 total score respectively
+  scores: [0, 0] // player1 and player2 total score respectively
 };
 
-describe("gameReducerTest", function() {
-
-
+describe('gameReducerTest', function () {
   // it("topCard returns last card", function() {
   //
   //   let topCard = deckdata.topCard;
@@ -22,8 +20,8 @@ describe("gameReducerTest", function() {
   // });
 
   it('should start the game', () => {
-    expect(true).toEqual(true)
-  })
+    expect(true).toEqual(true);
+  });
   //
   //
   //
@@ -55,5 +53,4 @@ describe("gameReducerTest", function() {
   //     scores: [0, 0]
   //   })
   // })
-
 });
