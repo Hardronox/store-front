@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import { reduxForm } from 'redux-form';
 
 import ProfileComponent from '../components/ProfileComponent';
 import {getUsers, registerUser} from '../actions/actions';
@@ -20,4 +21,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileComponent);
+export default reduxForm({
+    form: 'mailing-form'
+})(connect(mapStateToProps, mapDispatchToProps)(ProfileComponent));

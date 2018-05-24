@@ -24,7 +24,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={MainPageContainer} />
             <Route exact path="/product/:id" component={ProductInfoContainer} />
-            <Route exact path="/user/:id/profile" component={ProfileContainer} />
+            <Route path="/user/:id/profile" component={ProfileContainer} />
             <Route exact path="/user/:id/my-orders" component={MyOrdersContainer} />
             <Route exact path="/user/:id/notifications" component={NotificationsContainer} />
             <Route exact path="/user/:id/settings" component={SettingsContainer} />

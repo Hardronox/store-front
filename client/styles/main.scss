@@ -3878,8 +3878,8 @@ span a {
     }
   }
 
-
-/* ***********Cart Component Form styles
+/* *******************************************
+*			Cart Component styles
 ********************************************** */
 
 .cart-container {
@@ -4203,5 +4203,48 @@ span a {
         }
       }
     }
+  }
+}
+
+/* *******************************************
+*			Mailing Component styles
+********************************************** */
+
+.mailing-list-checkbox-container {
+  width: 25px;
+  position: relative;
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+  input[type=checkbox]:checked + label::after {
+      opacity: 1;
+      border-color: #26ca28;
+  }
+  label {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #eee;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  label::after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+  }
+  label:hover::after {
+    opacity: 0.5;
   }
 }
