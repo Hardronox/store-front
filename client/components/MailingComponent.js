@@ -44,7 +44,8 @@ class MailingComponent extends Component {
             return(
                 <div className="mailing-list-item flex-row" key={item.name}>
                     <div className="mailing-list-checkbox-container">
-                        <Field name={item.name} component="input" type="checkbox" className="mailing-list-checkbox" />
+                        {/* <Field name={item.name} component="input" type="checkbox" className="mailing-list-checkbox" /> */}
+                        <input id={item.name} type="checkbox" className="mailing-list-checkbox" />
                         <label htmlFor={item.name}></label>
                     </div>
                     <div className="mailing-list-details flex-col">
@@ -60,7 +61,6 @@ class MailingComponent extends Component {
         })
     }
     render() {
-        console.log(43535);
         return (
           <div className="mailing-list-container">
               {this.renderMailingListItems()}
