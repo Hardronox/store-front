@@ -4211,10 +4211,20 @@ span a {
 ********************************************** */
 .mailing-list-container {
   padding: 20px;
+  .mailing-list-main-title {
+    margin-bottom: 20px;
+  }
+  .mailing-list-section-title {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .mailing-list-item {
+    margin-bottom: 10px;
+  }
   .mailing-list-checkbox-container {
   width: 25px;
   position: relative;
-  margin: 5px 25px 0px 5px;
+  margin: 0 25px;
   input[type=checkbox] {
     visibility: hidden;
   }
@@ -4224,6 +4234,7 @@ span a {
   }
   label {
     position: absolute;
+    margin: 0;
     width: 25px;
     height: 25px;
     background: #eee;
@@ -4249,5 +4260,11 @@ span a {
   label:hover::after {
     opacity: 0.5;
   }
-}
+ }
+  .mailing-list-details {
+    .mailing-list-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
 }

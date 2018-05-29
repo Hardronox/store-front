@@ -5,6 +5,7 @@ import Product from './reusable/ProductComponent';
 import Slider from './reusable/SliderComponent';
 import { Helmet } from 'react-helmet';
 import MailingComponent from './MailingComponent';
+import PersonalInfo from "./PersonalInfo";
 
 class ProfileComponent extends Component {
 
@@ -62,54 +63,17 @@ class ProfileComponent extends Component {
               </div>
 
                 <Switch>
+                    <Route exact path={`${match.url}`} component={PersonalInfo} />
                     <Route path={`${match.url}/mailings`} component={MailingComponent} />
                 </Switch>
 
-              {/*<div className="col-md-7">*/}
-                {/*<h2>Personnel information</h2>*/}
-                {/*<div className="profile-info">*/}
-                  {/*<div className="info-item">*/}
-                    {/*<div className="info-item-title">Имя</div>*/}
-                    {/*<div className="info-item-field">*/}
-                      {/*<div className="profile-info-l-i-text">*/}
-                        {/*Узургалиев Топикджон*/}
-                      {/*</div>*/}
-                    {/*</div>*/}
-                  {/*</div>*/}
-                  {/*<div className="info-item">*/}
-                    {/*<div className="info-item-title">Электронная почтa</div>*/}
-                    {/*<div className="info-item-field">*/}
-                      {/*<div className="profile-info-l-i-text">*/}
-                        {/*sanya.chuck@mail.ru*/}
-                      {/*</div>*/}
-                    {/*</div>*/}
-                  {/*</div>*/}
-                  {/*<div className="info-item">*/}
-                    {/*<div className="info-item-title">Телефон</div>*/}
-                    {/*<div className="info-item-field">*/}
-                      {/*<span className="profile-info-l-i-text profile-info-l-i-text-indent">*/}
-                        {/*+380 (50) 361-29-86*/}
-                      {/*</span>&nbsp;*/}
-                      {/*<Link to="#" className="profile-info-l-i-link xhr novisited">Подтвердить номер</Link>*/}
-                    {/*</div>*/}
-                  {/*</div>*/}
-                  {/*<div className="info-item">*/}
-                    {/*<div className="info-item-title">Адрес для доставок</div>*/}
-                    {/*<div className="info-item-field">*/}
-                      {/*<div className="profile-info-l-i-text">*/}
-                        {/*Запорожье Запорожская обл. Запорожье р-н*/}
-                      {/*</div>*/}
-                    {/*</div>*/}
-                  {/*</div>*/}
-                {/*</div>*/}
-              {/*</div>*/}
-              {/*<div className="col-md-4">*/}
-                {/*<div className="profile-actions">*/}
-                  {/*<Link to="">Edit personnel information</Link>*/}
-                  {/*<Link to="">Change password</Link>*/}
-                  {/*<Link to="">Log out</Link>*/}
-                {/*</div>*/}
-              {/*</div>*/}
+                <div className="col-md-4">
+                    <div className="profile-actions">
+                        <Link to="">Edit personnel information</Link>
+                        <Link to="">Change password</Link>
+                        <Link to="">Log out</Link>
+                    </div>
+                </div>
             </main>
         </Fragment>
     );

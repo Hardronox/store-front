@@ -41,7 +41,7 @@ class MailingComponent extends Component {
             },
         ];
         return mailingListItems.map((item, i) => {
-            return(
+            return (
                 <div className="mailing-list-item flex-row" key={item.name}>
                     <div className="mailing-list-checkbox-container">
                         {/* <Field name={item.name} component="input" type="checkbox" className="mailing-list-checkbox" /> */}
@@ -60,10 +60,38 @@ class MailingComponent extends Component {
                     );
         })
     }
+
+    renderMailingListChannels() {
+        const mailingListChannels = ['Email', 'Viber', 'SMS', 'Browser'];
+        return mailingListChannels.map((channel, i) => {
+            return (
+                <div className="mailing-list-item flex-row" key={i}>
+                    <div className="mailing-list-checkbox-container">
+                        {/* <Field name={item.name} component="input" type="checkbox" className="mailing-list-checkbox" /> */}
+                        <input id={channel} type="checkbox" className="mailing-list-checkbox" />
+                        <label htmlFor={channel}></label>
+                    </div>
+                    <div className="mailing-list-details">
+                        <div className="mailing-list-title">
+                            {channel}
+                        </div>
+                    </div>
+                </div>
+            );
+        })
+    }
     render() {
         return (
-          <div className="mailing-list-container">
-              {this.renderMailingListItems()}
+          <div className="mailing-list-container col-md-7">
+              <h2 className="mailing-list-main-title">Mailings</h2>
+              <div className="mailing-list-types flex-col">
+                  <h3 className="mailing-list-section-title">Mailing List Types:</h3>
+                  {this.renderMailingListItems()}
+              </div>
+              <div className="mailing-list-channels flex-col">
+                  <h3 className="mailing-list-section-title">Mailing List Channels:</h3>
+                  {this.renderMailingListChannels()}
+              </div>
           </div>
         );
     }
