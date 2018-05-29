@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class PersonalInfo extends Component {
+class PersonalInfoComponent extends Component {
     render() {
         return (
             <div className="col-md-7">
@@ -47,6 +47,6 @@ class PersonalInfo extends Component {
     }
 }
 
-PersonalInfo.propTypes = {};
+PersonalInfoComponent.propTypes = {};
 
-export default PersonalInfo;
+export default PersonalInfoComponent;

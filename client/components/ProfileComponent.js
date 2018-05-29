@@ -5,7 +5,8 @@ import Product from './reusable/ProductComponent';
 import Slider from './reusable/SliderComponent';
 import { Helmet } from 'react-helmet';
 import MailingComponent from './MailingComponent';
-import PersonalInfo from "./PersonalInfo";
+import PersonalInfoComponent from "./PersonalInfoComponent";
+import ViewedProductsComponent from "./ViewedProductsComponent";
 
 class ProfileComponent extends Component {
 
@@ -29,7 +30,7 @@ class ProfileComponent extends Component {
       {title: "Cart", to: "/user/12/profile"},
       {title: "My orders", to: "/user/12/profile"},
       {title: "My reviews/comments", to: "/user/12/profile"},
-      {title: "Products that I viewed", to: "/user/12/profile"},
+      {title: "Products that I viewed", to: "/user/12/profile/viewed"},
       {title: "Mailing", to: `${this.props.match.url}/mailings`},
     ];
 
@@ -56,18 +57,19 @@ class ProfileComponent extends Component {
                 <meta name="description" content="User profile" />
             </Helmet>
             <main className="main-container profile-container" role="main">
-              <div className="col-md-3 offset-md-1">
+              <div className="col-md-2 offset-md-1">
                 <ul className="profile-menu" id="sidebar-menu">
                   {this.renderMenu()}
                 </ul>
               </div>
 
                 <Switch>
-                    <Route exact path={`${match.url}`} component={PersonalInfo} />
+                    <Route exact path={`${match.url}`} component={PersonalInfoComponent} />
                     <Route path={`${match.url}/mailings`} component={MailingComponent} />
+                    <Route path={`${match.url}/viewed`} component={ViewedProductsComponent} />
                 </Switch>
 
-                <div className="col-md-4">
+                <div className="col-md-2">
                     <div className="profile-actions">
                         <Link to="">Edit personnel information</Link>
                         <Link to="">Change password</Link>
