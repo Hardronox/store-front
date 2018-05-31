@@ -4312,51 +4312,61 @@ span a {
     }
   }
   .viewed-products {
-    margin-top: 30px;
+    margin: 30px 0 30px;
     flex-wrap: wrap;
     align-items: center;
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0;
     .viewed-product {
-      width: 45%;
+      width: 50%;
+      height: 300px;
       flex: none;
       padding: 10px;
       border-right: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
-      margin: 5px 5px 0 5px;
+      //margin: 5px 5px 0 5px;
       position: relative;
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+      }
       .viewed-product-delete-button {
         position: absolute;
-        top: 0;
+        top: 5px;
         right: 5px;
         height: 25px;
         width: 25px;
         border-radius: 100%;
         background: transparent;
         border: 2px solid #369AED;
+        outline: none;
+        &::-moz-focus-inner {
+          border: 0;
+        }
         &:hover {
           cursor: pointer;
         }
-      }
-      .viewed-product-delete-button::before {
-        content: '';
-        height: 15px;
-        width: 2px;
-        position: absolute;
-        background: #369AED;
-        top: 2.5px;
-        left: 10px;
-        transform: rotate(-45deg);
-      }
-      .viewed-product-delete-button::after {
-        content: '';
-        height: 15px;
-        width: 2px;
-        position: absolute;
-        background: #369AED;
-        top: 2.5px;
-        left: 10px;
-        transform: rotate(45deg);
+        &:before {
+          content: '';
+          height: 15px;
+          width: 2px;
+          position: absolute;
+          background: #369AED;
+          top: 2.5px;
+          left: 10px;
+          transform: rotate(-45deg);
+        }
+        &:after {
+          content: '';
+          height: 15px;
+          width: 2px;
+          position: absolute;
+          background: #369AED;
+          top: 2.5px;
+          left: 10px;
+          transform: rotate(45deg);
+        }
       }
       .viewed-product-discount-alert {
         background: red;
@@ -4370,7 +4380,7 @@ span a {
         text-align: center;
         line-height: 30px;
         position: absolute;
-        top: 0;
+        top: 5px;
         left: 5px;
         font-family: Impact;
       }
@@ -4423,67 +4433,18 @@ span a {
           }
         }
         .viewed-product-rating {
-
         }
         .viewed-product-comments {
           font-size: 12px;
         }
         .viewed-product-like {
-          $size: 20px;
-          $border: 2px;
-          width: 20px;
-          height: 20px;
-          position: relative;
-          transform: rotate(-45deg);
-          border: $border solid red;
-          border-top-color: transparent;
-          border-right-color: transparent;
-          border-radius: 4px;
-          &:before, &:after {
-            content: '';
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            position: absolute;
-            border: $border solid red;
-            border-bottom-color: transparent;
-            border-right-color: transparent;
-          }
-          &:before {
-            top: -$size/2;
-            left: -$border;
-            transform: rotate(45deg);
-          }
-          &:after {
-            top: -$border;
-            left: $size/2 - $border*2;;
-            transform: rotate(135deg);
+          font-size: 32px;
+          color: #FFDF80;
+          &:hover {
+            cursor: pointer;
           }
         }
-        //.viewed-product-like {
-        //  width: 20px;
-        //  height: 20px;
-        //  background: red;
-        //  transform: rotate(-45deg);
-        //}
-        //.viewed-product-like::before {
-        //  content: '';
-        //  background: red;
-        //  position: absolute;
-        //  width: 20px;
-        //  height: 20px;
-        //  border-radius: 50%;
-        //  top: -10px;
-        //}
-        //.viewed-product-like::after {
-        //  content: '';
-        //  background: red;
-        //  position: absolute;
-        //  width: 20px;
-        //  height: 20px;
-        //  border-radius: 50%;
-        //  left: 10px;
-        //}
+
       }
     }
   }
