@@ -6,7 +6,7 @@ import Slider from './reusable/SliderComponent';
 import { Helmet } from 'react-helmet';
 import MailingComponent from './MailingComponent';
 import PersonalInfoComponent from "./PersonalInfoComponent";
-import ViewedProductsComponent from "./ViewedProductsComponent";
+import ViewedProductsContainer from "../containers/ViewedProductsContainer";
 
 class ProfileComponent extends Component {
 
@@ -66,7 +66,7 @@ class ProfileComponent extends Component {
                 <Switch>
                     <Route exact path={`${match.url}`} component={PersonalInfoComponent} />
                     <Route path={`${match.url}/mailings`} component={MailingComponent} />
-                    <Route path={`${match.url}/viewed`} component={ViewedProductsComponent} />
+                    <Route path={`${match.url}/viewed`} component={ViewedProductsContainer} />
                 </Switch>
 
                 <div className="col-md-2">

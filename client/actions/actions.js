@@ -20,10 +20,10 @@ import {
     GET_TRANSLATIONS_FULFILLED,
     SUBMIT_ORDER_PENDING,
     CREATE_REPLY_PENDING,
-    CREATE_REPLY_FULFILLED,
-    CREATE_REPLY_REJECTED,
     LIKE_COMMENT_PENDING,
-    DISLIKE_COMMENT_PENDING
+    DISLIKE_COMMENT_PENDING,
+    TOGGLE_PRODUCT_LIKE_PENDING,
+    DELETE_VIEWED_PRODUCT_PENDING
 } from '../constants/actionTypes';
 
 
@@ -176,4 +176,23 @@ export const submitOrder = (order) => {
   return (dispatch) => {
     dispatch({ type: SUBMIT_ORDER_PENDING, payload: order})
   }
+}
+
+//-------------------------------------------------------------------------------------
+export const toggleProductLike = (id) => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_PRODUCT_LIKE_PENDING,
+            id: id
+        });
+    }
+}
+
+export const deleteViewedProduct = (id) => {
+    return (dispatch) => {
+        dispatch({
+            type: DELETE_VIEWED_PRODUCT_PENDING,
+            id: id
+        });
+    }
 }
