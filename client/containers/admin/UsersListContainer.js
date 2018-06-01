@@ -4,7 +4,7 @@ import UsersListComponents from '../../components/admin/users/UsersListComponent
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

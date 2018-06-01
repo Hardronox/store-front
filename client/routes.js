@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default */
-import React, { Component, Fragment } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import MainPageContainer from './containers/MainPageContainer';
 import ProductInfoContainer from './containers/ProductInfoContainer';
 import OrderContainer from './containers/OrderContainer';
@@ -15,8 +15,7 @@ import FooterComponent from './components/FooterComponent';
 import AdminContainer from './containers/AdminContainer';
 
 class App extends Component {
-
-  render() {
+  render () {
     return (
       <Fragment>
         <main className="main-content">
@@ -34,7 +33,7 @@ class App extends Component {
             <Route path="/admin" component={AdminContainer} />
           </Switch>
         </main>
-        <Route path="/" render={(route) =>{
+        <Route path="/" render={(route) => {
           return (route.location.pathname.indexOf('/admin') !== -1) ? null : <FooterComponent/>;
         }} />
       </Fragment>

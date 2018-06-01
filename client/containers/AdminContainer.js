@@ -4,7 +4,7 @@ import AdminComponent from '../components/admin/AdminComponent';
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

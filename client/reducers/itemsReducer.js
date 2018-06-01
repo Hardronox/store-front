@@ -18,96 +18,89 @@ const initialState = {
  * @param {Object<type>} action
  */
 const itemsReducer = (state = initialState, action) => {
-  let { type } = action;
+  let {type} = action;
 
-  switch(type) {
+  switch (type) {
+  case GET_SINGLE_ITEM_FULFILLED: {
+    return {
+      ...state,
+      keks: action.payload
+    };
+  }
+  case GET_SINGLE_ITEM_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
-    case GET_SINGLE_ITEM_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case GET_SINGLE_ITEM_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
+  case GET_ITEMS_FULFILLED: {
+    return {
+      ...state,
+      keks: action.payload
+    };
+  }
+  case GET_ITEMS_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
+  case CREATE_ITEM_FULFILLED: {
+    return {
+      ...state,
+      keks: action.payload
+    };
+  }
+  case CREATE_ITEM_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
-    case GET_ITEMS_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case GET_ITEMS_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
+  case UPDATE_ITEM_FULFILLED: {
+    return {
+      ...state,
+      keks: action.payload
+    };
+  }
+  case UPDATE_ITEM_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
+  case DELETE_ITEM_FULFILLED: {
+    return {
+      ...state,
+      keks: action.payload
+    };
+  }
+  case DELETE_ITEM_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
-    case CREATE_ITEM_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case CREATE_ITEM_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
+  case SEARCH_ITEM_FULFILLED: {
+    return {
+      ...state,
+      searchResults: action.payload
+    };
+  }
+  case SEARCH_ITEM_REJECTED: {
+    return {
+      ...state,
+      keksStatus: action.error
+    };
+  }
 
-
-    case UPDATE_ITEM_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case UPDATE_ITEM_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
-
-
-    case DELETE_ITEM_FULFILLED: {
-      return {
-        ...state,
-        keks: action.payload
-      };
-    }
-    case DELETE_ITEM_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
-
-    case SEARCH_ITEM_FULFILLED: {
-      return {
-        ...state,
-        searchResults: action.payload
-      };
-    }
-    case SEARCH_ITEM_REJECTED: {
-      return {
-        ...state,
-        keksStatus: action.error
-      };
-    }
-
-
-
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

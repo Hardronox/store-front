@@ -9,7 +9,8 @@
     "build": "webpack -p",
     "watch": "webpack -w",
     "test": "jest",
-    "lint": "eslint ./client"
+    "lint": "eslint ./client",
+    "lint-fix": "eslint ./client --fix"
   },
   "author": "",
   "license": "ISC",
@@ -114,5 +115,6 @@
       "resources/assets/js/modules",
       "node_modules"
     ]
-  }
+  },
+  "eslintIgnore": ["client/dist/*"]
 }

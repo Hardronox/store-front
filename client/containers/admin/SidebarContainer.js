@@ -4,7 +4,7 @@ import SidebarComponent from '../../components/admin/SidebarComponent';
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

@@ -4,39 +4,29 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'react-select/dist/react-select.css';
-import { Field, reduxForm } from 'redux-form'
-import authField from '../reusable/authField'
+import {Field, reduxForm} from 'redux-form';
+import authField from '../reusable/authField';
 
 class LoginForm extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      selectedOption: '',
+      selectedOption: ''
     };
   }
 
-
-  componentWillMount() {
+  componentWillMount () {
 
   }
 
-  search() {
+  search () {
     console.log(this.refs.search.value);
   }
 
-
-  handleEditorChange(e) {
-    console.log(e.target.getContent());
-  };
-
-
-
   render () {
-
-    const { selectedOption } = this.state;
+    const {selectedOption} = this.state;
     const value = selectedOption && selectedOption.value;
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
 
     return (
       <form className="form-horizontal" method="post" onSubmit={handleSubmit}>
@@ -81,9 +71,8 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   children: PropTypes.element,
-  routing: PropTypes.object,
+  routing: PropTypes.object
 };
-
 
 LoginForm = reduxForm({
   // a unique name for the form

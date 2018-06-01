@@ -4,7 +4,7 @@ import NewItemComponent from '../../components/admin/items/NewItemComponent';
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 

@@ -6,7 +6,7 @@ import {getUsers, registerUser} from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing,
+    routing: state.routing
   };
 };
 
