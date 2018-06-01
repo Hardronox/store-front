@@ -56,24 +56,26 @@ class ProfileComponent extends Component {
                 <title>Profile</title>
                 <meta name="description" content="User profile" />
             </Helmet>
-            <main className="main-container profile-container" role="main">
-              <div className="col-md-2 offset-md-1">
-                <ul className="profile-menu" id="sidebar-menu">
-                  {this.renderMenu()}
-                </ul>
-              </div>
+            <main className="main-container profile-container container-fluid" role="main">
+                <div className="row">
+                  <div className="col-md-3">
+                    <ul className="profile-menu" id="sidebar-menu">
+                      {this.renderMenu()}
+                    </ul>
+                  </div>
 
-                <Switch>
-                    <Route exact path={`${match.url}`} component={PersonalInfoComponent} />
-                    <Route path={`${match.url}/mailings`} component={MailingComponent} />
-                    <Route path={`${match.url}/viewed`} component={ViewedProductsContainer} />
-                </Switch>
+                    <Switch>
+                        <Route exact path={`${match.url}`} component={PersonalInfoComponent} />
+                        <Route path={`${match.url}/mailings`} component={MailingComponent} />
+                        <Route path={`${match.url}/viewed`} component={ViewedProductsContainer} />
+                    </Switch>
 
-                <div className="col-md-2">
-                    <div className="profile-actions">
-                        <Link to="">Edit personnel information</Link>
-                        <Link to="">Change password</Link>
-                        <Link to="">Log out</Link>
+                    <div className="col-md-2">
+                        <div className="profile-actions">
+                            <Link to="">Edit personal information</Link>
+                            <Link to="">Change password</Link>
+                            <Link to="">Log out</Link>
+                        </div>
                     </div>
                 </div>
             </main>
