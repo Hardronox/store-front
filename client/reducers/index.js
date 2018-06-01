@@ -4,8 +4,9 @@ import itemsReducer from './itemsReducer';
 import commentsReducer from './commentsReducer';
 import locationReducer from './locationReducer';
 import cartReducer from './cartReducer';
-import {routerReducer} from 'react-router-redux';
-import {reducer as formReducer} from 'redux-form';
+import viewedProductsReducer from './viewedProductsReducer';
+import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
   usersReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   locationReducer,
   cartReducer,
   routing: routerReducer,
-  form: formReducer
+  form: formReducer,
+  viewedProducts: viewedProductsReducer
 });
 
 export default rootReducer;
