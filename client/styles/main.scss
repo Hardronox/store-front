@@ -901,7 +901,7 @@ label, .control-label {
 
 .profile-container {
   display: flex;
-  padding-top: 90px!important;
+  padding-top: 90px;
 
   .profile-actions {
     display: flex;
@@ -909,6 +909,9 @@ label, .control-label {
     border-left: 1px solid #eaeaea;
     margin-top: 100px;
     padding-left: 20px;
+    @media only screen and (max-width: 680px) {
+      margin-top: 10px;
+    }
   }
 
   .info-item {
@@ -4275,6 +4278,7 @@ span a {
 
 
 .viewed-products-container {
+  margin-top: 25px;
   .viewed-products-header {
     align-items: center;
     .viewed-products-title {
