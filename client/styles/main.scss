@@ -4425,7 +4425,6 @@ span a {
             border-radius: 3px;
           }
           .old-price {
-            text-decoration: line-through;
             text-decoration: red line-through;
             color: #ccc;
           }
@@ -4448,7 +4447,236 @@ span a {
             cursor: pointer;
           }
         }
+      }
+    }
+  }
+}
 
+/* *******************************************
+*			MyOrderComponent styles
+********************************************** */
+
+.user-orders-container {
+  min-width: 900px;
+  border: 1px solid red;
+  .user-orders-title {
+
+  }
+  .user-orders {
+    .user-order {
+      -webkit-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+      -moz-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+      box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+      border: 1px solid #3bc1f1;
+      border-radius: 7px;
+      border-right: 10px solid #76D4F5;
+      margin-bottom: 15px;
+      .user-order-left-section {
+        width: 70%;
+        flex: none;
+        .user-order-left-section-header {
+          height: 55px;
+          justify-content: space-between;
+          align-items: center;
+          border-right: 1px solid #3bc1f1;
+          .user-order-details {
+            align-items: center;
+            .user-order-toggle {
+              margin-right: 15px;
+              margin-left: 10px;
+              align-items: center;
+              .fa-arrow-down {
+                margin-right: 10px;
+                color: #0d5896;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+              .user-order-number {
+                border-bottom: 1px dashed #0d5896;
+                color: #0d5896;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+            .user-order-date {
+              font-size: 12px;
+              color: #7e8e9f;
+              margin-right: 20px;
+            }
+            .user-order-images {
+              .user-order-image {
+                height: 40px;
+                width: auto;
+                &:not(:last-child) {
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+          .user-order-summary {
+            font-size: 15px;
+            margin-right: 15px;
+            align-items: center;
+            &:hover {
+              cursor: pointer;
+            }
+            .user-order-full {
+              font-size: 14px;
+              color: #0d5896;
+              border-bottom: 1px dashed #0d5896;
+              .fa-caret-down {
+                margin-left: 5px
+              }
+            }
+            .fa-print {
+              color: #0d5896;
+              margin: 0 10px;
+            }
+          }
+        }
+        .user-order-left-section-body {
+          border-right: 1px solid #3bc1f1;
+          border-top: 1px solid #3bc1f1;
+            .user-order-seller {
+              align-items: center;
+              border-bottom: 1px dashed #7e8e9f;
+              padding: 5px;
+              .user-order-seller-name {
+                margin-left: 10px;
+                color: #7e8e9f;
+              }
+              .user-order-seller-image {
+                height: 60px;
+                width: auto;
+                margin-left: 20px;
+              }
+            }
+          .order-item {
+            height: 100px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px dashed #7e8e9f;
+            .item-image-container {
+              margin-left: 10px;
+              margin-right: 15px;
+              .item-image {
+                height: 80px;
+                width: auto;
+              }
+            }
+            .item-description {
+              margin-right: 10px;
+              &:hover {
+                cursor: pointer;
+              }
+              .item-description-header {
+                align-items: center;
+                .item-title {
+                  color: #0d5896;
+                }
+                .item-number {
+                  font-size: 11px;
+                  color: #7e8e9f;
+                  margin-left: 3px;
+                }
+              }
+              .item-description-body {
+                .item-price {
+
+                }
+              }
+            }
+            .item-quantity {
+                margin-right: 20px;
+            }
+            .item-total {
+                margin-right: 10px;
+            }
+          }
+          .user-order-delivery {
+            height: 55px;
+            align-items: center;
+            border-bottom: 1px dashed #7e8e9f;
+            justify-content: space-between;
+            padding: 0 15px;
+            .user-order-delivery-type {
+
+            }
+            .user-order-delivery-price {
+
+            }
+          }
+          .user-order-total {
+            height: 55px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            .user-order-total-price {
+
+            }
+          }
+
+        }
+      }
+      .user-order-right-section {
+        width: 30%;
+        flex: none;
+        .user-order-right-section-header {
+          height: 55px;
+          justify-content: space-between;
+          align-items: center;
+          .user-order-status {
+            color: #40B726;
+            margin-left: 20px;
+          }
+          .user-order-history-toggle {
+            margin-right: 10px;
+            align-items: center;
+            .fa-arrow-down {
+              margin-right: 10px;
+              color: #0d5896;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+            .user-order-history {
+              color: #0d5896;
+              border-bottom: 1px dashed #0d5896;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .user-order-right-section-body {
+          border-top: 1px solid #3bc1f1;
+          align-items: flex-start;
+          padding: 20px;
+            .user-order-status-image {
+              height: 80px;
+              width: auto;
+              object-fit: contain;
+            }
+          .user-order-status-message {
+            font-size: 12px;
+            color: #7e8e9f;
+            margin-top: 10px;
+          }
+          .user-order-leave-comment-button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: #d7dde4;
+            border: 1px solid #8b9cb1;
+            border-radius: 5px;
+            border-bottom: 3px solid #8b9cb1;
+            box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }

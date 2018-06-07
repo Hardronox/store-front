@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import MailingComponent from './MailingComponent';
 import PersonalInfoComponent from "./PersonalInfoComponent";
 import ViewedProductsContainer from "../containers/ViewedProductsContainer";
+import MyOrdersContainer from "../containers/MyOrdersContainer";
 
 class ProfileComponent extends Component {
 
@@ -28,7 +29,7 @@ class ProfileComponent extends Component {
       {title: "My profile", to: "/user/12/profile"},
       {title: "Wishlist", to: "/user/12/profile"},
       {title: "Cart", to: "/user/12/profile"},
-      {title: "My orders", to: "/user/12/profile"},
+      {title: "My orders", to: "/user/12/profile/orders"},
       {title: "My reviews/comments", to: "/user/12/profile"},
       {title: "Products that I viewed", to: "/user/12/profile/viewed"},
       {title: "Mailing", to: `${this.props.match.url}/mailings`},
@@ -68,6 +69,7 @@ class ProfileComponent extends Component {
                         <Route exact path={`${match.url}`} component={PersonalInfoComponent} />
                         <Route path={`${match.url}/mailings`} component={MailingComponent} />
                         <Route path={`${match.url}/viewed`} component={ViewedProductsContainer} />
+                        <Route path={`${match.url}/orders`} component={MyOrdersContainer} />
                     </Switch>
 
                     <div className="col-md-2">
