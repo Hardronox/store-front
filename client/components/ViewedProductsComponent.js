@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
 import NumberFormat from 'react-number-format';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MyComponent extends Component {
 

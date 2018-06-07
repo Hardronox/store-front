@@ -25,15 +25,33 @@ class UserOrder extends Component {
                           </div>
                       </div>
                   </div>
-                  <div className="item-quantity">
-                      {item.quantity}
+                  <div className="item-details flex-row">
+                      <div className="item-quantity">
+                          {item.quantity}
+                      </div>
+                      <div className="item-total">
+                          {item.price * item.quantity}
+                      </div>
                   </div>
-                  <div className="item-total">
-                      {item.price * item.quantity}
-                  </div>
+
               </div>
             );
         })
+    }
+
+    renderImages() {
+        const { items } = this.props.order;
+        // if there is just one item, render it's image; otherwise, render the first two items' images
+        if(items.length === 1) {
+            return <img src={items[0].image} className="user-order-image"/>
+        } else {
+            return (
+                <Fragment>
+                    <img src={items[0].image} className="user-order-image" />
+                    <img src={items[1].image} className="user-order-image" />
+                </Fragment>
+        );
+        }
     }
     renderOrder() {
         const { number, date, status, seller, delivery, total, items, open } = this.props.order;
@@ -119,8 +137,7 @@ class UserOrder extends Component {
                                 {new Date(date).toLocaleString()}
                             </div>
                             <div className="user-order-images flex-row">
-                                <img src={items[0].image} className="user-order-image"/>
-                                <img src={items[1].image} className="user-order-image" />
+                                {this.renderImages()}
                             </div>
                         </div>
                         <div className="user-order-summary flex-col">
