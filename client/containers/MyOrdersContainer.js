@@ -1,22 +1,19 @@
 import {connect} from 'react-redux';
 
 import MyOrdersComponent from '../components/MyOrdersComponent';
-import {getUsers, registerUser} from '../actions/actions';
+import { toggleSelect } from '../actions/actions';
 
 const mapStateToProps = state => {
   return {
-    routing: state.routing
+    userOrders: state.userOrders.orders
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUsers: () => {
-      dispatch(getUsers());
+    toggleSelect: (orderNumber) => {
+      dispatch(toggleSelect(orderNumber));
     },
-    register: () => {
-      dispatch(registerUser());
-    }
   };
 };
 

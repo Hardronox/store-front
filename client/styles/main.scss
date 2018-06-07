@@ -902,6 +902,9 @@ label, .control-label {
 .profile-container {
   display: flex;
   padding-top: 90px;
+  .row {
+    width: 100%;
+  }
 
   .profile-actions {
     display: flex;
@@ -4457,7 +4460,8 @@ span a {
 ********************************************** */
 
 .user-orders-container {
-  min-width: 900px;
+  //min-width: 900px;
+  flex: none;
   padding: 20px;
   .user-orders-title {
 
@@ -4472,7 +4476,7 @@ span a {
       border-right: 10px solid #76D4F5;
       margin-bottom: 15px;
       .user-order-left-section {
-        width: 70%;
+        width: 75%;
         flex: none;
         .user-order-left-section-header {
           height: 55px;
@@ -4620,7 +4624,7 @@ span a {
         }
       }
       .user-order-right-section {
-        width: 30%;
+        width: 25%;
         flex: none;
         .user-order-right-section-header {
           height: 55px;

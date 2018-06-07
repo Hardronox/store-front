@@ -36,15 +36,15 @@ class UserOrder extends Component {
         })
     }
     renderOrder() {
-        const { number, date, status, seller, delivery, total, items } = this.props.order;
-        const selectedNumber = this.props.selectedOrder.number;
-        if(number == selectedNumber) {
+        const { number, date, status, seller, delivery, total, items, open } = this.props.order;
+        const { toggleSelect } = this.props;
+        if(open) {
             return (
                 <Fragment>
                     <div className="user-order-left-section flex-col">
                         <div className="user-order-left-section-header flex-row">
                             <div className="user-order-details flex-row">
-                                <div className="user-order-toggle flex-row">
+                                <div className="user-order-toggle flex-row" onClick={toggleSelect}>
                                     <i className="fa fa-arrow-down"></i>
                                     <div className="user-order-number">№ {number}</div>
                                 </div>
@@ -111,7 +111,7 @@ class UserOrder extends Component {
                 <div className="user-order-left-section flex-col">
                     <div className="user-order-left-section-header flex-row">
                         <div className="user-order-details flex-row">
-                            <div className="user-order-toggle flex-row">
+                            <div className="user-order-toggle flex-row" onClick={toggleSelect}>
                                 <i className="fa fa-arrow-down"></i>
                                 <div className="user-order-number">№ {number}</div>
                             </div>
@@ -133,7 +133,7 @@ class UserOrder extends Component {
                         <div className="user-order-status">
                             {status.type}
                         </div>
-                        <div className="user-order-history-toggle flex-row">
+                        <div className="user-order-history-toggle flex-row" onClick={toggleSelect}>
                             <i className="fa fa-arrow-down"></i>
                             <div className="user-order-history">History</div>
                         </div>

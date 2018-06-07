@@ -57,7 +57,7 @@ class ProfileComponent extends Component {
                 <title>Profile</title>
                 <meta name="description" content="User profile" />
             </Helmet>
-            <main className="main-container profile-container container-fluid" role="main">
+            <main className="main-container profile-container container-fluid flex-row" role="main">
                 <div className="row">
                   <div className="col-md-3">
                     <ul className="profile-menu" id="sidebar-menu">
