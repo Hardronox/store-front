@@ -4458,7 +4458,7 @@ span a {
 
 .user-orders-container {
   min-width: 900px;
-  border: 1px solid red;
+  padding: 20px;
   .user-orders-title {
 
   }
@@ -4483,7 +4483,7 @@ span a {
             align-items: center;
             .user-order-toggle {
               margin-right: 15px;
-              margin-left: 10px;
+              margin-left: 15px;
               align-items: center;
               .fa-arrow-down {
                 margin-right: 10px;
@@ -4544,7 +4544,7 @@ span a {
               border-bottom: 1px dashed #7e8e9f;
               padding: 5px;
               .user-order-seller-name {
-                margin-left: 10px;
+                margin-left: 15px;
                 color: #7e8e9f;
               }
               .user-order-seller-image {
@@ -4559,8 +4559,7 @@ span a {
             justify-content: space-between;
             border-bottom: 1px dashed #7e8e9f;
             .item-image-container {
-              margin-left: 10px;
-              margin-right: 15px;
+              margin: 0 15px;
               .item-image {
                 height: 80px;
                 width: auto;
@@ -4667,11 +4666,19 @@ span a {
           .user-order-leave-comment-button {
             margin-top: 10px;
             padding: 5px 15px;
-            background: #d7dde4;
+            //background: #d7dde4;
+            //background: linear-gradient(to top, #0d5896 40%, #ffffff 41%, #ffffff 51%, #0d5896 100%);
+            background: linear-gradient(to top, #80a9da 0%,#6f97c5 100%);
+            box-shadow:
+                    0px 1px 1px rgba(255,255,255,0.8) inset,
+                    1px 1px 3px rgba(0,0,0,0.2),
+                    0px 0px 0px 4px rgba(188,188,188,0.5);
             border: 1px solid #8b9cb1;
             border-radius: 5px;
             border-bottom: 3px solid #8b9cb1;
-            box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
+            text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+            //box-shadow: 2px 3px 5px -2px rgba(0,0,0,0.75);
+            color: #0d5896;
             &:hover {
               cursor: pointer;
             }
