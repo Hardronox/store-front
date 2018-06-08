@@ -4475,20 +4475,42 @@ span a {
       border-radius: 7px;
       border-right: 10px solid #76D4F5;
       margin-bottom: 15px;
+      @media only screen and (max-width: 680px) {
+        flex-wrap: wrap;
+      }
       .user-order-left-section {
         width: 75%;
         flex: none;
+        @media only screen and (max-width: 680px) {
+          width: 100%;
+        }
         .user-order-left-section-header {
           height: 55px;
           justify-content: space-between;
           align-items: center;
           border-right: 1px solid #3bc1f1;
+          @media only screen and (max-width: 680px) {
+            border-right: none;
+            flex-wrap: wrap;
+            height: auto;
+          }
           .user-order-details {
             align-items: center;
+            @media only screen and (max-width: 680px) {
+              width: 100%;
+              flex: none;
+              flex-wrap: wrap;
+              font-size: 18px;
+              margin-top: 10px;
+            }
             .user-order-toggle {
               margin-right: 15px;
               margin-left: 15px;
               align-items: center;
+              @media only screen and (max-width: 680px) {
+                width: 100%;
+                flex: none;
+              }
               .fa-arrow-down {
                 margin-right: 10px;
                 color: #0d5896;
@@ -4508,6 +4530,12 @@ span a {
               font-size: 12px;
               color: #7e8e9f;
               margin-right: 20px;
+              @media only screen and (max-width: 680px) {
+                width: 100%;
+                flex: none;
+                margin-left: 15px;
+                font-size: 14px;
+              }
             }
             .user-order-images {
               @media only screen and (max-width: 768px) {
@@ -4526,6 +4554,12 @@ span a {
             font-size: 15px;
             margin-right: 15px;
             align-items: center;
+            @media only screen and (max-width: 680px) {
+              width: 100%;
+              flex: none;
+              flex-direction: row;
+              margin: 0 0 10px 15px;
+            }
             &:hover {
               cursor: pointer;
             }
@@ -4546,6 +4580,9 @@ span a {
         .user-order-left-section-body {
           border-right: 1px solid #3bc1f1;
           border-top: 1px solid #3bc1f1;
+          @media only screen and (max-width: 680px) {
+            border-right: none;
+          }
             .user-order-seller {
               align-items: center;
               border-bottom: 1px dashed #7e8e9f;
@@ -4602,6 +4639,9 @@ span a {
                 width: 100%;
                 flex-direction: row;
               }
+              @media only screen and (max-width: 680px) {
+                margin: 10px 0 0 20px;
+              }
               &:hover {
                 cursor: pointer;
               }
@@ -4613,13 +4653,25 @@ span a {
                 @media only screen and (max-width: 768px) {
                   justify-content: center;
                 }
+                @media only screen and (max-width: 680px) {
+                  flex-wrap: wrap;
+                  width: 100%;
+                }
                 .item-title {
                   color: #0d5896;
+                  @media only screen and (max-width: 680px) {
+                    width: 100%;
+                    flex: none;
+                  }
                 }
                 .item-number {
                   font-size: 11px;
                   color: #7e8e9f;
                   margin-left: 3px;
+                  @media only screen and (max-width: 680px) {
+                    width: 100%;
+                    flex: none;
+                  }
                 }
               }
               .item-description-body {
@@ -4628,6 +4680,10 @@ span a {
                   flex: none;
                   flex-wrap: wrap;
                   position: relative;
+                }
+                @media only screen and (max-width: 680px) {
+                  width: 100%;
+                  flex: none;
                 }
                 .item-price {
                   width: 100%;
@@ -4642,6 +4698,10 @@ span a {
                 width: 100%;
                 align-items: center;
                 justify-content: center;
+              }
+              @media only screen and (max-width: 680px) {
+                align-items: flex-start;
+                justify-content: flex-start;
               }
             }
             .item-quantity {
@@ -4683,10 +4743,16 @@ span a {
       .user-order-right-section {
         width: 25%;
         flex: none;
+        @media only screen and (max-width: 680px) {
+          width: 100%;
+        }
         .user-order-right-section-header {
           height: 55px;
           justify-content: space-between;
           align-items: center;
+          @media only screen and (max-width: 680px) {
+            height: auto;
+          }
           .user-order-status {
             color: #40B726;
             margin-left: 20px;
@@ -4695,10 +4761,17 @@ span a {
               margin-left: 5px;
               font-size: 14px;
             }
+            @media only screen and (max-width: 680px) {
+              margin: 0 0 15px 15px;
+            }
+
           }
           .user-order-history-toggle {
             margin-right: 10px;
             align-items: center;
+            @media only screen and (max-width: 680px) {
+              margin: 0 10px 15px 15px;
+            }
             .fa-arrow-down {
               margin-right: 10px;
               @media only screen and (max-width: 768px) {
@@ -4722,6 +4795,10 @@ span a {
           border-top: 1px solid #3bc1f1;
           align-items: flex-start;
           padding: 20px;
+          @media only screen and (max-width: 680px) {
+            align-items: center;
+            justify-content: center;
+          }
             .user-order-status-image {
               height: 80px;
               width: auto;
