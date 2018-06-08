@@ -4463,13 +4463,15 @@ span a {
   //min-width: 900px;
   flex: none;
   padding: 20px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    min-width: 90vw;
+  }
   .user-orders-title {
 
   }
   .user-orders {
     .user-order {
-      -webkit-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
-      -moz-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
       box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
       border: 1px solid #3bc1f1;
       border-radius: 7px;
@@ -4489,6 +4491,11 @@ span a {
           justify-content: space-between;
           align-items: center;
           border-right: 1px solid #3bc1f1;
+          @media only screen and (max-width: 1024px) {
+            height: 140px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+          }
           @media only screen and (max-width: 680px) {
             border-right: none;
             flex-wrap: wrap;
@@ -4496,6 +4503,12 @@ span a {
           }
           .user-order-details {
             align-items: center;
+            @media only screen and (max-width: 1024px) {
+              width: 100%;
+              flex: none;
+              flex-wrap: wrap;
+              margin-top: 10px;
+            }
             @media only screen and (max-width: 680px) {
               width: 100%;
               flex: none;
@@ -4507,10 +4520,7 @@ span a {
               margin-right: 15px;
               margin-left: 15px;
               align-items: center;
-              @media only screen and (max-width: 680px) {
-                width: 100%;
-                flex: none;
-              }
+
               .fa-arrow-down {
                 margin-right: 10px;
                 color: #0d5896;
@@ -4538,12 +4548,27 @@ span a {
               }
             }
             .user-order-images {
+              @media only screen and (max-width: 1024px) {
+                margin: 15px;
+              }
               @media only screen and (max-width: 768px) {
                 display: none;
               }
               .user-order-image {
+                &:after {
+                  display: block;
+                  content: '34243';
+                  position: absolute;
+                  left: 3px;
+                  top: 3px;
+                  width: 5px;
+                  height: 5px;
+                }
+                display: block;
                 height: 40px;
                 width: auto;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                position: relative;
                 &:not(:last-child) {
                   margin-right: 5px;
                 }
@@ -4554,7 +4579,7 @@ span a {
             font-size: 15px;
             margin-right: 15px;
             align-items: center;
-            @media only screen and (max-width: 680px) {
+            @media only screen and (max-width: 1024px) {
               width: 100%;
               flex: none;
               flex-direction: row;
@@ -4602,14 +4627,14 @@ span a {
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px dashed #7e8e9f;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 1024px) {
               min-height: 100px;
               height: auto;
               flex-wrap: wrap;
             }
             .item-image-container {
               margin: 0 15px;
-              @media only screen and (max-width: 768px) {
+              @media only screen and (max-width: 1024px) {
                 width: 100%;
                 flex: none;
                 margin: 0;
@@ -4623,7 +4648,7 @@ span a {
                 width: auto;
                 object-fit: contain;
                 margin: 20px 0;
-                @media only screen and (max-width: 768px) {
+                @media only screen and (max-width: 1024px) {
                   width: 90%;
                   height: auto;
                   margin: 20px 0 0 0;
@@ -4633,7 +4658,7 @@ span a {
 
             .item-description {
               margin-right: 10px;
-              @media only screen and (max-width: 768px) {
+              @media only screen and (max-width: 1024px) {
                 margin: 20px;
                 flex-wrap: wrap;
                 width: 100%;
@@ -4693,15 +4718,17 @@ span a {
             }
 
             .item-details {
-              @media only screen and (max-width: 768px) {
-                flex-wrap: wrap;
+              @media only screen and (max-width: 1024px) {
+                padding-left: 20px;
+                margin-bottom: 10px;
                 width: 100%;
-                align-items: center;
-                justify-content: center;
+                align-items: flex-start;
+                justify-content: flex-start;
               }
               @media only screen and (max-width: 680px) {
                 align-items: flex-start;
                 justify-content: flex-start;
+                padding-left: 0;
               }
             }
             .item-quantity {
@@ -4750,6 +4777,10 @@ span a {
           height: 55px;
           justify-content: space-between;
           align-items: center;
+          @media only screen and (max-width: 1024px) {
+            height: 140px;
+            flex-wrap: wrap;
+          }
           @media only screen and (max-width: 680px) {
             height: auto;
           }
@@ -4757,9 +4788,17 @@ span a {
             color: #40B726;
             margin-left: 20px;
             text-transform: capitalize;
+            @media only screen and (max-width: 1024px) {
+              width: 100%;
+              flex: none;
+              margin: 0;
+              display: flex;
+              justify-content: center;
+            }
             @media only screen and (max-width: 768px) {
-              margin-left: 5px;
+              margin-left: 15px;
               font-size: 14px;
+              justify-content: flex-start;
             }
             @media only screen and (max-width: 680px) {
               margin: 0 0 15px 15px;
@@ -4769,6 +4808,17 @@ span a {
           .user-order-history-toggle {
             margin-right: 10px;
             align-items: center;
+            @media only screen and (max-width: 1024px) {
+              width: 100%;
+              flex: none;
+              margin: 0;
+              display: flex;
+              justify-content: center;
+            }
+            @media only screen and (max-width: 768px) {
+              justify-content: flex-start;
+              margin-left: 15px;
+            }
             @media only screen and (max-width: 680px) {
               margin: 0 10px 15px 15px;
             }
@@ -4833,4 +4883,26 @@ span a {
       }
     }
   }
+}
+
+.example-enter {
+  opacity: 0.01;
+  width: 0px;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  width: 100px;
+  transition: 700ms;
+}
+
+.example-leave {
+  opacity: 1;
+  width: 100px;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  width: 0px;
+  transition: 700ms;
 }

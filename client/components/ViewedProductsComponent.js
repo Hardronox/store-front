@@ -116,9 +116,13 @@ class MyComponent extends Component {
                 <div className="viewed-products-categories flex-row">
                     {this.renderCategories()}
                 </div>
-                <div className="viewed-products flex-row">
+                <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionEnterTimeout={700}
+                    transitionLeaveTimeout={700}
+                    className="viewed-products flex-row">
                     {this.renderProducts()}
-                </div>
+                    </ReactCSSTransitionGroup>
             </div>
         );
     }
