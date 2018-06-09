@@ -23,7 +23,8 @@ import {
     LIKE_COMMENT_PENDING,
     DISLIKE_COMMENT_PENDING,
     TOGGLE_PRODUCT_LIKE_PENDING,
-    DELETE_VIEWED_PRODUCT_PENDING
+    DELETE_VIEWED_PRODUCT_PENDING,
+    TOGGLE_SELECT
 
 } from '../constants/actionTypes';
 
@@ -197,3 +198,14 @@ export const deleteViewedProduct = (id) => {
     }
 }
 
+
+//-------------------------------------------------------------------------------------
+
+export const toggleSelect = (orderNumber) => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_SELECT,
+            payload: orderNumber
+        })
+    }
+}

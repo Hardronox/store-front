@@ -5,6 +5,7 @@ import commentsReducer from './commentsReducer';
 import locationReducer from './locationReducer';
 import cartReducer from './cartReducer';
 import viewedProductsReducer from './viewedProductsReducer';
+import userOrdersReducer from './userOrdersReducer';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form'
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   cartReducer,
   routing: routerReducer,
   form: formReducer,
-  viewedProducts: viewedProductsReducer
+  viewedProducts: viewedProductsReducer,
+  userOrders: userOrdersReducer
 });
 
 export default rootReducer;

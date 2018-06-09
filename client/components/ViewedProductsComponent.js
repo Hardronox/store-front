@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
 import NumberFormat from 'react-number-format';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MyComponent extends Component {
 
@@ -115,9 +116,13 @@ class MyComponent extends Component {
                 <div className="viewed-products-categories flex-row">
                     {this.renderCategories()}
                 </div>
-                <div className="viewed-products flex-row">
+                <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionEnterTimeout={700}
+                    transitionLeaveTimeout={700}
+                    className="viewed-products flex-row">
                     {this.renderProducts()}
-                </div>
+                    </ReactCSSTransitionGroup>
             </div>
         );
     }
